@@ -1,4 +1,5 @@
-import { RSI, EMA, MACD } from "technicalindicators";
+import { RSI, EMA, MACD, BollingerBands } from "technicalindicators";
+import type { UTCTimestamp } from "lightweight-charts";
 
 export interface CandleBar {
   time: number;
@@ -7,6 +8,56 @@ export interface CandleBar {
   low: number;
   close: number;
   volume: number;
+}
+
+export interface IndicatorPoint { time: UTCTimestamp; value: number }
+export interface BollingerPoint { time: UTCTimestamp; upper: number; middle: number; lower: number }
+export interface ChartIndicatorSeries {
+  ema20: IndicatorPoint[];
+  ema50: IndicatorPoint[];
+  ema200: IndicatorPoint[];
+  bollinger: BollingerPoint[];
+  rsi: IndicatorPoint[];
+}
+
+/** Shared ordering/validation keeps all series on the candle time axis. Last duplicate wins. */
+export function chronologicalCandles(candles: CandleBar[]): CandleBar[] {
+  return [...new Map(candles.filter(c => Number.isInteger(c.time) && c.time > 0 &&
+    [c.open, c.high, c.low, c.close, c.volume].every(Number.isFinite)).map(c => [c.time, c])).values()]
+    .sort((a,b) => a.time - b.time);
+}
+const validPeriod = (period: number) => Number.isInteger(period) && period > 0;
+
+export function calculateEmaSeries(candles: CandleBar[], period: number): IndicatorPoint[] {
+  const bars = chronologicalCandles(candles);
+  if (!validPeriod(period) || bars.length < period) return [];
+  return EMA.calculate({ values: bars.map(c => c.close), period }).map((value, index) => ({
+    time: bars[index + period - 1].time as UTCTimestamp, value,
+  }));
+}
+export function calculateBollingerBandsSeries(candles: CandleBar[], period = 20, stdDev = 2): BollingerPoint[] {
+  const bars = chronologicalCandles(candles);
+  if (!validPeriod(period) || !Number.isFinite(stdDev) || stdDev < 0 || bars.length < period) return [];
+  return BollingerBands.calculate({ values: bars.map(c => c.close), period, stdDev }).map((value, index) => ({
+    time: bars[index + period - 1].time as UTCTimestamp, upper: value.upper, middle: value.middle, lower: value.lower,
+  }));
+}
+export function calculateRsiSeries(candles: CandleBar[], period = 14): IndicatorPoint[] {
+  const bars = chronologicalCandles(candles);
+  // RSI requires period changes, hence period + 1 closes.
+  if (!validPeriod(period) || bars.length <= period) return [];
+  return RSI.calculate({ values: bars.map(c => c.close), period }).map((value, index) => ({
+    time: bars[index + period].time as UTCTimestamp, value,
+  }));
+}
+
+export function calculateChartSeries(candles: CandleBar[], visibleStart = 0): ChartIndicatorSeries {
+  const visible = <T extends { time: UTCTimestamp }>(series: T[]) => series.filter(point => point.time >= visibleStart);
+  return {
+    ema20: visible(calculateEmaSeries(candles, 20)), ema50: visible(calculateEmaSeries(candles, 50)),
+    ema200: visible(calculateEmaSeries(candles, 200)), bollinger: visible(calculateBollingerBandsSeries(candles)),
+    rsi: visible(calculateRsiSeries(candles)),
+  };
 }
 
 export interface PivotLevels {

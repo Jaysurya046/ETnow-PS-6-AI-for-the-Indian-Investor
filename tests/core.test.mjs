@@ -331,3 +331,71 @@ test("IPO listings exclude future sessions and legacy re-admissions", () => {
   assert.equal(categorizeIpos(sources, "2026-10-23T02:00:00Z").listed.length, 0);
   assert.deepEqual(categorizeIpos(sources, "2026-10-23T05:00:00Z").listed.map(i => i.symbol), ["TODAY"]);
 });
+
+test("EMA series has exact warm-up length, numerical seed, and candle timestamp alignment", () => {
+  const { calculateEmaSeries } = load("lib/indicators.ts");
+  for (const period of [20, 50, 200]) {
+    const series = calculateEmaSeries(candles, period);
+    assert.equal(series.length, candles.length-period+1);
+    assert.equal(series[0].time, candles[period-1].time);
+    assert.equal(series.at(-1).time, candles.at(-1).time);
+    assert.equal(series[0].value, candles.slice(0,period).reduce((sum,c) => sum+c.close,0)/period);
+    assert.ok(series.every((point,index) => point.time === candles[index+period-1].time));
+  }
+});
+
+test("Bollinger series is aligned, symmetric about SMA, and ordered for varying closes", () => {
+  const { calculateBollingerBandsSeries } = load("lib/indicators.ts");
+  const series = calculateBollingerBandsSeries(candles);
+  assert.equal(series.length, candles.length-19);
+  assert.equal(series[0].time, candles[19].time);
+  assert.equal(series.at(-1).time, candles.at(-1).time);
+  for (const point of series) {
+    assert.ok(point.upper > point.middle && point.middle > point.lower);
+    assert.ok(Math.abs(point.upper+point.lower-2*point.middle) < 1e-8);
+  }
+  const flat = calculateBollingerBandsSeries(candles.map(c => ({ ...c, close: 100 })));
+  assert.equal(flat[0].upper, 100); assert.equal(flat[0].lower, 100);
+});
+
+test("RSI series starts after fourteen changes and remains within 0–100", () => {
+  const { calculateRsiSeries } = load("lib/indicators.ts");
+  const mixed = candles.map((c,i) => ({ ...c, close: 100+Math.sin(i/3)*20+i/10 }));
+  for (const input of [candles, [...candles].map((c,i) => ({ ...c, close: 400-i })), mixed]) {
+    const series = calculateRsiSeries(input);
+    assert.equal(series.length, input.length-14);
+    assert.equal(series[0].time, input[14].time);
+    assert.equal(series.at(-1).time, input.at(-1).time);
+    assert.ok(series.every(point => Number.isFinite(point.value) && point.value >= 0 && point.value <= 100));
+  }
+});
+
+test("indicator series tolerate insufficient, empty, invalid, shuffled and duplicate inputs", () => {
+  const { calculateEmaSeries, calculateBollingerBandsSeries, calculateRsiSeries } = load("lib/indicators.ts");
+  for (const input of [[], candles.slice(0,10)]) {
+    assert.deepEqual(calculateEmaSeries(input,20), []);
+    assert.deepEqual(calculateBollingerBandsSeries(input), []);
+    assert.deepEqual(calculateRsiSeries(input), []);
+  }
+  assert.deepEqual(calculateRsiSeries(candles.slice(0,14)), []);
+  assert.equal(calculateEmaSeries(candles.slice(0,20),20).length, 1);
+  assert.equal(calculateBollingerBandsSeries(candles.slice(0,20)).length, 1);
+  for (const period of [0,-1,1.5,NaN,Infinity]) {
+    assert.deepEqual(calculateEmaSeries(candles,period), []);
+    assert.deepEqual(calculateBollingerBandsSeries(candles,period), []);
+    assert.deepEqual(calculateRsiSeries(candles,period), []);
+  }
+  const scrambled = [...candles].reverse().concat(candles[0], { ...candles[0], close: NaN });
+  assert.deepEqual(calculateEmaSeries(scrambled,20), calculateEmaSeries(candles,20));
+});
+
+test("chart overlays use warm-up bars and only expose points in the visible candle range", async () => {
+  const fixtureLoader = loader({ "lib/yahoo.ts": { __esModule:true, default:{ chart: async () => ({ quotes: candles.map(c => ({ ...c, date:new Date(c.time*1000) })) }) } } });
+  const result = await fixtureLoader("lib/chart-data.ts").getChartData("TEST.NS", "1M");
+  assert.ok(result.candles.length < 50);
+  assert.equal(result.indicatorSeries.ema200.length, result.candles.length);
+  for (const series of Object.values(result.indicatorSeries)) {
+    assert.equal(series[0].time, result.candles[0].time);
+    assert.equal(series.at(-1).time, result.candles.at(-1).time);
+  }
+});

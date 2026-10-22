@@ -186,7 +186,8 @@ input::placeholder, textarea::placeholder { color: var(--text-muted); opacity: .
 .chart-price { text-align: right; }
 .chart-price strong { display: block; font-size: 24px; font-weight: 500; }
 .chart-price span { font-size: 12px; }
-.chart-canvas { position: relative; height: 420px; min-width: 0; }
+.chart-canvas { --price-chart-height: 420px; position: relative; height: var(--price-chart-height); min-width: 0; max-width: 100%; overflow: hidden; }
+.chart-canvas.has-rsi { height: calc(var(--price-chart-height) + 104px); }
 .chart-canvas > .canvas-target { height: 100%; width: 100%; }
 .chart-overlay { position: absolute; inset: 0; display: grid; place-items: center; background: var(--bg-secondary); color: var(--text-muted); font-size: 12px; }
 .ohlcv { display: flex; flex-wrap: wrap; gap: 8px 24px; padding: 10px 16px; border-top: 1px solid var(--border-subtle); font-size: 11px; color: var(--text-muted); }
@@ -282,7 +283,7 @@ input::placeholder, textarea::placeholder { color: var(--text-muted); opacity: .
   .page-heading { align-items: start; }
   .heading-actions .label-tag { display: none; }
 }
-@media (min-width: 2000px) { .page { padding: 28px 32px; } .overview-grid { grid-template-columns: minmax(0,1fr) 420px; } .data-table td, .data-table th { padding-block: 12px; } .chart-grid { grid-template-columns: minmax(0,1fr) 360px; } .chart-canvas { height: 560px; } }
+@media (min-width: 2000px) { .page { padding: 28px 32px; } .overview-grid { grid-template-columns: minmax(0,1fr) 420px; } .data-table td, .data-table th { padding-block: 12px; } .chart-grid { grid-template-columns: minmax(0,1fr) 360px; } .chart-canvas { --price-chart-height: 560px; } }
 @media (max-width: 1100px) and (min-width: 701px) {
   :root { --sidebar-width: 60px; }
   .sidebar-brand { padding: 14px; }
@@ -332,7 +333,7 @@ input::placeholder, textarea::placeholder { color: var(--text-muted); opacity: .
   .chart-instrument h2 { font-size: 18px; }
   .chart-instrument p { max-width: 22ch; }
   .chart-price strong { font-size: 20px; }
-  .chart-canvas { height: 350px; }
+  .chart-canvas { --price-chart-height: 350px; }
   .insight-columns { grid-template-columns: 1fr; }
   .insight-columns > div + div { border-left: 0; border-top: 1px solid var(--border-subtle); }
   .chat-grid { display: flex; flex-direction: column; min-height: 620px; height: auto; }
@@ -366,3 +367,24 @@ input::placeholder, textarea::placeholder { color: var(--text-muted); opacity: .
   .ipo-toolbar .segmented { width: 100%; }
   .ipo-toolbar .segmented button { flex: 1; font-size: 11px; padding-inline: 6px; }
 }
+
+:root {
+  --chart-ema20: #38bdf8;
+  --chart-ema50: #f59e0b;
+  --chart-ema200: #a855f7;
+  --chart-bb-edge: #64748b;
+  --chart-bb-middle: #94a3b8;
+  --chart-rsi: #818cf8;
+  --chart-rsi-overbought: #ef4444;
+  --chart-rsi-oversold: #10b981;
+  --chart-rsi-midline: #475569;
+}
+.chart-indicator-bar { display: flex; flex-wrap: wrap; gap: 6px; padding: 8px 12px; border-bottom: 1px solid var(--border-subtle); }
+.chart-indicator-bar button { display: inline-flex; align-items: center; gap: 7px; min-height: 32px; padding: 5px 9px; border: 1px solid var(--border-subtle); border-radius: 0; background: transparent; color: var(--text-secondary); font: 11px var(--font-mono); font-variant-numeric: tabular-nums; cursor: pointer; }
+.chart-indicator-bar button[aria-pressed="true"] { color: var(--gold); background: var(--bg-subtle); border-color: var(--gold); }
+.chart-indicator-bar button:hover { border-color: var(--border-strong); color: var(--text-primary); }
+.indicator-swatch { width: 12px; height: 2px; background: var(--indicator-color); opacity: .45; }
+.chart-indicator-bar button[aria-pressed="true"] .indicator-swatch { opacity: 1; }
+.rsi-pane-label { position: absolute; bottom: 106px; left: 10px; padding: 2px 4px; color: var(--chart-rsi); background: var(--bg-secondary); font: 10px var(--font-mono); pointer-events: none; }
+.indicator-note { padding: 7px 12px; color: var(--text-secondary); font: 11px var(--font-mono); border-top: 1px solid var(--border-subtle); }
+@media (max-width: 700px) { .chart-indicator-bar { padding: 8px 10px; } .chart-indicator-bar button { min-height: 44px; } }

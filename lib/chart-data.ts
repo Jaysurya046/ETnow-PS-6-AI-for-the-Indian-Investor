@@ -1,6 +1,6 @@
 import yahooFinance from "@/lib/yahoo";
 import { ttlCache } from "@/lib/cache";
-import { calculateIndicators, type CandleBar } from "@/lib/indicators";
+import { calculateIndicators, calculateChartSeries, type CandleBar } from "@/lib/indicators";
 
 export const RANGES = ["1D", "1W", "1M", "3M", "6M", "1Y"] as const;
 export type TimeRange = typeof RANGES[number];
@@ -21,5 +21,5 @@ export const getChartData = ttlCache(async (symbol: string, range: TimeRange) =>
   }
   const sorted = [...new Map(all.map(c => [c.time, c])).values()].sort((a,b) => a.time-b.time);
   if (!sorted.length) throw new Error("No valid candle data");
-  return { candles: sorted.filter(c => c.time >= visibleStart.getTime()/1000), analysis: calculateIndicators(sorted), interval, asOf: sorted.at(-1)!.time };
+  return { candles: sorted.filter(c => c.time >= visibleStart.getTime()/1000), indicatorSeries: calculateChartSeries(sorted, visibleStart.getTime()/1000), analysis: calculateIndicators(sorted), interval, asOf: sorted.at(-1)!.time };
 });

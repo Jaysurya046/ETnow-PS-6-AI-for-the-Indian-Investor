@@ -1,10 +1,10 @@
 "use client";
-import { useState, useEffect, useRef, Suspense } from "react";
-import { createChart, ColorType, CandlestickSeries, HistogramSeries, type ISeriesApi, type UTCTimestamp } from "lightweight-charts";
+import { useState, useEffect, Suspense } from "react";
+import CandlestickChart from "@/components/CandlestickChart";
 import { useSearchParams } from "next/navigation";
 import { PageHeading, PanelHeading, EmptyState, inr } from "@/components/Terminal";
 import { NIFTY_100 } from "@/lib/nifty100";
-import type { CandleBar, TechnicalAnalysis } from "@/lib/indicators";
+import type { CandleBar, TechnicalAnalysis, ChartIndicatorSeries } from "@/lib/indicators";
 import { NIFTY50_INSIGHTS, type StockInsights } from "@/lib/nifty50Insights";
 
 type TimeRange = "1D" | "1W" | "1M" | "3M" | "6M" | "1Y";
@@ -17,108 +17,13 @@ const STOCKS = NIFTY_100.map(s => ({
   cap: s.cap,
 }));
 
-// ─── Lightweight-Charts Candlestick Component ─────────────────────────────────
-// Keyed externally so it remounts on symbol/range change → guaranteed fitContent
-function CandlestickChart({ data, loading }: { data: CandleBar[]; loading: boolean }) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const chartRef = useRef<ReturnType<typeof createChart> | null>(null);
-  const candleSeriesRef = useRef<ISeriesApi<"Candlestick"> | null>(null);
-  const volSeriesRef = useRef<ISeriesApi<"Histogram"> | null>(null);
-
-  // Create chart once on mount
-  useEffect(() => {
-    if (!containerRef.current) return;
-
-    const tokens = getComputedStyle(document.documentElement);
-    const token = (name: string) => tokens.getPropertyValue(name).trim();
-    const chart = createChart(containerRef.current, {
-      layout: {
-        background: { type: ColorType.Solid, color: token("--bg-secondary") },
-        textColor: token("--text-muted"),
-        fontFamily: "IBM Plex Mono, Consolas, monospace",
-      },
-      grid: {
-        vertLines: { color: token("--bg-subtle") },
-        horzLines: { color: token("--bg-subtle") },
-      },
-      crosshair: {
-        mode: 1,
-        vertLine: { color: token("--border-strong"), labelBackgroundColor: token("--gold") },
-        horzLine: { color: token("--border-strong"), labelBackgroundColor: token("--gold") },
-      },
-      rightPriceScale: {
-        borderColor: token("--border-subtle"),
-        scaleMargins: { top: 0.08, bottom: 0.22 },
-      },
-      timeScale: {
-        borderColor: token("--border-subtle"),
-        timeVisible: true,
-        secondsVisible: false,
-        barSpacing: 8,
-        rightOffset: 3,
-      },
-      width: containerRef.current.clientWidth,
-      height: containerRef.current.clientHeight,
-    });
-
-    chartRef.current = chart;
-
-    const candleSeries = chart.addSeries(CandlestickSeries, {
-      upColor: token("--green"),
-      downColor: token("--red"),
-      borderUpColor: token("--green"),
-      borderDownColor: token("--red"),
-      wickUpColor: token("--green"),
-      wickDownColor: token("--red"),
-    });
-    candleSeriesRef.current = candleSeries;
-
-    const volSeries = chart.addSeries(HistogramSeries, {
-      color: token("--text-muted"),
-      priceFormat: { type: "volume" },
-      priceScaleId: "volume",
-    });
-    chart.priceScale("volume").applyOptions({
-      scaleMargins: { top: 0.82, bottom: 0 },
-    });
-    volSeriesRef.current = volSeries;
-
-    const ro = new ResizeObserver(() => {
-      if (containerRef.current && chartRef.current) {
-        chartRef.current.applyOptions({ width: containerRef.current.clientWidth, height: containerRef.current.clientHeight });
-      }
-    });
-    ro.observe(containerRef.current);
-
-    return () => {
-      ro.disconnect();
-      chart.remove();
-      chartRef.current = null;
-    };
-  }, []);
-
-  useEffect(() => {
-    if (!candleSeriesRef.current || !volSeriesRef.current) return;
-    const colors = getComputedStyle(document.documentElement);
-    const sorted = [...data].sort((a,b) => a.time-b.time);
-    candleSeriesRef.current.setData(sorted.map(c => ({ time:c.time as UTCTimestamp, open:c.open, high:c.high, low:c.low, close:c.close })));
-    volSeriesRef.current.setData(sorted.map(c => ({ time:c.time as UTCTimestamp, value:c.volume, color:colors.getPropertyValue(c.close >= c.open ? "--volume-up" : "--volume-down").trim() })));
-    const frame = requestAnimationFrame(() => chartRef.current?.timeScale().fitContent());
-    return () => cancelAnimationFrame(frame);
-  }, [data]);
-
-  return <div className="chart-canvas" role="img" aria-label="Price candlestick chart with volume. Open, high, low, close and indicators are provided in the surrounding tables.">
-    <div className="canvas-target" ref={containerRef} />
-    {loading && <div className="chart-overlay" role="status">Loading candles…</div>}
-    {!loading && data.length === 0 && <div className="chart-overlay" role="status">Chart data unavailable.</div>}
-  </div>;
-}
-
 // ─── Main Page ────────────────────────────────────────────────────────────────
 function ChartsWorkspace({ initialSymbol }: { initialSymbol: string }) {
   const [selected, setSelected] = useState(STOCKS.find(s => s.label === initialSymbol) ?? STOCKS[0]);
   const [range, setRange] = useState<TimeRange>("1M");
-  const [chartData, setChartData] = useState<CandleBar[]>([]);
+  const [loadedChartData, setChartData] = useState<CandleBar[]>([]);
+  const [loadedChartKey, setLoadedChartKey] = useState("");
+  const [indicatorSeries, setIndicatorSeries] = useState<ChartIndicatorSeries>();
   const [chartLoading, setChartLoading] = useState(true);
   const [insightsLoading, setInsightsLoading] = useState(true);
   const [insights, setInsights] = useState<StockInsights | null>(null);
@@ -126,22 +31,22 @@ function ChartsWorkspace({ initialSymbol }: { initialSymbol: string }) {
   const [analysis, setAnalysis] = useState<TechnicalAnalysis | null>(null);
   const [interval, setIntervalLabel] = useState("");
 
-  // FIX 1: use chartKey to force CandlestickChart remount on stock/range change
-  // This guarantees a fresh chart with proper fitContent each time
+  // Remount the canvas on instrument/range changes while retaining toolbar preferences.
   const chartKey = `${selected.label}-${range}`;
+  // Never initialize a new canvas with the previous instrument/range's candles.
+  const chartData = loadedChartKey === chartKey ? loadedChartData : [];
 
   useEffect(() => {
     const controller = new AbortController();
-    async function loadChart() {
+    async function loadChart(reset = false) {
       setChartLoading(true);
-      setChartData([]);
-      setAnalysis(null);
+      if (reset) { setChartData([]); setIndicatorSeries(undefined); setAnalysis(null); }
       try {
         const res = await fetch(`/api/chart?symbol=${encodeURIComponent(selected.label)}&range=${range}`, { signal: controller.signal });
         if (!res.ok) throw new Error("Chart unavailable");
-        const data: { candles: CandleBar[]; analysis: TechnicalAnalysis; interval: string } = await res.json();
+        const data: { candles: CandleBar[]; indicatorSeries: ChartIndicatorSeries; analysis: TechnicalAnalysis; interval: string } = await res.json();
         if (!controller.signal.aborted) {
-          setChartData(data.candles); setAnalysis(data.analysis); setIntervalLabel(data.interval);
+          setChartData(data.candles); setLoadedChartKey(`${selected.label}-${range}`); setIndicatorSeries(data.indicatorSeries); setAnalysis(data.analysis); setIntervalLabel(data.interval);
         }
       } catch { /* Empty chart state explains unavailable data. */ }
       finally { if (!controller.signal.aborted) setChartLoading(false); }
@@ -161,7 +66,7 @@ function ChartsWorkspace({ initialSymbol }: { initialSymbol: string }) {
         }
       } finally { if (!controller.signal.aborted) setInsightsLoading(false); }
     }
-    void loadChart(); void loadInsights();
+    void loadChart(true); void loadInsights();
     const refresh = window.setInterval(() => { void loadChart(); void loadInsights(); }, 60_000);
     return () => { controller.abort(); window.clearInterval(refresh); };
   }, [selected.label, range]);
@@ -183,7 +88,7 @@ function ChartsWorkspace({ initialSymbol }: { initialSymbol: string }) {
     </div></div>
     <div className="chart-grid"><div className="stack">
       <section className="panel"><div className="chart-instrument"><div><h2>{selected.label}</h2><p>{selected.name}</p></div><div className="chart-price"><strong className="numeric">{last ? inr(last.close) : "—"}</strong><span className={`numeric ${isUp ? "positive" : "negative"}`}>{last ? `${isUp ? "↑" : "↓"} ${pctChange}% / ${range}` : "Awaiting candles"}</span></div></div>
-        <CandlestickChart key={chartKey} data={chartData} loading={chartLoading} />
+        <CandlestickChart chartKey={chartKey} data={chartData} indicators={loadedChartKey === chartKey ? indicatorSeries : undefined} loading={chartLoading} />
         <div className="ohlcv">{[{ label:"O", value:first?.open },{ label:"H", value:last ? Math.max(...chartData.map(c => c.high)) : undefined },{ label:"L", value:last ? Math.min(...chartData.map(c => c.low)) : undefined },{ label:"C", value:last?.close }].map(item => <span key={item.label}>{item.label}<strong className="numeric">{level(item.value)}</strong></span>)}<span>VOL<strong className="numeric">{last?.volume.toLocaleString("en-IN") ?? "—"}</strong></span></div>
         <div className="panel-footer"><span>{last ? new Date(last.time*1000).toLocaleString("en-IN", { timeZone:"Asia/Kolkata" })+" IST" : "Latest available candles"}</span><span className="numeric">{interval || "—"} interval · 60s refresh</span></div>
       </section>

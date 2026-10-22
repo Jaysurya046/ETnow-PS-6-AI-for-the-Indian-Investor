@@ -273,3 +273,7 @@ ET-gen-ai-main/
 ## Live institutional and IPO feeds — 23 October 2026
 
 Implemented `/api/fii-dii` and `/api/ipo`, typed NSE normalization, cookie/session handling, bounded stale-aware caches, verified offline captures, and Upstox institutional history backfill. Replaced the Market briefing archive samples with active institutional bars/session details and ongoing/upcoming/listed IPO tables. Listing gains use historical listing-day prices only; unavailable fields remain blank. See `docs/feed-pipelines.md` for contracts, units, provenance, TTLs, and deployment limits.
+
+## Interactive chart overlays — 23 October 2026
+
+Added full EMA/Bollinger/RSI time-series calculations and warm-up-aware `/api/chart` payloads. The chart now has persistent EMA 20/50/200 and Bollinger toggles plus a native synchronized RSI pane with fixed 0–100 scale and 70/50/30 thresholds. Extracted the canvas lifecycle into `components/CandlestickChart.tsx`, including responsive resizing and complete cleanup. See `docs/chart-indicators.md` for period semantics and the library's integer-width constraint.
