@@ -1,5 +1,7 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
+import { Plus, X, Send, Wallet } from "lucide-react";
+import { PageHeading, PanelHeading, inr, signed } from "@/components/Terminal";
 import SafeMarkdown from "@/components/SafeMarkdown";
 import { parseHoldings, portfolioTotals, PORTFOLIO_KEY, type PortfolioItem } from "@/lib/portfolio";
 import { readChatStream } from "@/lib/chat-stream";
@@ -17,7 +19,7 @@ const QUICK_QUERIES = [
   "Analyze my portfolio risk",
   "RELIANCE stock deep dive",
   "Review my Mutual Fund allocation",
-  "Nifty 50 outlook for 2026",
+  "Explain market index risk",
   "Which sector should I invest in now?",
   "Explain FII vs DII flows today",
 ];
@@ -26,7 +28,7 @@ export default function ChatPage() {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "ai",
-      content: "👋 I'm your ET Markets AI. Add your holdings for portfolio context and latest available Yahoo Finance quotes. Ask about your portfolio or market concepts.",
+      content: "Add holdings to provide portfolio context. Ask a research question or review your allocation and unrealized P&L.",
       suggestions: QUICK_QUERIES.slice(0, 3),
     },
   ]);
@@ -37,6 +39,7 @@ export default function ChatPage() {
   const [portfolio, setPortfolio] = useState<PortfolioItem[]>([]);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
+  const [showPortfolio, setShowPortfolio] = useState(false);
   const [portfolioReady, setPortfolioReady] = useState(false);
   const [portfolioError, setPortfolioError] = useState("");
   const busyRef = useRef(false);
@@ -114,284 +117,27 @@ export default function ChatPage() {
     } finally { busyRef.current = false; setIsTyping(false); }
   };
 
-  const renderContent = (text: string) => <SafeMarkdown>{text}</SafeMarkdown>;
-
-  return (
-    <div className="page" style={{ padding: 0, maxWidth: "100%", height: "calc(100vh - var(--header-height))", display: "flex" }}>
-      {/* Portfolio Sidebar */}
-      <div style={{
-        width: 280, flexShrink: 0, borderRight: "1px solid var(--border-subtle)",
-        display: "flex", flexDirection: "column", overflow: "hidden",
-        padding: 20, background: "var(--bg-secondary)",
-      }}>
-        <div style={{ fontSize: 11, fontWeight: 700, color: "var(--text-muted)", letterSpacing: 1, textTransform: "uppercase", marginBottom: 16 }}>
-          📊 Your Portfolio
-        </div>
-
-        {/* P&L Summary */}
-        <div style={{
-          background: pnl >= 0 ? "var(--green-dim)" : "var(--red-dim)",
-          border: `1px solid ${pnl >= 0 ? "rgba(34,197,94,0.2)" : "rgba(239,68,68,0.2)"}`,
-          borderRadius: "var(--radius-md)", padding: "12px 14px", marginBottom: 16,
-        }}>
-          <div style={{ fontSize: 11, color: "var(--text-muted)", marginBottom: 4 }}>P&L · {totals.priced}/{portfolio.length} holdings priced</div>
-          <div style={{ fontSize: 22, fontWeight: 800, color: pnl >= 0 ? "var(--green)" : "var(--red)", fontFamily: "JetBrains Mono, monospace" }}>
-            {totals.priced ? `${pnl >= 0 ? "+" : "-"}₹${Math.abs(pnl).toLocaleString("en-IN", { maximumFractionDigits: 2 })}` : "Unavailable"}
-          </div>
-          <div style={{ fontSize: 12, color: pnl >= 0 ? "var(--green)" : "var(--red)", fontWeight: 600 }}>
-            {totals.priced ? `${pnl >= 0 ? "▲" : "▼"} ${Math.abs(pnlPct).toFixed(1)}% · ₹${totalValue.toLocaleString("en-IN", { maximumFractionDigits: 2 })} priced value` : "Awaiting available quotes"}
-          </div>
-        </div>
-
-        {portfolioError && <p role="status" style={{ fontSize: 11, color: "var(--gold)" }}>{portfolioError}</p>}
-        {portfolio.length === 0 && <p style={{ fontSize: 12 }}>Add holdings to see your portfolio.</p>}
-        {/* Holdings */}
-        <div style={{ flex: 1, overflowY: "auto" }}>
-          {portfolio.map((h, i) => {
-            const hPnl = h.cmp === null ? null : (h.cmp - h.avgCost) * h.qty;
-            const hPct = h.cmp === null ? null : ((h.cmp - h.avgCost) / h.avgCost) * 100;
-            return (
-              <div key={i} style={{
-                padding: "10px 0",
-                borderBottom: "1px solid var(--border-subtle)",
-                cursor: "pointer",
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "flex-start",
-              }}
-                onClick={(e) => {
-                  if ((e.target as HTMLElement).getAttribute("data-action") !== "delete") {
-                    sendMessage(`Provide a comprehensive technical analysis for ${h.symbol}.`);
-                  }
-                }}
-              >
-                <div style={{ flex: 1 }}>
-                  <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 4 }}>
-                    <span style={{ fontSize: 13, fontWeight: 700, color: "var(--text-primary)" }}>{h.symbol}</span>
-                    <span style={{ fontSize: 13, fontWeight: 700, color: (hPnl ?? 0) >= 0 ? "var(--green)" : "var(--red)", fontFamily: "JetBrains Mono, monospace" }}>
-                      {hPnl !== null && hPnl >= 0 ? "+" : ""}{hPnl === null ? "Unavailable" : `₹${hPnl.toLocaleString("en-IN", { maximumFractionDigits: 2 })}`}
-                    </span>
-                  </div>
-                  <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 3 }}>
-                    <span style={{ fontSize: 11, color: "var(--text-muted)" }}>Avg: ₹{h.avgCost}</span>
-                    <span style={{ fontSize: 11, color: "var(--gold)", fontWeight: 600 }}>CMP: {h.cmp === null ? "Unavailable" : `₹${h.cmp.toLocaleString("en-IN")}`}</span>
-                  </div>
-                  {h.quoteTime && <div style={{ fontSize: 10, color: "var(--text-muted)" }}>{new Date(h.quoteTime).toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })} IST</div>}
-                  <div style={{ display: "flex", justifyContent: "space-between" }}>
-                    <span style={{ fontSize: 11, color: "var(--text-muted)" }}>{h.qty} qty</span>
-                    <span style={{ fontSize: 11, fontWeight: 600, color: (hPnl ?? 0) >= 0 ? "var(--green)" : "var(--red)" }}>
-                      {hPct !== null && hPct >= 0 ? "+" : ""}{hPct === null ? "—" : `${hPct.toFixed(1)}%`}
-                    </span>
-                  </div>
-                </div>
-                <button
-                  data-action="delete"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setPortfolio(portfolio.filter((_, idx) => idx !== i));
-                  }}
-                  style={{
-                    background: "none",
-                    border: "none",
-                    color: "var(--red)",
-                    cursor: "pointer",
-                    fontSize: 12,
-                    marginLeft: 8,
-                    padding: "0 4px",
-                    flexShrink: 0,
-                  }}
-                  title="Remove holding"
-                >
-                  ✕
-                </button>
-              </div>
-            );
-          })}
-        </div>
-
-        <button
-          onClick={() => setAddingHolding(!addingHolding)}
-          className="btn btn-ghost"
-          style={{ marginTop: 12, fontSize: 12, justifyContent: "center" }}
-        >
-          + Add Holding
-        </button>
-
-        {addingHolding && (
-          <div style={{ marginTop: 10, display: "flex", flexDirection: "column", gap: 8 }}>
-            <input className="input" placeholder="Symbol (e.g. WIPRO)" style={{ fontSize: 12 }}
-              value={newHolding.symbol} onChange={(e) => setNewHolding({ ...newHolding, symbol: e.target.value })} />
-            <div style={{ display: "flex", gap: 6 }}>
-              <input className="input" placeholder="Qty" style={{ fontSize: 12 }}
-                value={newHolding.qty} onChange={(e) => setNewHolding({ ...newHolding, qty: e.target.value })} />
-              <input className="input" placeholder="Avg ₹" style={{ fontSize: 12 }}
-                value={newHolding.cost} onChange={(e) => setNewHolding({ ...newHolding, cost: e.target.value })} />
-            </div>
-
-            <button className="btn btn-primary" style={{ fontSize: 11, justifyContent: "center" }}
-              onClick={() => {
-                const parsed = parseHoldings([{ symbol: newHolding.symbol.trim().toUpperCase(), qty: Number(newHolding.qty), avgCost: Number(newHolding.cost) }]);
-                if (!parsed) { setPortfolioError("Enter a valid NSE symbol, positive quantity, and average cost."); return; }
-                setPortfolio(current => [...current, parsed[0]]);
-                setAddingHolding(false); setNewHolding({ symbol: "", qty: "", cost: "" });
-
-              }}>
-              Add Holding
-            </button>
-          </div>
-        )}
-      </div>
-
-      {/* Chat Area */}
-      <div style={{ flex: 1, display: "flex", flexDirection: "column", overflow: "hidden" }}>
-        {/* Messages */}
-        <div style={{ flex: 1, overflowY: "auto", padding: "24px 28px", display: "flex", flexDirection: "column", gap: 20 }}>
-          {messages.map((msg, i) => (
-            <div key={i} style={{ display: "flex", flexDirection: "column", alignItems: msg.role === "user" ? "flex-end" : "flex-start", gap: 8, animation: "fade-in 0.3s ease" }}>
-              {msg.role === "ai" && (
-                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
-                  <div style={{
-                    width: 28, height: 28, borderRadius: "50%",
-                    background: "linear-gradient(135deg, var(--gold), #ff8c00)",
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                    fontSize: 12, fontWeight: 900, color: "#000",
-                  }}>AI</div>
-                  <span style={{ fontSize: 12, fontWeight: 600, color: "var(--text-muted)" }}>ET Markets AI</span>
-                </div>
-              )}
-
-              {/* Thinking steps */}
-              {msg.isThinking && msg.steps && (
-                <div style={{ background: "var(--bg-card)", border: "1px solid var(--border-subtle)", borderRadius: "var(--radius-lg)", padding: "14px 18px", maxWidth: "80%" }}>
-                  <div style={{ fontSize: 12, color: "var(--text-muted)", marginBottom: 10, fontStyle: "italic" }}>🤔 Analyzing...</div>
-                  {msg.steps.map((step, si) => (
-                    <div key={si} style={{ display: "flex", alignItems: "center", gap: 8, padding: "6px 0", borderBottom: si < msg.steps!.length - 1 ? "1px solid var(--border-subtle)" : "none" }}>
-                      <span style={{ color: "var(--green)", fontSize: 12 }}>✓</span>
-                      <span style={{ fontSize: 12, color: "var(--text-secondary)" }}>{step}</span>
-                    </div>
-                  ))}
-                  {isTyping && (
-                    <div style={{ display: "flex", gap: 4, marginTop: 8 }}>
-                      {[0, 1, 2].map((d) => (
-                        <div key={d} style={{
-                          width: 6, height: 6, borderRadius: "50%", background: "var(--gold)",
-                          animation: `pulse 1.2s ${d * 0.2}s infinite`,
-                        }} />
-                      ))}
-                    </div>
-                  )}
-                </div>
-              )}
-
-              {/* AI response */}
-              {msg.role === "ai" && !msg.isThinking && msg.content && (
-                <div className="chat-bubble ai" style={{ maxWidth: "80%" }}>
-                  <div style={{ fontSize: 14, lineHeight: 1.7 }}>{renderContent(msg.content)}</div>
-
-                  {/* Sources */}
-                  {msg.sources && msg.sources.length > 0 && (
-                    <div style={{ marginTop: 14, display: "flex", flexWrap: "wrap", gap: 6 }}>
-                      <span style={{ fontSize: 11, color: "var(--text-muted)", marginRight: 4 }}>Sources:</span>
-                      {msg.sources.map((s) => (
-                        <span key={s} className="source-chip">📄 {s}</span>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              )}
-
-              {/* User bubble */}
-              {msg.role === "user" && (
-                <div className="chat-bubble user">{msg.content}</div>
-              )}
-
-              {/* Suggestions */}
-              {msg.suggestions && (
-                <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 4 }}>
-                  {msg.suggestions.map((s) => (
-                    <button key={s} className="suggestion-pill" onClick={() => sendMessage(s)}>{s}</button>
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
-          <div ref={messagesEndRef} />
-        </div>
-
-        {/* Quick queries */}
-        {messages.length <= 2 && (
-          <div style={{ padding: "0 28px 16px", display: "flex", flexWrap: "wrap", gap: 8 }}>
-            {QUICK_QUERIES.map((q) => (
-              <button key={q} className="suggestion-pill" onClick={() => sendMessage(q)}>{q}</button>
-            ))}
-          </div>
-        )}
-
-        {/* Input */}
-        <div style={{
-          padding: "16px 28px",
-          borderTop: "1px solid var(--border-subtle)",
-          background: "var(--bg-secondary)",
-          display: "flex",
-          gap: 12,
-          alignItems: "center",
-        }}>
-          <input
-            className="input"
-            placeholder="Ask about stocks, your portfolio, sectors, technical levels..."
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={(e) => { if (e.key === "Enter" && !isTyping) sendMessage(input); }}
-            disabled={isTyping}
-            style={{ flex: 1 }}
-          />
-          <button
-            className="btn btn-primary"
-            onClick={() => sendMessage(input)}
-            disabled={isTyping || !input.trim()}
-            style={{ flexShrink: 0, padding: "10px 20px" }}
-          >
-            {isTyping ? "⏳" : "Send"}
-          </button>
-        </div>
-      </div>
-
-      {/* Sources panel (right) */}
-      <div style={{
-        width: 240, flexShrink: 0, borderLeft: "1px solid var(--border-subtle)",
-        padding: 20, background: "var(--bg-secondary)", overflowY: "auto",
-      }}>
-        <div style={{ fontSize: 11, fontWeight: 700, color: "var(--text-muted)", letterSpacing: 1, textTransform: "uppercase", marginBottom: 16 }}>
-          📚 Data Sources
-        </div>
-        {[
-          { name: "Yahoo Finance", status: `${totals.priced} holding quotes available`, color: "var(--green)" },
-          { name: "Your holdings", status: "Stored in this browser", color: "var(--gold)" },
-
-        ].map((s, i) => (
-          <div key={i} style={{ padding: "10px 0", borderBottom: "1px solid var(--border-subtle)" }}>
-            <div style={{ fontSize: 12, fontWeight: 600, color: "var(--text-primary)", marginBottom: 2 }}>{s.name}</div>
-            <div style={{ fontSize: 11, color: s.color }}>{s.status}</div>
-          </div>
-        ))}
-
-        <div style={{ marginTop: 20 }}>
-          <div style={{ fontSize: 11, fontWeight: 700, color: "var(--text-muted)", letterSpacing: 1, textTransform: "uppercase", marginBottom: 12 }}>
-            🧠 AI Capabilities
-          </div>
-          {[
-            "Streaming markdown responses",
-            "Portfolio-aware personalization",
-            "Sources identify supplied context",
-            "Real-time data integration",
-            "NSE holding quote lookup",
-          ].map((c, i) => (
-            <div key={i} style={{ display: "flex", gap: 8, padding: "6px 0", fontSize: 12, color: "var(--text-secondary)" }}>
-              <span style={{ color: "var(--green)" }}>✓</span> {c}
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
+  return <div className="page research-page"><PageHeading index="04" title="Research desk" description="Portfolio-aware research with streaming responses."><button className="btn mobile-portfolio-toggle" aria-expanded={showPortfolio} aria-controls="portfolio-pane" onClick={() => setShowPortfolio(!showPortfolio)}><Wallet size={15} aria-hidden="true" />Holdings <span className="numeric">{portfolio.length}</span></button><span className="label-tag">BROWSER PORTFOLIO</span></PageHeading>
+    <div className="chat-grid"><aside className={`portfolio-pane ${showPortfolio ? "is-open" : ""}`} id="portfolio-pane" aria-label="Portfolio holdings"><PanelHeading title="Portfolio" meta={`${portfolio.length} positions`} />
+      <div className="portfolio-summary"><span className="eyebrow">UNREALIZED P&L</span><strong className={`numeric ${pnl >= 0 ? "positive" : "negative"}`}>{totals.priced ? `${pnl > 0 ? "+" : ""}${inr(pnl)}` : "—"}</strong><p className="numeric">{totals.priced ? `${signed(pnlPct)}% · ${inr(totalValue)}` : "Awaiting quotes"}</p><p><span className="numeric">{totals.priced}/{portfolio.length}</span> holdings priced · missing quotes excluded</p></div>
+      {portfolioError && <p className="notice" role="status">{portfolioError}</p>}
+      {!portfolio.length && <p className="empty-state">No holdings. Add a symbol, quantity and average cost.</p>}
+      <ul className="holdings-list">{portfolio.map((h,i) => <li className="holding" key={`${h.symbol}-${i}`}><div className="holding-top"><button className="sort-button text-link" disabled={isTyping} onClick={() => void sendMessage(`Review my ${h.symbol} holding.`)}>{h.symbol}</button><button className="icon-button" aria-label={`Remove ${h.symbol} holding`} onClick={() => setPortfolio(current => current.filter((_,index) => index !== i))}><X size={14} aria-hidden="true" /></button></div><div className="holding-values"><div><span>Quantity</span><strong className="numeric">{h.qty.toLocaleString("en-IN")}</strong></div><div><span>Average cost</span><strong className="numeric">{inr(h.avgCost)}</strong></div><div><span>Last price</span><strong className="numeric">{inr(h.cmp)}</strong></div><div><span>P&L</span><strong className={`numeric ${h.cmp !== null && h.cmp < h.avgCost ? "negative" : "positive"}`}>{h.cmp === null ? "—" : inr((h.cmp-h.avgCost)*h.qty)}</strong></div></div>{h.quoteTime && <p className="holding-time">{new Date(h.quoteTime).toLocaleString("en-IN",{timeZone:"Asia/Kolkata",hour12:false})} IST</p>}</li>)}</ul>
+      <div className="panel-body"><button className="btn" aria-expanded={addingHolding} aria-controls="holding-form" onClick={() => setAddingHolding(!addingHolding)}><Plus size={14} aria-hidden="true" />Add holding</button></div>
+      {addingHolding && <form className="holding-form" id="holding-form" onSubmit={e => {
+        e.preventDefault();
+        const parsed = parseHoldings([{symbol:newHolding.symbol.trim().toUpperCase(),qty:Number(newHolding.qty),avgCost:Number(newHolding.cost)}]);
+        if (!parsed) {setPortfolioError("Enter a valid NSE symbol, positive quantity and average cost.");return;}
+        setPortfolio(current => [...current,parsed[0]]);setAddingHolding(false);setNewHolding({symbol:"",qty:"",cost:""});
+      }}><label className="field">NSE symbol<input value={newHolding.symbol} onChange={e => setNewHolding({...newHolding,symbol:e.target.value})} placeholder="e.g. TCS" required autoComplete="off" maxLength={30} /></label><div className="field-row"><label className="field">Quantity<input type="number" min="0.000001" step="any" value={newHolding.qty} onChange={e => setNewHolding({...newHolding,qty:e.target.value})} required /></label><label className="field">Average cost / ₹<input type="number" min="0.000001" step="any" value={newHolding.cost} onChange={e => setNewHolding({...newHolding,cost:e.target.value})} required /></label></div><button className="btn btn-primary" type="submit">Save holding</button></form>}
+    </aside>
+    <section className="conversation" aria-label="Research conversation"><PanelHeading title="Research thread" meta={isTyping ? "Receiving response" : "Portfolio context attached"} /><div className="messages" aria-busy={isTyping}>
+      {messages.map((message,i) => <article className={`message ${message.role}`} key={i}><div className="message-author"><span className="numeric">{String(i+1).padStart(2,"0")}</span><span>{message.role === "ai" ? "ETNow Research" : "You"}</span></div>
+        {message.isThinking ? <p className="message-status" role="status">{message.steps?.at(-1) ?? "Connecting…"}</p> : <div className="message-content">{message.role === "ai" ? <SafeMarkdown>{message.content}</SafeMarkdown> : message.content}</div>}
+        {!!message.sources?.length && <p className="sources">Context: {message.sources.join(" · ")}</p>}
+        {!!message.suggestions?.length && <div className="suggestions">{message.suggestions.map(query => <button className="suggestion-pill" key={query} disabled={isTyping} onClick={() => void sendMessage(query)}>{query}</button>)}</div>}
+      </article>)}<div ref={messagesEndRef} />
+    </div><form className="composer" onSubmit={e => {e.preventDefault();void sendMessage(input);}}><label className="field">Research question<textarea value={input} onChange={e => setInput(e.target.value)} onKeyDown={e => {if(e.key === "Enter" && !e.shiftKey){e.preventDefault();if(!isTyping) void sendMessage(input);}}} disabled={isTyping} placeholder="Ask about your holdings or a market concept. Shift+Enter for a new line." /></label><button className="btn btn-primary" type="submit" disabled={isTyping || !input.trim()}><Send size={14} aria-hidden="true" /><span>{isTyping ? "Receiving" : "Send"}</span></button></form></section>
+    <aside className="context-pane" aria-label="Research context"><PanelHeading title="Context & sources" /><div className="context-note"><h3>Portfolio coverage</h3><p className="numeric">{totals.priced}/{portfolio.length} holdings priced</p><p>Latest available Yahoo Finance quotes. Unpriced holdings are excluded from valuation.</p></div><div className="context-note"><h3>Browser storage</h3><p>Holdings stay in this browser. Quotes are refreshed when you open the workspace and every 30 seconds.</p></div><div className="context-note"><h3>Research scope</h3><p>Responses use the supplied portfolio context. Current news and filings are not connected.</p></div><div className="context-note"><h3>Suggested questions</h3><div className="suggestions">{QUICK_QUERIES.slice(0,3).map(query => <button className="suggestion-pill" key={query} disabled={isTyping} onClick={() => void sendMessage(query)}>{query}</button>)}</div></div></aside></div>
+  </div>;
 }

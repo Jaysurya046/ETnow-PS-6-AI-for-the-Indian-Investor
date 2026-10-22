@@ -1,5 +1,9 @@
 # 📋 ETNow AI — Comprehensive Implementation Report
 
+## Interface redesign — 23 October 2026
+
+All five workspaces now share a vanilla CSS financial terminal design: stationary benchmark quotes, numbered navigation, dense market tables, aligned IBM Plex Mono figures, responsive split panes and mobile bottom navigation. Emoji icons, glow effects, decorative gradients, marketing hero sections and simulated race animations were removed. Existing live feeds, portfolio persistence, safe markdown and SSE handling remain connected. See `docs/terminal-design.md` for design rules and verification.
+
 ## Execution update — 23 October 2026
 
 The audit below describes the original implementation. The following work supersedes its statements about static patterns, chat responses, portfolio holdings, and simulated generation.

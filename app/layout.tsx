@@ -4,9 +4,9 @@ import Sidebar from "@/components/Sidebar";
 import Header from "@/components/Header";
 
 export const metadata: Metadata = {
-  title: "ETNow AI — Intelligence for the Indian Investor",
+  title: "ETNow Terminal — Indian markets",
   description:
-    "AI-powered market intelligence: Opportunity Radar, Chart Pattern Intelligence, Market Chat, and Video Engine for NSE/BSE investors.",
+    "Indian market quotes, chart analysis, portfolio research and market briefings.",
 };
 
 export default function RootLayout({
@@ -17,11 +17,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <a href="#workspace" className="skip-link">Skip to workspace</a>
         <div className="app-shell">
           <Sidebar />
           <div className="main-content">
             <Header />
-            {children}
+            <main id="workspace" tabIndex={-1}>{children}</main>
           </div>
         </div>
       </body>
