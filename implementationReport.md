@@ -1,5 +1,23 @@
 # 📋 ETNow AI — Comprehensive Implementation Report
 
+## Execution update — 23 October 2026
+
+The audit below describes the original implementation. The following work supersedes its statements about static patterns, chat responses, portfolio holdings, and simulated generation.
+
+- **Phase 1:** Chat and video summaries render with `react-markdown`, `rehype-sanitize`, and raw HTML disabled. `getGenAI()` initializes lazily and returns `null` without credentials. Radar prompts use supplied price momentum only; fabricated event fallbacks were removed.
+- **Phase 2:** `/api/chart` now returns `{ candles, analysis, interval, asOf }`. Analysis includes RSI(14), EMA(9/21/50/200), MACD(12/26/9), Classic/Camarilla/Fibonacci pivots, and algorithmic candle/crossover/breakout observations. Warm-up candles support long periods; unavailable metrics remain null. Indicator periods refer to the selected bar interval; pivots use the preceding bar, not an assumed daily session. No unmeasured backtest probability or price target is displayed.
+- **Coverage:** The old `NIFTY_100` array had 99 entries and several invalid symbols. It was refreshed from the [official NSE Indices constituent CSV](https://www.niftyindices.com/IndexConstituent/ind_nifty100list.csv), retrieved 23 October 2026. A copy is saved in `docs/nifty100-2026-10-23.csv`. The snapshot contains 100 unique symbols; membership needs refresh after index reconstitutions.
+- **Chart insights:** The UI requests `/api/chart-insights` on stock/range changes and refreshes every minute. The prompt receives measured indicators and Yahoo fundamentals. `nifty50Insights.ts` is retained only as a clearly marked historical offline reference. Pattern calculation covers all symbols without this dictionary.
+- **Market pipelines:** `/api/sectors` queries the eight requested NSE sector indices; `/api/movers` ranks gains/losses across the complete configured universe and reports quote coverage. The video page polls these every 30 seconds. Missing data is not replaced by fabricated prices or movers.
+- **Caching:** Yahoo quote batches and chart requests use a bounded 30-second in-memory TTL cache with in-flight coalescing. Failed requests are evicted. Market/chart/sector handlers export `revalidate = 30`; SDK caching provides the actual query-sensitive protection. Index routes explicitly run at request time, avoiding provider calls during builds. Cache storage is per process, not a shared distributed cache.
+- **Phase 3:** Holdings are validated and stored in browser `localStorage`; new users start with an empty portfolio. `/api/quotes` supplies CMP and quote time, refreshed every 30 seconds. Unknown prices are excluded from P&L with visible coverage. The chat server re-fetches prices rather than trusting client CMP. Home NIFTY 50/SENSEX/USD-INR snapshots use `/api/market`.
+- **Streaming:** `/api/chat` accepts `{ query, portfolio, stream: true }` and returns SSE `status`, `delta`, `fallback`, and `done` messages. Network chunk boundaries and UTF-8 are handled by `lib/chat-stream.ts`. Omit `stream` for a JSON response. Missing keys, quota errors, and service failures retain quantitative portfolio fallback behavior. Dated canned stock recommendations were replaced by calculations from available user holdings.
+- **UI integrity:** Removed artificial chat/video delays, radar counter ticks, random flashes, stale current-news fallback cards, and unsupported home module performance counters. Video generation produces a factual script preview without claiming MP4 encoding. FII/DII and IPO panels remain explicitly marked historical samples; live ingestion and media encoding were outside the supplied three-phase execution list.
+
+Verification commands: `npm run lint`, `npm test`, `npm run build`. The regression suite covers markdown XSS payloads, missing Gemini credentials, indicator arithmetic and insufficient history, all 100 configured symbols, mover ranking, TTL behavior, portfolio validation/P&L, UTF-8 SSE framing, and quota/provider fallbacks. See `docs/development-execution.md` for execution results and limitations.
+
+---
+
 ## Executive Summary
 
 **ETNow AI** (also referenced as **ET Gen-AI**) is an AI-powered financial market intelligence and portfolio platform tailored specifically for the Indian equity markets (NSE/BSE). Built with **Next.js 16.2.1** (App Router, Turbopack), **React 19.2.4**, and **TypeScript**, the platform integrates live financial market data via **Yahoo Finance (`yahoo-finance2`)** and generative intelligence via Google's latest **Gemini 2.5 Flash API (`@google/genai`)**.

@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import { NIFTY_100 } from "@/lib/nifty100";
 
 type SignalType = "BUY" | "SELL" | "WATCH" | "INSIDER" | "ALERT";
 
@@ -19,72 +20,7 @@ interface Signal {
   tags: string[];
 }
 
-const SIGNALS: Signal[] = [
-  {
-    id: 1, stock: "RELIANCE", fullName: "Reliance Industries Ltd", sector: "Energy", cap: "Large", type: "BUY",
-    event: "Bulk Deal — Promoter Group",
-    reasoning: "Promoter entity Jio Platforms increased stake by 2.1% via off-market bulk deal at ₹2,820, signaling strong insider confidence ahead of Jio Finance listing.",
-    confidence: 91, price: "2,847", target: "3,200", timeAgo: "4m ago",
-    tags: ["Bulk Deal", "Promoter Buy", "Filing"],
-  },
-  {
-    id: 2, stock: "TATAPOWER", fullName: "Tata Power Company Ltd", sector: "Utilities", cap: "Large", type: "BUY",
-    event: "Q3 Result Beat — Revenue +23% YoY",
-    reasoning: "Revenue surged to ₹4,218Cr vs ₹3,432Cr expected. EBITDA margin expanded by 210bps. Management guidance raised — renewable capacity target revised to 20GW by FY27.",
-    confidence: 84, price: "512", target: "620", timeAgo: "18m ago",
-    tags: ["Result Beat", "Guidance Up", "Renewable"],
-  },
-  {
-    id: 3, stock: "ZOMATO", fullName: "Zomato Ltd", sector: "Consumer Tech", cap: "Large", type: "WATCH",
-    event: "FII Accumulation Detected",
-    reasoning: "Foreign portfolio investors increased Zomato holdings by 3.4% over 5 sessions. Quick commerce segment margins improving. Watch for breakout above ₹225 resistance.",
-    confidence: 72, price: "219", target: "265", timeAgo: "31m ago",
-    tags: ["FII Buy", "Quick Commerce", "Accumulation"],
-  },
-  {
-    id: 4, stock: "ADANIENT", fullName: "Adani Enterprises Ltd", sector: "Conglomerate", cap: "Large", type: "ALERT",
-    event: "Regulatory Filing — SEBI Observation",
-    reasoning: "SEBI issued observation letter on related-party transactions in airport subsidiary. Risk event — monitor management response in next 48h before taking position.",
-    confidence: 65, price: "3,124", target: "N/A", timeAgo: "47m ago",
-    tags: ["SEBI", "Regulatory", "Risk Event"],
-  },
-  {
-    id: 5, stock: "HINDUNILVR", fullName: "Hindustan Unilever Ltd", sector: "FMCG", cap: "Large", type: "SELL",
-    event: "Volume Decline Signal + MD Sells Shares",
-    reasoning: "CEO sold ₹4.2Cr worth of shares (34,000 units) via open market. Rural demand recovery slower than guided. Target downgraded by 3 brokerages in last 5 days.",
-    confidence: 78, price: "2,241", target: "1,950", timeAgo: "1h ago",
-    tags: ["Insider Sell", "MD Sell", "Downgrade"],
-  },
-  {
-    id: 6, stock: "INFY", fullName: "Infosys Ltd", sector: "IT", cap: "Large", type: "BUY",
-    event: "Large Deal Win — $2.1B TCV",
-    reasoning: "Announced multi-year cloud transformation deal with a European financial giant. Deal adds ~8% to FY25 revenue visibility. Q4 guidance could see upward revision.",
-    confidence: 87, price: "1,782", target: "2,050", timeAgo: "1h 22m ago",
-    tags: ["Deal Win", "Large TCV", "IT Services"],
-  },
-  {
-    id: 7, stock: "BAJFINANCE", fullName: "Bajaj Finance Ltd", sector: "NBFC", cap: "Large", type: "INSIDER",
-    event: "Director Purchase — ₹12.4Cr",
-    reasoning: "Non-executive director acquired 3,200 shares at ₹3,876 in open market. Historical pattern: every director buy in last 4 years preceded 15%+ gain within 6 months.",
-    confidence: 82, price: "3,912", target: "4,600", timeAgo: "2h ago",
-    tags: ["Insider Buy", "Director", "NBFC"],
-  },
-  {
-    id: 8, stock: "ONGC", fullName: "Oil and Natural Gas Corp", sector: "Energy", cap: "Large", type: "BUY",
-    event: "Government Capex Allocation +40%",
-    reasoning: "Union Budget allocates additional ₹8,200Cr for upstream exploration. Crude tail risk mitigated by revised price floor. Dividend yield of 6.2% provides downside cushion.",
-    confidence: 76, price: "287", target: "340", timeAgo: "3h ago",
-    tags: ["Budget", "Capex", "PSU"],
-  },
-];
-
-const SECTORS = [
-  "All", "Energy", "IT", "FMCG", "NBFC", "Utilities", "Consumer Tech", "Conglomerate",
-  "Banking", "Telecom", "Engineering", "Automobile", "Pharma", "Cement", "Metals",
-  "Financial Services", "Insurance", "Retail", "Consumer Durables", "Consumer Goods",
-  "Healthcare", "Chemicals", "Capital Goods", "Defense", "Aviation", "Real Estate",
-  "Finance", "Cables", "Infrastructure"
-];
+const SECTORS = ["All", ...new Set(NIFTY_100.map(stock => stock.sector))];
 const SIGNAL_TYPES: Array<"All" | SignalType> = ["All", "BUY", "SELL", "WATCH", "INSIDER", "ALERT"];
 const CAP_SIZES = ["All", "Large", "Mid", "Small"];
 
@@ -110,7 +46,7 @@ function confidenceColor(c: number) {
 }
 
 export default function RadarPage() {
-  const [signalsList, setSignalsList] = useState<Signal[]>(SIGNALS);
+  const [signalsList, setSignalsList] = useState<Signal[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -133,25 +69,6 @@ export default function RadarPage() {
   const [sector, setSector] = useState("All");
   const [sigType, setSigType] = useState<"All" | SignalType>("All");
   const [cap, setCap] = useState("All");
-  const [newSignalId, setNewSignalId] = useState<number | null>(null);
-  const [count, setCount] = useState(247);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCount((c) => c + Math.floor(Math.random() * 3));
-    }, 4000);
-    return () => clearInterval(timer);
-  }, []);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      if (signalsList.length === 0) return;
-      setNewSignalId(Math.floor(Math.random() * signalsList.length) + 1);
-      setTimeout(() => setNewSignalId(null), 1000);
-    }, 6000);
-    return () => clearInterval(timer);
-  }, [signalsList.length]);
-
   const filtered = signalsList.filter((s) => {
     if (sector !== "All" && s.sector !== sector) return false;
     if (sigType !== "All" && s.type !== sigType) return false;
@@ -166,11 +83,11 @@ export default function RadarPage() {
         <div className="page-title">
           <span>📡</span> Opportunity Radar
           <span className="live-badge" style={{ fontSize: 11, padding: "3px 10px", marginLeft: 8 }}>
-            <span className="live-dot" /> SCANNING
+            <span className="live-dot" /> {loading ? "LOADING" : "LATEST QUOTES"}
           </span>
         </div>
         <div className="page-subtitle">
-          AI signal-finder across corporate filings, insider trades, bulk deals & regulatory events
+          Price momentum signals based on supplied market quotes
         </div>
       </div>
 
@@ -206,10 +123,10 @@ export default function RadarPage() {
               Today&apos;s Stats
             </div>
             {[
-              { label: "Total Signals", val: `${count}`, color: "var(--text-primary)" },
-              { label: "BUY Signals", val: "142", color: "var(--green)" },
-              { label: "SELL Signals", val: "63", color: "var(--red)" },
-              { label: "WATCH Alerts", val: "42", color: "var(--gold)" },
+              { label: "Total Signals", val: `${signalsList.length}`, color: "var(--text-primary)" },
+              { label: "BUY Signals", val: `${signalsList.filter(s => s.type === "BUY").length}`, color: "var(--green)" },
+              { label: "SELL Signals", val: `${signalsList.filter(s => s.type === "SELL").length}`, color: "var(--red)" },
+              { label: "WATCH Alerts", val: `${signalsList.filter(s => s.type === "WATCH").length}`, color: "var(--gold)" },
             ].map((s, i) => (
               <div key={i} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "8px 0", borderBottom: i < 3 ? "1px solid var(--border-subtle)" : "none" }}>
                 <span style={{ fontSize: 12, color: "var(--text-secondary)" }}>{s.label}</span>
@@ -275,7 +192,7 @@ export default function RadarPage() {
         <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
           {filtered.length === 0 && (
             <div className="card" style={{ textAlign: "center", padding: 40, color: "var(--text-muted)" }}>
-              No signals match the current filters.
+              No signals available for these filters. Market data may be unavailable.
             </div>
           )}
           {filtered.map((signal, i) => (
@@ -284,7 +201,7 @@ export default function RadarPage() {
               className={`signal-card ${signalClass(signal.type)} animate-fade-in`}
               style={{
                 animationDelay: `${i * 60}ms`,
-                outline: newSignalId === signal.id ? "1px solid var(--gold)" : "none",
+
                 transition: "outline 0.3s ease",
               }}
             >
@@ -310,7 +227,7 @@ export default function RadarPage() {
                       color: confidenceColor(signal.confidence),
                     }}
                   >
-                    {signal.confidence}%
+                    {signal.confidence}/100
                   </div>
                   <div style={{ textAlign: "right" }}>
                     <div style={{ fontSize: 11, color: "var(--text-muted)" }}>CMP</div>

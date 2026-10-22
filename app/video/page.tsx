@@ -1,33 +1,17 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+import SafeMarkdown from "@/components/SafeMarkdown";
+import type { Mover } from "@/lib/market-data";
+import { useState, useEffect } from "react";
 import {
-  BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell, LabelList,
+  BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, LabelList,
 } from "recharts";
 
-interface PipelineStep {
-  label: string;
-  icon: string;
-  duration: number;
-}
-
-const PIPELINE: PipelineStep[] = [
-  { label: "Fetching live market data", icon: "📡", duration: 1200 },
-  { label: "Rendering charts & visuals", icon: "🎨", duration: 1400 },
-  { label: "Generating AI voiceover script", icon: "🎙️", duration: 1600 },
-  { label: "Encoding video with animations", icon: "⚙️", duration: 2000 },
-  { label: "Video ready!", icon: "✅", duration: 500 },
+const PIPELINE = [
+  { label: "Fetching market data and generating script", icon: "📡" },
+  { label: "Preparing script preview", icon: "🎙️" },
+  { label: "Script preview ready", icon: "✅" },
 ];
-
-const SECTOR_DATA = [
-  { name: "IT", change: 0.8, color: "#22c55e" },
-  { name: "Telecom", change: 0.5, color: "#22c55e" },
-  { name: "Energy", change: -0.3, color: "#f97316" },
-  { name: "FMCG", change: -1.2, color: "#f97316" },
-  { name: "Auto", change: -2.8, color: "#ef4444" },
-  { name: "PSU Banks", change: -3.4, color: "#ef4444" },
-  { name: "Realty", change: -3.1, color: "#ef4444" },
-  { name: "Pvt Banks", change: -2.9, color: "#ef4444" },
-];
+interface Sector { name: string; change: number; asOf: string | null }
 
 const FII_DII_DATA = [
   { date: "Mar 20", fii: 2140, dii: -240 },
@@ -38,14 +22,6 @@ const FII_DII_DATA = [
   { date: "Mar 27", fii: -4367, dii: 3566 },
 ];
 
-const TOP_MOVERS = [
-  { stock: "ONGC", change: "+4.03%", val: "₹315", dir: "up" },
-  { stock: "WIPRO", change: "+1.22%", val: "₹569", dir: "up" },
-  { stock: "BHARTI", change: "+0.82%", val: "₹1,234", dir: "up" },
-  { stock: "SHRIRAM", change: "-5.54%", val: "₹2,180", dir: "down" },
-  { stock: "TATA M", change: "-4.92%", val: "₹586", dir: "down" },
-];
-
 const IPO_DATA = [
   // Ongoing IPOs
   { name: "Vivid Electromech", open: "Mar 28", close: "Mar 30", gmp: "GMP +₹245", size: "₹890Cr", status: "ongoing" },
@@ -53,14 +29,14 @@ const IPO_DATA = [
   { name: "Amir Chand Jagdish Kumar", open: "Mar 27", close: "Mar 29", gmp: "GMP +₹456", size: "₹1,200Cr", status: "ongoing" },
   { name: "Powerica Ltd", open: "Mar 26", close: "Mar 28", gmp: "GMP +₹320", size: "₹1,500Cr", status: "ongoing" },
   { name: "Sai Parenterals", open: "Mar 25", close: "Mar 27", gmp: "GMP +₹198", size: "₹950Cr", status: "ongoing" },
-  
+
   // Recently Listed IPOs
   { name: "GSP Crop Science", open: "Mar 18", close: "Mar 20", gmp: "Listed +12.45%", size: "₹2,100Cr", status: "listed" },
   { name: "Sedemac Mechatronics", open: "Mar 15", close: "Mar 17", gmp: "Listed +18.92%", size: "₹3,400Cr", status: "listed" },
   { name: "Apsis Aerocom", open: "Mar 12", close: "Mar 14", gmp: "Listed +8.67%", size: "₹1,800Cr", status: "listed" },
   { name: "Raajmarg Infra Trust", open: "Mar 10", close: "Mar 12", gmp: "Listed +7.25%", size: "₹2,500Cr", status: "listed" },
   { name: "Innovision Ltd", open: "Mar 8", close: "Mar 10", gmp: "Listed -3.14%", size: "₹1,200Cr", status: "listed" },
-  
+
   // Upcoming IPOs
   { name: "Reliance Jio", open: "Apr 15", close: "Apr 18", gmp: "GMP +₹2,450", size: "₹25,000Cr", status: "upcoming" },
   { name: "Zepto", open: "May 1", close: "May 5", gmp: "GMP +₹1,850", size: "₹12,500Cr", status: "upcoming" },
@@ -82,19 +58,30 @@ export default function VideoPage() {
   const [generating, setGenerating] = useState(false);
   const [pipelineProgress, setPipelineProgress] = useState(-1);
   const [videoReady, setVideoReady] = useState(false);
-  const [activeSectorIdx, setActiveSectorIdx] = useState(0);
+  const [sectorData, setSectorData] = useState<Sector[]>([]);
+  const [marketError, setMarketError] = useState("");
+  const [generationError, setGenerationError] = useState("");
+  const [liveScript, setLiveScript] = useState<string[]>([]);
   const [raceFrame, setRaceFrame] = useState(0);
   const [liveWrap, setLiveWrap] = useState<string | null>(null);
-  const [liveMovers, setLiveMovers] = useState<{stock:string, change:string, val:string, dir:string}[]>(TOP_MOVERS);
+  const [liveMovers, setLiveMovers] = useState<Mover[]>([]);
   const [videoTitle, setVideoTitle] = useState("ET Markets Daily Wrap");
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-
-  // Animate sector heatmap
   useEffect(() => {
-    const t = setInterval(() => {
-      setActiveSectorIdx((i) => (i + 1) % SECTOR_DATA.length);
-    }, 1800);
-    return () => clearInterval(t);
+    const controller = new AbortController();
+    async function refresh() {
+      const results = await Promise.allSettled([
+        fetch("/api/sectors", { signal: controller.signal }).then(async r => { if (!r.ok) throw new Error("sectors"); return await r.json() as Sector[]; }),
+        fetch("/api/movers", { signal: controller.signal }).then(async r => { if (!r.ok) throw new Error("movers"); return await r.json() as { gainers: Mover[]; losers: Mover[]; coverage: number; universe: number }; }),
+      ]);
+      if (controller.signal.aborted) return;
+      const [sectors, movers] = results;
+      if (sectors.status === "fulfilled") setSectorData(sectors.value);
+      if (movers.status === "fulfilled") setLiveMovers([...movers.value.gainers, ...movers.value.losers]);
+      setMarketError(results.some(r => r.status === "rejected") ? "Some market data is unavailable. Last successful values may be shown." : "");
+    }
+    void refresh();
+    const timer = setInterval(() => void refresh(), 30_000);
+    return () => { controller.abort(); clearInterval(timer); };
   }, []);
 
   // Race chart animation
@@ -110,30 +97,20 @@ export default function VideoPage() {
     setVideoReady(false);
     setPipelineProgress(0);
 
-    const apiCall = fetch("/api/video", {
-      method: "POST", headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ templateId: selectedTemplate }) 
-    }).then(r => r.json()).catch(e => console.error(e));
-
-    for (let i = 0; i < PIPELINE.length; i++) {
-      setPipelineProgress(i);
-      
-      if (i === 2) {
-         try {
-           const data = await apiCall;
-           if (data && !data.error) {
-              setLiveWrap(data.wrap);
-              if (Array.isArray(data.movers) && data.movers.length > 0) setLiveMovers(data.movers);
-              if (data.title) setVideoTitle(data.title);
-           }
-         } catch (e) {}
-      }
-
-      await new Promise((r) => setTimeout(r, PIPELINE[i].duration));
-    }
-
-    setGenerating(false);
-    setVideoReady(true);
+    setGenerationError("");
+    try {
+      const res = await fetch("/api/video", {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ templateId: selectedTemplate }),
+      });
+      const data: { error?: string; title: string; wrap: string; script: string[]; movers: Mover[] } = await res.json();
+      if (!res.ok || data.error) throw new Error(data.error || "Script generation failed");
+      setPipelineProgress(1);
+      setLiveWrap(data.wrap); setLiveMovers(data.movers); setVideoTitle(data.title); setLiveScript(data.script);
+      setPipelineProgress(2); setVideoReady(true);
+    } catch {
+      setGenerationError("Script generation is unavailable. Please try again."); setPipelineProgress(-1);
+    } finally { setGenerating(false); }
   };
 
   return (
@@ -143,10 +120,11 @@ export default function VideoPage() {
           <span>🎬</span> AI Market Video Engine
         </div>
         <div className="page-subtitle">
-          Auto-generate visually rich market update videos — race charts, sector rotation, IPO tracker — zero human editing
+          Generate a market script preview using current quotes and sector performance
         </div>
       </div>
 
+      {marketError && <p role="status">{marketError}</p>}
       <div style={{ display: "grid", gridTemplateColumns: "1fr 340px", gap: 24 }}>
         {/* Left: Visualizations */}
         <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
@@ -155,7 +133,7 @@ export default function VideoPage() {
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20 }}>
               <div>
                 <div style={{ fontSize: 16, fontWeight: 800, color: "var(--text-primary)" }}>FII / DII Daily Flows</div>
-                <div style={{ fontSize: 12, color: "var(--text-muted)" }}>Last 8 trading sessions · ₹Crores</div>
+                <div style={{ fontSize: 12, color: "var(--text-muted)" }}>Historical sample · March 2026 · ₹Crores</div>
               </div>
               <div style={{ display: "flex", gap: 16 }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
@@ -175,13 +153,13 @@ export default function VideoPage() {
                 <YAxis tick={{ fill: "var(--text-muted)", fontSize: 10 }} tickLine={false} axisLine={false} tickFormatter={(v) => `${v > 0 ? "+" : ""}${v}`} />
                 <Tooltip
                   contentStyle={{ background: "var(--bg-card)", border: "1px solid var(--border-subtle)", borderRadius: 8, fontSize: 12 }}
-                  formatter={(v: any) => [`₹${v}Cr`, ""]}
+                  formatter={(v) => [`₹${v}Cr`, ""]}
                 />
                 <Bar dataKey="fii" fill="var(--blue)" radius={[3, 3, 0, 0]} maxBarSize={28} isAnimationActive={true}>
-                  <LabelList dataKey="fii" position="top" style={{ fill: "var(--text-muted)", fontSize: 9 }} formatter={(v: any) => `${v > 0 ? "+" : ""}${v}`} />
+                  <LabelList dataKey="fii" position="top" style={{ fill: "var(--text-muted)", fontSize: 9 }} formatter={(v) => `${Number(v) > 0 ? "+" : ""}${v}`} />
                 </Bar>
                 <Bar dataKey="dii" fill="var(--orange)" radius={[3, 3, 0, 0]} maxBarSize={28} isAnimationActive={true}>
-                  <LabelList dataKey="dii" position="top" style={{ fill: "var(--text-muted)", fontSize: 9 }} formatter={(v: any) => `${v > 0 ? "+" : ""}${v}`} />
+                  <LabelList dataKey="dii" position="top" style={{ fill: "var(--text-muted)", fontSize: 9 }} formatter={(v) => `${Number(v) > 0 ? "+" : ""}${v}`} />
                 </Bar>
               </BarChart>
             </ResponsiveContainer>
@@ -191,12 +169,13 @@ export default function VideoPage() {
           <div className="card">
             <div style={{ marginBottom: 16 }}>
               <div style={{ fontSize: 16, fontWeight: 800, color: "var(--text-primary)" }}>Sector Rotation Heatmap</div>
-              <div style={{ fontSize: 12, color: "var(--text-muted)" }}>Today&apos;s performance · NSE Indices</div>
+              <div style={{ fontSize: 12, color: "var(--text-muted)" }}>Latest available session · NSE Indices</div>
             </div>
 
+            {sectorData.length === 0 && <p>Sector quotes unavailable or loading.</p>}
             <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 8 }}>
-              {SECTOR_DATA.map((sector, i) => {
-                const isActive = i === activeSectorIdx;
+              {sectorData.map((sector, i) => {
+                const color = sector.change >= 0 ? "var(--green)" : "var(--red)";
                 const intensity = Math.abs(sector.change) / 3;
                 const bgColor = sector.change > 0
                   ? `rgba(34,197,94,${0.1 + intensity * 0.3})`
@@ -208,12 +187,12 @@ export default function VideoPage() {
                     className="heatmap-cell"
                     style={{
                       background: bgColor,
-                      border: isActive ? `2px solid ${sector.color}` : "1px solid transparent",
-                      boxShadow: isActive ? `0 0 16px ${sector.color}40` : "none",
+                      border: "1px solid var(--border-subtle)",
+
                     }}>
                     <div style={{ fontSize: 12, fontWeight: 700, color: "var(--text-primary)", marginBottom: 4 }}>{sector.name}</div>
-                    <div style={{ fontSize: 16, fontWeight: 900, color: sector.color, fontFamily: "JetBrains Mono, monospace" }}>
-                      {sector.change > 0 ? "+" : ""}{sector.change}%
+                    <div style={{ fontSize: 16, fontWeight: 900, color, fontFamily: "JetBrains Mono, monospace" }}>
+                      {sector.change > 0 ? "+" : ""}{sector.change.toFixed(2)}%
                     </div>
                   </div>
                 );
@@ -232,14 +211,9 @@ export default function VideoPage() {
               fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.8,
             }}>
               {liveWrap ? (
-                <div dangerouslySetInnerHTML={{ __html: liveWrap.replace(/\\n/g, '<br />').replace(/\\*\\*(.*?)\\*\\*/g, '<strong style="color:var(--text-primary)">$1</strong>') }} />
+                <SafeMarkdown>{liveWrap}</SafeMarkdown>
               ) : (
-                <>
-                  <strong style={{ color: "var(--text-primary)" }}>March 27, 2026 · Market Close Summary</strong><br /><br />
-                  Indian markets snapped recovery as selling pressure returned sharply. <strong style={{ color: "var(--red)" }}>Nifty closed at 22,819.60 (↓2.09% / -487 pts)</strong>. Only 6 of 50 Nifty stocks ended in green — ONGC led at +4.03% on crude surge to $114.81, while Shriram Finance crashed -5.54% and Tata Motors -4.92%. FIIs continued aggressive exit (₹-4,367Cr) amid rising dollar and geopolitical tensions.<br /><br />
-                  Broad-based selling devastated rate-sensitive sectors: PSU Banks -3.4%, Realty -3.1%, Auto -2.8%, Pvt Banks -2.9%. Only IT (+0.8%) and Telecom (+0.5%) held ground defensively. USD/INR hit ₹94.85 (all-time low), 10-Yr yield at 6.9%. Strong support at 22,450 — market in Risk-Off mode.<br /><br />
-                  <strong style={{ color: "var(--gold)" }}>War Premium Alert: </strong>Macro headwinds intensifying. Gold at ₹1,48,090/10g — safe haven demand surging.
-                </>
+                <p>Generate a script to see a summary grounded in the latest available quotes.</p>
               )}
             </div>
 
@@ -261,7 +235,7 @@ export default function VideoPage() {
           <div className="card">
             <div style={{ marginBottom: 16 }}>
               <div style={{ fontSize: 16, fontWeight: 800, color: "var(--text-primary)" }}>🚀 IPO Tracker</div>
-              <div style={{ fontSize: 12, color: "var(--text-muted)" }}>Upcoming · Ongoing · Recently Listed</div>
+              <div style={{ fontSize: 12, color: "var(--text-muted)" }}>Historical sample data · March 2026 · not a current IPO calendar</div>
             </div>
 
             {/* Ongoing IPOs */}
@@ -394,9 +368,10 @@ export default function VideoPage() {
             onClick={generateVideo}
             disabled={generating}
           >
-            {generating ? "⚙️ Generating..." : "🎬 Generate Video"}
+            {generating ? "⚙️ Generating..." : "🎙️ Generate Script Preview"}
           </button>
 
+          {generationError && <p role="alert">{generationError}</p>}
           {/* Pipeline progress */}
           {pipelineProgress >= 0 && (
             <div className="card" style={{ display: "flex", flexDirection: "column", gap: 8 }}>
@@ -426,54 +401,11 @@ export default function VideoPage() {
             </div>
           )}
 
-          {/* Video player mock */}
           {videoReady && (
-            <div className="card animate-fade-in" style={{ borderColor: "rgba(240,180,41,0.3)" }}>
-              <div style={{ fontSize: 11, fontWeight: 700, color: "var(--text-muted)", letterSpacing: 1, textTransform: "uppercase", marginBottom: 12 }}>
-                🎥 Video Ready
-              </div>
-
-              <div style={{
-                width: "100%", aspectRatio: "16/9",
-                background: "linear-gradient(135deg, #0a0d14 0%, #0d1119 100%)",
-                borderRadius: "var(--radius-md)",
-                border: "1px solid var(--border-subtle)",
-                display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
-                position: "relative", overflow: "hidden",
-                marginBottom: 14,
-              }}>
-                {/* Mock video content */}
-                <div style={{ position: "absolute", top: 10, left: 12, display: "flex", alignItems: "center", gap: 6 }}>
-                  <div style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--red)", animation: "pulse 1.5s infinite" }} />
-                  <span style={{ fontSize: 9, fontWeight: 700, color: "var(--red)", letterSpacing: 1 }}>LIVE</span>
-                </div>
-                <div style={{ position: "absolute", top: 8, right: 10, fontSize: 9, color: "var(--text-muted)", fontFamily: "JetBrains Mono, monospace" }}>0:00 / 0:45</div>
-
-                <div style={{ textAlign: "center" }}>
-                  <div style={{ fontSize: 28, marginBottom: 8 }}>📊</div>
-                  <div style={{ fontSize: 14, fontWeight: 800, color: "var(--gold)" }}>{videoTitle}</div>
-                  <div style={{ fontSize: 11, color: "var(--text-muted)", marginTop: 4 }}>Live Generated</div>
-                </div>
-
-                {/* Progress bar */}
-                <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 3, background: "rgba(255,255,255,0.1)" }}>
-                  <div style={{ height: "100%", width: "0%", background: "var(--gold)", animation: "none" }} />
-                </div>
-
-                {/* Play button overlay */}
-                <div style={{
-                  position: "absolute", bottom: 10, left: "50%", transform: "translateX(-50%)",
-                  display: "flex", gap: 12,
-                }}>
-                  <button className="btn btn-primary" style={{ padding: "6px 16px", fontSize: 12 }}>▶ Play</button>
-                  <button className="btn btn-ghost" style={{ padding: "6px 12px", fontSize: 12 }}>⬇ Download</button>
-                  <button className="btn btn-ghost" style={{ padding: "6px 12px", fontSize: 12 }}>🔗 Share</button>
-                </div>
-              </div>
-
-              <div style={{ fontSize: 12, color: "var(--text-secondary)", lineHeight: 1.6 }}>
-                <strong style={{ color: "var(--text-primary)" }}>Daily Market Wrap</strong> · 45 seconds · 720p · Auto-captions included
-              </div>
+            <div className="card animate-fade-in">
+              <h3>{videoTitle}</h3>
+              <p style={{ color: "var(--text-muted)" }}>Script preview · video encoding is not available</p>
+              {liveScript.map((line, i) => <p key={i}>{line}</p>)}
             </div>
           )}
         </div>

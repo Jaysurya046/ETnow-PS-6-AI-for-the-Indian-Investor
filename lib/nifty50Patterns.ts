@@ -512,14 +512,5 @@ export const NIFTY50_PATTERNS: Record<string, StockPattern> = {
     target: "₹380 (primary) · ₹420 (extended)",
     recommendation: "BUY. PSU refiner with strong dividend yield provides downside protection.",
   },
-  WIPRO: {
-    name: "Bearish Double Top",
-    type: "Bearish Reversal",
-    description: "WIPRO formed a double top at ₹560 with RSI making lower highs. IT weak discretionary spend adds fundamental pressure to the bearish technical setup.",
-    winRate: 66, sentiment: "Bearish", sentimentScore: 58,
-    entryZone: "SHORT below ₹490 (neckline break)",
-    stopLoss: "₹535 (above second top)",
-    target: "₹420 (measured move from pattern height)",
-    recommendation: "SELL on neckline breakdown.",
-  },
+
 };

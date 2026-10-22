@@ -1,5 +1,5 @@
-const yahooFinanceClass = require("yahoo-finance2").default;
+import YahooFinance from "yahoo-finance2";
 
-const yahooFinance = new yahooFinanceClass();
+const yahooFinance = new YahooFinance();
 
 export default yahooFinance;

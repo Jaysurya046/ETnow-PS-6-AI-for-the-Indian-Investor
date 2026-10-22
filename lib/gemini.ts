@@ -1,9 +1,11 @@
 import { GoogleGenAI } from "@google/genai";
 
-const apiKey = process.env.GEMINI_API_KEY;
+let client: GoogleGenAI | null = null;
 
-if (!apiKey) {
-  throw new Error("Missing GEMINI_API_KEY in environment variables.");
+/** Missing credentials must never make importing a route fail. */
+export function getGenAI(): GoogleGenAI | null {
+  const apiKey = process.env.GEMINI_API_KEY;
+  if (!apiKey) return null;
+  client ??= new GoogleGenAI({ apiKey });
+  return client;
 }
-
-export const ai = new GoogleGenAI({ apiKey });

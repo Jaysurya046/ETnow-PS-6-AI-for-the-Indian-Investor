@@ -724,3 +724,11 @@ select.input {
 }
 
 .data-table tr:hover td { background: rgba(255,255,255,0.02); }
+
+.markdown-content { color: var(--text-secondary); font-size: 13px; line-height: 1.7; overflow-wrap: anywhere; }
+.markdown-content p, .markdown-content ul, .markdown-content ol { margin: 8px 0; }
+.markdown-content ul, .markdown-content ol { padding-left: 20px; }
+.markdown-content strong { color: var(--text-primary); }
+.markdown-content h1, .markdown-content h2, .markdown-content h3 { color: var(--gold); font-size: 16px; margin: 14px 0 8px; }
+.markdown-content a { color: var(--gold); }
+.markdown-content pre { overflow-x: auto; }

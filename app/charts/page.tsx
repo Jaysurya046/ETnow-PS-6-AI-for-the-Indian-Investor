@@ -1,21 +1,11 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
-import { createChart, ColorType, CandlestickSeries, HistogramSeries } from "lightweight-charts";
+import { createChart, ColorType, CandlestickSeries, HistogramSeries, type ISeriesApi, type UTCTimestamp } from "lightweight-charts";
 import { NIFTY_100 } from "@/lib/nifty100";
-import { NIFTY50_PATTERNS, StockPattern } from "@/lib/nifty50Patterns";
-import { NIFTY50_INSIGHTS } from "@/lib/nifty50Insights";
+import type { CandleBar, TechnicalAnalysis } from "@/lib/indicators";
+import { NIFTY50_INSIGHTS, type StockInsights } from "@/lib/nifty50Insights";
 
 type TimeRange = "1D" | "1W" | "1M" | "3M" | "6M" | "1Y";
-
-interface CandleBar {
-  time: number;
-  open: number;
-  high: number;
-  low: number;
-  close: number;
-  volume: number;
-}
-
 
 // Build display list from the shared Nifty 100 universe
 const STOCKS = NIFTY_100.map(s => ({
@@ -42,8 +32,8 @@ function typeColor(t: string) {
 function CandlestickChart({ data, loading }: { data: CandleBar[]; loading: boolean }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const chartRef = useRef<ReturnType<typeof createChart> | null>(null);
-  const candleSeriesRef = useRef<any>(null);
-  const volSeriesRef = useRef<any>(null);
+  const candleSeriesRef = useRef<ISeriesApi<"Candlestick"> | null>(null);
+  const volSeriesRef = useRef<ISeriesApi<"Histogram"> | null>(null);
 
   // Create chart once on mount
   useEffect(() => {
@@ -121,11 +111,11 @@ function CandlestickChart({ data, loading }: { data: CandleBar[]; loading: boole
 
     const sorted = [...data].sort((a, b) => a.time - b.time);
     const candles = sorted.map(d => ({
-      time: d.time as any,
+      time: d.time as UTCTimestamp,
       open: d.open, high: d.high, low: d.low, close: d.close,
     }));
     const volumes = sorted.map(d => ({
-      time: d.time as any,
+      time: d.time as UTCTimestamp,
       value: d.volume,
       color: d.close >= d.open ? "rgba(34,197,94,0.35)" : "rgba(239,68,68,0.35)",
     }));
@@ -176,7 +166,11 @@ export default function ChartsPage() {
   const [chartLoading, setChartLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
-  const [insightsLoading] = useState(false);
+  const [insightsLoading, setInsightsLoading] = useState(true);
+  const [insights, setInsights] = useState<StockInsights | null>(null);
+  const [insightSource, setInsightSource] = useState("");
+  const [analysis, setAnalysis] = useState<TechnicalAnalysis | null>(null);
+  const [interval, setIntervalLabel] = useState("");
 
   // FIX 1: use chartKey to force CandlestickChart remount on stock/range change
   // This guarantees a fresh chart with proper fitContent each time
@@ -189,34 +183,56 @@ export default function ChartsPage() {
       s.sector.toLowerCase().includes(search.toLowerCase())
   );
 
-  // Fetch OHLCV data
   useEffect(() => {
-    async function fetchChart() {
+    const controller = new AbortController();
+    async function loadChart() {
       setChartLoading(true);
       setChartData([]);
+      setAnalysis(null);
       try {
-        const res = await fetch(`/api/chart?symbol=${encodeURIComponent(selected.label)}&range=${range}`);
-        const data = await res.json();
-        if (Array.isArray(data)) setChartData(data);
-      } catch {
-        setChartData([]);
-      } finally {
-        setChartLoading(false);
-      }
+        const res = await fetch(`/api/chart?symbol=${encodeURIComponent(selected.label)}&range=${range}`, { signal: controller.signal });
+        if (!res.ok) throw new Error("Chart unavailable");
+        const data: { candles: CandleBar[]; analysis: TechnicalAnalysis; interval: string } = await res.json();
+        if (!controller.signal.aborted) {
+          setChartData(data.candles); setAnalysis(data.analysis); setIntervalLabel(data.interval);
+        }
+      } catch { /* Empty chart state explains unavailable data. */ }
+      finally { if (!controller.signal.aborted) setChartLoading(false); }
     }
-    fetchChart();
+    async function loadInsights() {
+      setInsightsLoading(true); setInsights(null); setInsightSource("");
+      try {
+        const res = await fetch(`/api/chart-insights?symbol=${encodeURIComponent(selected.label)}&range=${range}`, { signal: controller.signal });
+        if (!res.ok) throw new Error("Insights unavailable");
+        const data: { technicalInsights: string[]; quantitativeInsights: string[] } = await res.json();
+        if (!controller.signal.aborted) {
+          setInsights({ technical: data.technicalInsights, quantitative: data.quantitativeInsights }); setInsightSource("AI summary of measured data");
+        }
+      } catch {
+        if (!controller.signal.aborted) {
+          setInsights(NIFTY50_INSIGHTS[selected.label] ?? null); setInsightSource("Offline reference — historical, not current analysis");
+        }
+      } finally { if (!controller.signal.aborted) setInsightsLoading(false); }
+    }
+    void loadChart(); void loadInsights();
+    const refresh = window.setInterval(() => { void loadChart(); void loadInsights(); }, 60_000);
+    return () => { controller.abort(); window.clearInterval(refresh); };
   }, [selected.label, range]);
-
-  // Hardcoded insights for Nifty 50 stocks
-  const stockInsights = NIFTY50_INSIGHTS[selected.label];
+  const stockInsights = insights;
 
   const last  = chartData[chartData.length - 1];
   const first = chartData[0];
   const pctChange = last && first ? ((last.close - first.open) / first.open * 100).toFixed(2) : "0.00";
   const isUp  = last && first ? last.close >= first.open : true;
 
-  // Hardcoded pattern for this stock (from Nifty 50 list, or null for others)
-  const pattern: StockPattern | undefined = NIFTY50_PATTERNS[selected.label];
+  const level = (v: number | null | undefined) => v == null ? "Unavailable" : `₹${v.toLocaleString("en-IN", { maximumFractionDigits: 2 })}`;
+  const pattern = analysis ? {
+    name: analysis.patterns.join(" · ") || "No qualifying pattern",
+    type: `${analysis.sentiment} trend`, sentiment: analysis.sentiment,
+    description: `Calculated from ${analysis.bars} ${interval} bars including warm-up history. Patterns are rule-based observations.`,
+    entryZone: "No entry recommendation", stopLoss: "Not calculated", target: "Not calculated",
+    recommendation: "Review measured indicators and previous-bar pivot levels. No backtest win rate is available.",
+  } : null;
 
   return (
     <div className="page">
@@ -345,28 +361,31 @@ export default function ChartsPage() {
                 ].map(s => (
                   <div key={s.label}>
                     <div style={{ fontSize: 10, color: "var(--text-muted)", marginBottom: 2 }}>{s.label}</div>
-                    <div style={{ fontSize: 13, fontWeight: 600, color: (s as any).color || "var(--text-primary)", fontFamily: "JetBrains Mono, monospace" }}>{s.val}</div>
+                    <div style={{ fontSize: 13, fontWeight: 600, color: s.color || "var(--text-primary)", fontFamily: "JetBrains Mono, monospace" }}>{s.val}</div>
                   </div>
                 ))}
               </div>
             )}
           </div>
 
-          {/* Insights — hardcoded for Nifty 50, hidden for others */}
-          {stockInsights && pattern && (
+          {insightsLoading && <p style={{ color: "var(--text-muted)" }}>Loading live insights…</p>}
+          {analysis && (
+            <div className="card">
+              <h3>Measured indicators · {interval} bars</h3>
+              <p>RSI (14): {analysis.rsi?.toFixed(2) ?? "Insufficient history"}</p>
+              <p>{([9, 21, 50, 200] as const).map(period => `EMA ${period}: ${level(analysis.ema[period])}`).join(" · ")}</p>
+              <p>MACD (12,26,9): {analysis.macd.value?.toFixed(2) ?? "Unavailable"} · Signal: {analysis.macd.signal?.toFixed(2) ?? "Unavailable"} · Histogram: {analysis.macd.histogram?.toFixed(2) ?? "Unavailable"}</p>
+              <p>Projected levels from the previous {interval} bar</p>
+              {analysis.pivots && Object.entries(analysis.pivots).map(([name, p]) => <p key={name}>{name}: P {level(p.pivot)} · S1 {level(p.s1)} · S2 {level(p.s2)} · S3 {level(p.s3)} · R1 {level(p.r1)} · R2 {level(p.r2)} · R3 {level(p.r3)}</p>)}
+            </div>
+          )}
+          {stockInsights && (
           <div className="card animate-fade-in" style={{ border: "1px solid rgba(240,180,41,0.2)" }}>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 18 }}>
               <div style={{ fontSize: 11, fontWeight: 700, color: "var(--text-muted)", letterSpacing: 1, textTransform: "uppercase" }}>
-                📊 Stock Analysis — {selected.label}
+                📊 Stock Analysis — {selected.label} · {insightSource}
               </div>
-              <span style={{
-                fontSize: 11, fontWeight: 700, color: sentimentColor(pattern.sentiment),
-                background: `${sentimentColor(pattern.sentiment)}18`,
-                border: `1px solid ${sentimentColor(pattern.sentiment)}40`,
-                borderRadius: "var(--radius-sm)", padding: "2px 10px",
-              }}>
-                {pattern.sentiment === "Bullish" ? "▲" : pattern.sentiment === "Bearish" ? "▼" : "◆"} {pattern.sentiment} · {pattern.sentimentScore}%
-              </span>
+
             </div>
 
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
@@ -412,16 +431,16 @@ export default function ChartsPage() {
         {/* RIGHT: Pattern Panel */}
         <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
 
-          {/* FIX 2: AI-detected pattern from Gemini, skeleton while loading */}
+          {/* Algorithmic patterns based on fetched candles */}
           <div className="card animate-glow" style={{ borderColor: "rgba(168,85,247,0.3)" }}>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 14 }}>
               <div style={{ fontSize: 11, fontWeight: 700, color: "var(--text-muted)", letterSpacing: 1, textTransform: "uppercase" }}>
-                🤖 AI Detected Pattern
+                📐 Calculated Patterns
               </div>
               <span className="pattern-badge">◆ {selected.label}</span>
             </div>
 
-            {insightsLoading && (
+            {chartLoading && (
               <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
                 {[80, 40, 100, 60, 60].map((w, i) => (
                   <div key={i} style={{ height: 16, width: `${w}%`, borderRadius: 4, background: "rgba(255,255,255,0.06)", animation: "pulse 1.5s ease-in-out infinite" }} />
@@ -429,21 +448,11 @@ export default function ChartsPage() {
               </div>
             )}
 
-            {!insightsLoading && pattern && (
+            {!chartLoading && pattern && (
               <>
                 <div style={{ fontSize: 17, fontWeight: 800, color: "var(--text-primary)", marginBottom: 4 }}>{pattern.name}</div>
                 <div style={{ fontSize: 12, color: typeColor(pattern.type), fontWeight: 600, marginBottom: 14 }}>{pattern.type}</div>
                 <p style={{ fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.7, marginBottom: 16 }}>{pattern.description}</p>
-
-                <div style={{ marginBottom: 14 }}>
-                  <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
-                    <span style={{ fontSize: 12, color: "var(--text-secondary)", fontWeight: 600 }}>Back-tested Win Rate</span>
-                    <span style={{ fontSize: 14, fontWeight: 800, color: "var(--green)", fontFamily: "JetBrains Mono, monospace" }}>{pattern.winRate}%</span>
-                  </div>
-                  <div className="progress-bar">
-                    <div className="progress-fill" style={{ width: `${pattern.winRate}%`, background: "linear-gradient(90deg, var(--green), #16a34a)" }} />
-                  </div>
-                </div>
 
                 <div className="divider" />
 
@@ -463,14 +472,14 @@ export default function ChartsPage() {
               </>
             )}
 
-            {!insightsLoading && !pattern && (
+            {!chartLoading && !pattern && (
               <div style={{ color: "var(--text-muted)", fontSize: 12, textAlign: "center", padding: "20px 0" }}>
-                Pattern analysis unavailable — check API key.
+                Pattern analysis unavailable — market candles could not be loaded.
               </div>
             )}
           </div>
 
-          {/* Signal Summary — fully hardcoded, always available for Nifty 50 stocks */}
+          {/* Measured trend summary */}
           {pattern && (
             <div className="card">
               <div style={{ fontSize: 11, fontWeight: 700, color: "var(--text-muted)", letterSpacing: 1, textTransform: "uppercase", marginBottom: 14 }}>
@@ -488,10 +497,6 @@ export default function ChartsPage() {
                     {pattern.sentiment === "Bullish" ? "▲" : pattern.sentiment === "Bearish" ? "▼" : "◆"} {pattern.sentiment}
                   </span>
                 </div>
-                <div style={{ display: "flex", justifyContent: "space-between" }}>
-                  <span style={{ fontSize: 12, color: "var(--text-secondary)" }}>Confidence</span>
-                  <span style={{ fontSize: 13, fontWeight: 800, color: "var(--gold)", fontFamily: "JetBrains Mono, monospace" }}>{pattern.sentimentScore}%</span>
-                </div>
                 <div className="divider" />
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 8 }}>
                   <span style={{ fontSize: 12, color: "var(--text-secondary)", flexShrink: 0 }}>Pattern</span>
@@ -500,10 +505,6 @@ export default function ChartsPage() {
                 <div style={{ display: "flex", justifyContent: "space-between" }}>
                   <span style={{ fontSize: 12, color: "var(--text-secondary)" }}>Type</span>
                   <span style={{ fontSize: 11, fontWeight: 700, color: typeColor(pattern.type), textAlign: "right", maxWidth: 140 }}>{pattern.type}</span>
-                </div>
-                <div style={{ display: "flex", justifyContent: "space-between" }}>
-                  <span style={{ fontSize: 12, color: "var(--text-secondary)" }}>Win Rate</span>
-                  <span style={{ fontSize: 13, fontWeight: 800, color: "var(--green)", fontFamily: "JetBrains Mono, monospace" }}>{pattern.winRate}%</span>
                 </div>
                 <div className="divider" />
                 <div style={{ fontSize: 12, color: "var(--green)", background: "rgba(34,197,94,0.07)", border: "1px solid rgba(34,197,94,0.15)", borderRadius: "var(--radius-sm)", padding: "8px 10px", lineHeight: 1.6 }}>

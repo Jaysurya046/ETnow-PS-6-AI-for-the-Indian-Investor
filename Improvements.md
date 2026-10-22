@@ -1,5 +1,13 @@
 # 🛠️ ETNow AI — Issues, Hardcoded Data Audit & Architectural Improvements
 
+## Execution status — 23 October 2026
+
+The original audit and broader architecture proposals below are retained for context. The user's three-phase roadmap has been implemented: safe markdown/lazy Gemini/grounded radar; measured chart indicators, live insights, sectors and movers, real counters and caching; persistent holdings, live landing snapshot, and SSE chat. See `implementationReport.md` and `docs/development-execution.md` for the current interfaces and verification.
+
+Remaining work from this broader audit includes live FII/DII ingestion, live IPO ingestion, distributed caching/rate limiting, account/broker persistence, real MP4 rendering. Home module cards now describe implemented capabilities rather than unmeasured usage or accuracy counters. FII/DII and IPO sample panels are labeled historical. The NSE universe is now a verified 100-symbol snapshot and still requires periodic membership maintenance.
+
+---
+
 This document provides a comprehensive engineering audit of the current codebase implementation. It details:
 1. **Critical Code, Security & Compliance Issues** in the active implementation.
 2. **Exhaustive Audit of Hardcoded Data** across all files and components.

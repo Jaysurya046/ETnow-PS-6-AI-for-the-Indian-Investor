@@ -1,5 +1,9 @@
 import { NextResponse } from "next/server";
-import yahooFinance from "@/lib/yahoo";
+import { getQuotes } from "@/lib/market-data";
+
+// The SDK results are cached for 30s; defer provider requests until runtime.
+export const revalidate = 30;
+export const dynamic = "force-dynamic";
 
 const TICKERS = [
   { symbol: "^NSEI", name: "NIFTY 50" },
@@ -16,12 +20,11 @@ const TICKERS = [
 
 export async function GET() {
   try {
-    const rawQuotes = await yahooFinance.quote(TICKERS.map(t => t.symbol));
-    const quotes: any[] = Array.isArray(rawQuotes) ? rawQuotes : [rawQuotes];
+    const quotes = await getQuotes(TICKERS.map(t => t.symbol));
     
     const formatted = TICKERS.map(t => {
-      const q = quotes.find((q: any) => q.symbol === t.symbol);
-      if (!q) return null;
+      const q = quotes.find(q => q.symbol === t.symbol);
+      if (!q || !Number.isFinite(q.regularMarketPrice)) return null;
       
       const price = q.regularMarketPrice || 0;
       const change = q.regularMarketChange || 0;
@@ -40,6 +43,8 @@ export async function GET() {
       }
 
       return {
+        symbol: t.symbol,
+        asOf: q.regularMarketTime?.toISOString() ?? null,
         name: t.name,
         price: priceStr,
         change: changeStr,

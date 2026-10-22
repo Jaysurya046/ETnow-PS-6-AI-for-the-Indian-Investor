@@ -9,13 +9,13 @@ const MODULES = [
     title: "Opportunity Radar",
     subtitle: "AI Signal Finder",
     description:
-      "Corporate filings, insider trades, bulk deals — scanned continuously. Get actionable buy/sell/watch signals before the crowd.",
+      "Observed price momentum across the configured NIFTY 100 universe, with quote timestamps and concise analysis.",
     color: "var(--green)",
     colorDim: "var(--green-dim)",
     colorBorder: "rgba(34,197,94,0.2)",
     stats: [
-      { label: "Signals today", value: "247" },
-      { label: "Win rate", value: "78%" },
+      { label: "Stock universe", value: "100" },
+      { label: "Signal basis", value: "Price" },
     ],
     badge: "LIVE",
   },
@@ -25,15 +25,15 @@ const MODULES = [
     title: "Chart Pattern Intelligence",
     subtitle: "AI Pattern Detector",
     description:
-      "Real-time breakout, reversal & S/R detection across the entire NSE universe — with back-tested success rates & plain-English explanations.",
+      "Measured RSI, EMAs, MACD, candle patterns and pivot levels across NIFTY 100, with plain-English insights.",
     color: "var(--purple)",
     colorDim: "var(--purple-dim)",
     colorBorder: "rgba(168,85,247,0.2)",
     stats: [
-      { label: "Patterns scanned", value: "4,800+" },
-      { label: "Avg accuracy", value: "72%" },
+      { label: "EMA periods", value: "4" },
+      { label: "Pivot methods", value: "3" },
     ],
-    badge: "NSE FULL",
+    badge: "NIFTY 100",
   },
   {
     href: "/chat",
@@ -41,13 +41,13 @@ const MODULES = [
     title: "Market ChatGPT — Next Gen",
     subtitle: "Portfolio-Aware AI",
     description:
-      "Ask anything about any stock, sector, or your portfolio. Multi-step analysis, source-cited answers, deeper data integration.",
+      "Save holdings in this browser, track P&L from available quotes, and ask portfolio questions with streaming answers.",
     color: "var(--gold)",
     colorDim: "var(--gold-dim)",
     colorBorder: "rgba(240,180,41,0.2)",
     stats: [
-      { label: "Data sources", value: "38" },
-      { label: "Avg response", value: "1.4s" },
+      { label: "Holdings", value: "Saved" },
+      { label: "Responses", value: "Streaming" },
     ],
     badge: "AI POWERED",
   },
@@ -55,54 +55,44 @@ const MODULES = [
     href: "/video",
     icon: "🎬",
     title: "AI Market Video Engine",
-    subtitle: "Zero-Edit Automation",
+    subtitle: "Market Script Preview",
     description:
-      "Auto-generate visually rich 30–90s market wrap videos: race charts, FII/DII flows, sector rotation & IPO trackers — no editor needed.",
+      "Generate factual market script previews from quote data, with live sector indices and ranked daily gainers and losers.",
     color: "var(--orange)",
     colorDim: "var(--orange-dim)",
     colorBorder: "rgba(249,115,22,0.2)",
     stats: [
-      { label: "Videos today", value: "12" },
-      { label: "Avg duration", value: "47s" },
+      { label: "Sector indices", value: "8" },
+      { label: "Mover universe", value: "100" },
     ],
     badge: "AUTO-GEN",
   },
 ];
 
-const MARKET_STATS = [
-  { label: "NIFTY 50", value: "22,513", change: "+0.64%", up: true },
-  { label: "SENSEX", value: "74,119", change: "+0.66%", up: true },
-  { label: "FII Net", value: "+₹2,842Cr", change: "Today", up: true },
-  { label: "DII Net", value: "-₹438Cr", change: "Today", up: false },
-  { label: "India VIX", value: "13.42", change: "-1.2%", up: false },
-  { label: "Advance/Decline", value: "1,847/812", change: "NSE", up: true },
-];
-
-function AnimatedNumber({ target }: { target: string }) {
-  const [display, setDisplay] = useState("0");
-
-  useEffect(() => {
-    // Simple typewriter-style reveal
-    let start = 0;
-    const numeric = parseFloat(target.replace(/[^0-9.]/g, ""));
-    if (isNaN(numeric)) { setDisplay(target); return; }
-    const steps = 30;
-    const step = numeric / steps;
-    const timer = setInterval(() => {
-      start += step;
-      if (start >= numeric) { setDisplay(target); clearInterval(timer); }
-      else {
-        const prefix = target.replace(/[\d.,]+/, "");
-        setDisplay(prefix.startsWith("₹") || prefix.startsWith("+₹") ? `${prefix}${Math.floor(start).toLocaleString("en-IN")}${target.slice(-2)}` : Math.floor(start).toLocaleString() );
-      }
-    }, 30);
-    return () => clearInterval(timer);
-  }, [target]);
-
-  return <>{display}</>;
-}
+interface MarketStat { name: string; price: string; pct: string; up: boolean }
+const SNAPSHOT_NAMES = ["NIFTY 50", "SENSEX", "USD/INR"];
 
 export default function HomePage() {
+  const [market, setMarket] = useState<MarketStat[]>([]);
+  const [marketError, setMarketError] = useState(false);
+  useEffect(() => {
+    const controller = new AbortController();
+    async function refresh() {
+      try {
+        const res = await fetch("/api/market", { signal: controller.signal });
+        if (!res.ok) throw new Error("Market unavailable");
+        const data: MarketStat[] = await res.json();
+        if (!controller.signal.aborted) { setMarket(data); setMarketError(false); }
+      } catch { if (!controller.signal.aborted) setMarketError(true); }
+    }
+    void refresh();
+    const timer = setInterval(() => void refresh(), 30_000);
+    return () => { controller.abort(); clearInterval(timer); };
+  }, []);
+  const marketStats = SNAPSHOT_NAMES.map(name => {
+    const quote = market.find(q => q.name === name);
+    return { label: name, value: quote?.price ?? "Unavailable", change: marketError ? "Update unavailable" : quote?.pct ?? "Loading", up: quote?.up ?? true };
+  });
   return (
     <div className="page">
       {/* Hero */}
@@ -116,7 +106,7 @@ export default function HomePage() {
 
         <div style={{ position: "relative" }} className="animate-fade-in">
           <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
-            <div className="badge badge-buy">🟢 MARKET OPEN</div>
+            <div className="badge badge-buy">LATEST MARKET SNAPSHOT</div>
             <div className="badge badge-alert">NSE · BSE · MCX</div>
           </div>
 
@@ -151,7 +141,7 @@ export default function HomePage() {
 
       {/* Market Stats Bar */}
       <div className="grid-3" style={{ gridTemplateColumns: "repeat(6,1fr)", marginBottom: 40, gap: 12 }}>
-        {MARKET_STATS.map((s, i) => (
+        {marketStats.map((s, i) => (
           <div key={i} className="stat-card animate-fade-in" style={{ animationDelay: `${i * 60}ms` }}>
             <div className="stat-label">{s.label}</div>
             <div className="stat-value" style={{ fontSize: 18 }}>{s.value}</div>
