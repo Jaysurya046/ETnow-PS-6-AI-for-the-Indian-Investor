@@ -348,3 +348,21 @@ input::placeholder, textarea::placeholder { color: var(--text-muted); opacity: .
   .workspace-footer { font-size: 10px; }
 }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation: none !important; transition: none !important; } }
+
+.flow-summary { display: flex; flex-wrap: wrap; gap: 12px 24px; padding: 12px 16px; border-bottom: 1px solid var(--border-subtle); color: var(--text-secondary); font-size: 12px; }
+.flow-summary span { display: flex; gap: 10px; align-items: baseline; }
+.flow-chart { height: 260px; padding: 8px 8px 12px 0; font-family: var(--font-mono); font-variant-numeric: tabular-nums; font-size: 11px; }
+.feed-status { flex-wrap: wrap; gap: 6px 16px; }
+.feed-stale { color: var(--gold); }
+.ipo-name { display: block; max-width: 28ch; white-space: normal; }
+.ipo-table { min-width: 780px; }
+.ipo-table td { white-space: nowrap; }
+.ipo-toolbar .segmented { display: flex; flex-wrap: wrap; }
+.ipo-toolbar .segmented button { white-space: normal; }
+@container workspace (max-width: 500px) {
+  .flow-summary { padding: 10px; gap: 8px 16px; }
+  .flow-summary > span:first-child { flex-basis: 100%; }
+  .flow-chart { height: 230px; }
+  .ipo-toolbar .segmented { width: 100%; }
+  .ipo-toolbar .segmented button { flex: 1; font-size: 11px; padding-inline: 6px; }
+}

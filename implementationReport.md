@@ -269,3 +269,7 @@ ET-gen-ai-main/
 | **Market ChatGPT** | `app/chat/page.tsx` | `/api/chat` | Gemini 2.5 Flash + Fallback Cache | Live AI + Quota Fallback |
 | **Market Video Engine** | `app/video/page.tsx` | `/api/video` | `yahoo-finance2` + Gemini 2.5 Flash | Live Script Generation + UI Simulation |
 | **Chart Insights (API)** | Not linked in UI | `/api/chart-insights` | `yahoo-finance2` + Gemini 2.5 Flash | Backend Ready |
+
+## Live institutional and IPO feeds — 23 October 2026
+
+Implemented `/api/fii-dii` and `/api/ipo`, typed NSE normalization, cookie/session handling, bounded stale-aware caches, verified offline captures, and Upstox institutional history backfill. Replaced the Market briefing archive samples with active institutional bars/session details and ongoing/upcoming/listed IPO tables. Listing gains use historical listing-day prices only; unavailable fields remain blank. See `docs/feed-pipelines.md` for contracts, units, provenance, TTLs, and deployment limits.

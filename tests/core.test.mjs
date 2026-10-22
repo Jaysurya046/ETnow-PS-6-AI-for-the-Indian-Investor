@@ -15,12 +15,13 @@ function loader(mocks = {}) {
     if (relative in mocks) return mocks[relative];
     if (cache.has(relative)) return cache.get(relative).exports;
     const filename = path.join(root, relative);
+    if (relative.endsWith(".json")) return JSON.parse(readFileSync(filename, "utf8"));
     const loaded = { exports: {} };
     cache.set(relative, loaded);
     const code = ts.transpileModule(readFileSync(filename, "utf8"), {
       compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022, jsx: ts.JsxEmit.ReactJSX, esModuleInterop: true },
     }).outputText;
-    const resolve = id => id.startsWith("@/") ? load(id.slice(2)+".ts") : runtimeRequire(id);
+    const resolve = id => id.startsWith("@/") ? load(id.slice(2)+(id.endsWith(".json") ? "" : ".ts")) : runtimeRequire(id);
     new Function("require", "module", "exports", code)(resolve, loaded, loaded.exports);
     return loaded.exports;
   }
@@ -188,4 +189,145 @@ test("chat emits a status immediately and delivers successful Gemini tokens incr
   release(); await reading;
   assert.equal(events.filter(e => e.type === "delta").map(e => e.text).join(""), "Hello ₹100");
   assert.equal(events.at(-1).type, "done");
+});
+
+test("institutional parsing pairs dates, recomputes net flows, and rejects incomplete records", () => {
+  const { parseFlows, mergeFlows, flowsTtl } = load("lib/institutional-flows.ts");
+  const asOf = "2026-10-23T04:00:00Z";
+  const values = parseFlows([
+    { date: "22-Oct-2026", category: "FII/FPI", buyValue: "13,627.54", sellValue: "17086.24", netValue: "999" },
+    { date: "22-Oct-2026", category: "DII", buyValue: "16242.83", sellValue: "13351.51" },
+    { date: "21-Oct-2026", category: "DII", buyValue: "bad", sellValue: "100" },
+    { date: "20-Oct-2026", category: "FII/FPI", buyValue: "200", sellValue: "100" },
+  ], asOf);
+  assert.equal(values.length, 1);
+  assert.equal(values[0].fiiNet, -3458.70);
+  assert.equal(values[0].diiNet, 2891.32);
+  assert.ok(Math.abs(values[0].fiiNet - (values[0].fiiBuy-values[0].fiiSell)) < 1e-8);
+  assert.equal(values[0].asOf, asOf);
+  const history = Array.from({ length: 35 }, (_, index) => ({ ...values[0], date: new Date(Date.UTC(2026,8,index+1)).toDateString() }));
+  assert.equal(mergeFlows(history, history).length, 30);
+  assert.equal(flowsTtl(new Date("2026-10-23T05:00:00Z")), 2*3600000);
+  assert.equal(flowsTtl(new Date("2026-10-23T13:00:00Z")), 12*3600000);
+  assert.equal(flowsTtl(new Date("2026-10-23T12:00:00Z")), 30*60000);
+});
+
+test("IPO categorization uses IST dates, merges subscriptions, and requires a confirmed listing", () => {
+  const { categorizeIpos } = load("lib/ipo-feed.ts");
+  const issue = { companyName: "Fixture Limited", symbol: "TEST", series: "EQ", issueStartDate: "21-Oct-2026", issueEndDate: "23-Oct-2026", issuePrice: "Rs.100 to Rs.110", issueSize: "10000" };
+  const result = categorizeIpos({
+    current: [ { ...issue, category: "Total", noOfTime: "3.5" }, { ...issue, category: "Retail Individual Investors", noOfTime: "2.1" } ],
+    upcoming: [{ ...issue, symbol: "NEXT", issueStartDate: "26-Oct-2026", issueEndDate: "28-Oct-2026" }],
+    past: [
+      { company: "Listed", symbol: "OLD", securityType: "EQ", listingDate: "22-Oct-2026", ipoStartDate: "12-Oct-2026", ipoEndDate: "14-Oct-2026" },
+      { company: "Pending", symbol: "PENDING", securityType: "EQ", listingDate: "26-Oct-2026" },
+      { company: "Closed only", symbol: "CLOSED", securityType: "EQ", ipoEndDate: "21-Oct-2026" },
+      { company: "Bond", symbol: "BOND", securityType: "DEBT", listingDate: "22-Oct-2026" },
+    ],
+  }, "2026-10-22T19:00:00Z"); // Already 23 Oct in India.
+  assert.equal(result.ongoing.length, 1);
+  assert.equal(result.upcoming[0].symbol, "NEXT");
+  assert.deepEqual(result.listed.map(i => i.symbol), ["OLD"]);
+  assert.deepEqual(result.ongoing[0].subscription, { total: 3.5, retail: 2.1 });
+  assert.equal(result.ongoing[0].priceBand, "₹100 – ₹110");
+  assert.equal(result.ongoing[0].issueSize, "10,000 shares");
+  assert.equal(result.listed[0].listingGain, undefined);
+  assert.equal(result.ongoing[0].gmp, undefined);
+});
+
+test("stale feed cache coalesces, expires, backs off outages, and preserves the original timestamp", async () => {
+  const { staleFeedCache } = load("lib/cache.ts");
+  let time = 0, calls = 0, offline = false;
+  const seed = { asOf: "2026-10-21T12:30:00Z", isStale: true, value: 10 };
+  const cached = staleFeedCache(async () => {
+    calls++;
+    if (offline) throw new Error("blocked");
+    return { asOf: "2026-10-22T12:30:00Z", isStale: false, value: 20 };
+  }, seed, () => 100, () => time);
+  const [first, concurrent] = await Promise.all([cached(), cached()]);
+  assert.deepEqual(first, concurrent); assert.equal(calls, 1);
+  time = 99; assert.equal((await cached()).isStale, false); assert.equal(calls, 1);
+  time = 100; offline = true;
+  const stale = await cached();
+  assert.equal(calls, 2); assert.equal(stale.isStale, true); assert.equal(stale.asOf, first.asOf); assert.equal(stale.value, 20);
+  time++; await cached(); assert.equal(calls, 2);
+  time += 5*60000; offline = false;
+  assert.equal((await cached()).isStale, false); assert.equal(calls, 3);
+  const cold = staleFeedCache(async () => { throw new Error("offline"); }, seed, () => 100);
+  assert.deepEqual(await cold(), seed);
+});
+
+test("feed routes return structured stale snapshots when NSE is unreachable", async () => {
+  const offlineLoader = loader({ "lib/nse.ts": { ...load("lib/nse.ts"), nseJson: async () => { throw new Error("NSE blocked"); } } });
+  // Skip the secondary HTTP history fetch while exercising the actual route/cache wiring.
+  const original = globalThis.fetch;
+  globalThis.fetch = async () => { throw new Error("offline"); };
+  try {
+    const flowResponse = await offlineLoader("app/api/fii-dii/route.ts").GET();
+    const flows = await flowResponse.json();
+    assert.equal(flows.isStale, true); assert.ok(flows.history.length >= 10);
+    assert.equal(flows.latest.date, flows.history.at(-1).date);
+    const ipoResponse = await offlineLoader("app/api/ipo/route.ts").GET();
+    const ipos = await ipoResponse.json();
+    assert.equal(ipos.isStale, true);
+    assert.ok(ipos.asOf); assert.ok(Array.isArray(ipos.ongoing)); assert.ok(Array.isArray(ipos.upcoming)); assert.ok(Array.isArray(ipos.listed));
+  } finally { globalThis.fetch = original; }
+});
+
+test("NSE transport bootstraps and refreshes session cookies once on a blocked API response", async () => {
+  const original = globalThis.fetch;
+  const calls = [];
+  let apiCalls = 0;
+  globalThis.fetch = async (url, options) => {
+    calls.push({ url, options });
+    if (url === "https://www.nseindia.com") return new Response("homepage", { headers: { "Set-Cookie": `session=${calls.length}; Path=/; HttpOnly` } });
+    apiCalls++;
+    return apiCalls === 1 ? new Response("expired", { status: 403 }) : Response.json([{ category: "DII" }]);
+  };
+  try {
+    const { nseJson } = loader()("lib/nse.ts");
+    assert.deepEqual(await nseJson("/api/fiidiiTradeReact"), [{ category: "DII" }]);
+    assert.equal(calls.length, 4);
+    assert.equal(calls[1].options.headers.Cookie, "session=1");
+    assert.equal(calls[3].options.headers.Cookie, "session=3");
+    assert.equal(calls[1].options.headers.Referer, "https://www.nseindia.com/");
+    assert.ok(calls[1].options.headers["Accept-Language"]);
+    assert.ok(calls[1].options.signal);
+  } finally { globalThis.fetch = original; }
+});
+
+test("IPO feed uses historical listing-day prices and caches all three NSE categories", async () => {
+  let requests = 0, chartRequests = 0;
+  const asOf = new Date().toISOString().slice(0,10);
+  const fixtures = {
+    "/api/ipo-current-issue": [{ symbol: "OPEN", companyName: "Open issue", series: "EQ", issueStartDate: "2020-01-01", issueEndDate: "2099-01-01", category: "Total", noOfTime: "1.25" }],
+    "/api/all-upcoming-issues?category=ipo": [{ symbol: "FUTURE", companyName: "Future issue", series: "EQ", issueStartDate: "2099-01-02", issueEndDate: "2099-01-03" }],
+    "/api/public-past-issues": [{ symbol: "LISTED", company: "Listed issue", securityType: "EQ", listingDate: "2020-01-01", issuePrice: "100" }],
+  };
+  const provider = loader({
+    "lib/nse.ts": { ...load("lib/nse.ts"), nseJson: async path => { requests++; return fixtures[path]; } },
+    "lib/yahoo.ts": { __esModule: true, default: { chart: async (symbol, query) => {
+      chartRequests++; assert.equal(symbol, "LISTED.NS");
+      assert.equal(query.period1.toISOString().slice(0,10), "2019-12-31"); // Midnight IST.
+      return { quotes: [{ date: new Date("2020-01-01T10:00:00Z"), close: 124.5 }] };
+    } } },
+  });
+  const route = provider("app/api/ipo/route.ts");
+  const first = await (await route.GET()).json();
+  const second = await (await route.GET()).json();
+  assert.equal(first.isStale, false); assert.equal(first.asOf.slice(0,10), asOf);
+  assert.equal(first.listed[0].listingGain, "+24.50%");
+  assert.equal(first.ongoing[0].subscription.total, 1.25);
+  assert.equal(first.upcoming[0].symbol, "FUTURE");
+  assert.deepEqual(first, second); assert.equal(requests, 3); assert.equal(chartRequests, 1);
+});
+
+test("IPO listings exclude future sessions and legacy re-admissions", () => {
+  const { categorizeIpos } = load("lib/ipo-feed.ts");
+  const sources = { current: [], upcoming: [], past: [
+    { company: "Morning listing", symbol: "TODAY", securityType: "EQ", listingDate: "23-Oct-2026", ipoEndDate: "19-Oct-2026" },
+    { company: "Legacy admission", symbol: "LEGACY", securityType: "SME", listingDate: "22-Oct-2026", ipoEndDate: "25-Feb-2021" },
+  ] };
+  assert.equal(categorizeIpos(sources, "2026-10-23T02:00:00Z").listed.length, 0);
+  assert.deepEqual(categorizeIpos(sources, "2026-10-23T05:00:00Z").listed.map(i => i.symbol), ["TODAY"]);
 });
