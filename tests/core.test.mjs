@@ -35,6 +35,123 @@ const { readChatStream } = load("lib/chat-stream.ts");
 const { ttlCache } = load("lib/cache.ts");
 const candles = Array.from({ length: 250 }, (_, i) => ({ time: Math.floor(Date.now()/1000)-(249-i)*86400, open: 100+i, high: 102+i, low: 99+i, close: 101+i, volume: 1000 }));
 
+test("Gemini model resolution retries 404/503 once per model and preserves other failures", async () => {
+  const { withGeminiModel } = load("lib/gemini.ts");
+  const tried = [];
+  const result = await withGeminiModel("custom-model", async model => {
+    tried.push(model);
+    if (tried.length === 1) throw Object.assign(new Error("missing"), {status:404});
+    if (tried.length === 2) throw Object.assign(new Error("busy"), {status:503});
+    return "ok";
+  });
+  assert.equal(result,"ok");
+  assert.deepEqual(tried,["custom-model","gemini-2.5-flash-lite","gemini-3.8-flash"]);
+  for (const status of [429,401,400]) {
+    let calls = 0;
+    await assert.rejects(withGeminiModel("custom",async()=>{ calls++; throw Object.assign(new Error("failure"),{status}); }));
+    assert.equal(calls,1);
+  }
+  let calls = 0;
+  await assert.rejects(withGeminiModel("gemini-2.5-flash-lite",async()=>{ calls++;throw new Error("503 UNAVAILABLE"); }));
+  assert.equal(calls,2);
+  calls=0;
+  await assert.rejects(withGeminiModel("custom",async()=>{calls++;throw new Error("404 NOT_FOUND");},()=>false));
+  assert.equal(calls,1);
+});
+
+test("Gemini model honors a deployment override and defaults to flash-lite", () => {
+  const original=process.env.GEMINI_MODEL;
+  try {
+    delete process.env.GEMINI_MODEL;
+    assert.equal(loader()("lib/gemini.ts").DEFAULT_GEMINI_MODEL,"gemini-2.5-flash-lite");
+    process.env.GEMINI_MODEL="custom-deployment-model";
+    assert.equal(loader()("lib/gemini.ts").DEFAULT_GEMINI_MODEL,"custom-deployment-model");
+  } finally { if(original===undefined)delete process.env.GEMINI_MODEL;else process.env.GEMINI_MODEL=original; }
+});
+
+test("research fallbacks distinguish requested stocks, portfolio, education and general queries", async () => {
+  const quote={symbol:"RELIANCE.NS",regularMarketPrice:1420,regularMarketChangePercent:1.2,regularMarketDayLow:1400,regularMarketDayHigh:1430,fiftyTwoWeekLow:1200,fiftyTwoWeekHigh:1600,regularMarketTime:new Date("2026-10-23T10:00:00Z")};
+  const {POST}=loader({
+    "lib/gemini.ts":{...load("lib/gemini.ts"),getGenAI:()=>null},
+    "lib/portfolio-data.ts":{enrichHoldings:async h=>h.map(row=>({...row,cmp:110}))},
+    "lib/market-data.ts":{getQuotes:async symbols=>{assert.deepEqual(symbols,["RELIANCE.NS"]);return [quote];}},
+  })("app/api/chat/route.ts");
+  const ask=async query=>(await (await POST(new Request("http://local/api/chat",{method:"POST",body:JSON.stringify({query,portfolio:[{symbol:"TCS",qty:2,avgCost:100}]})}))).json()).content;
+  const stock=await ask("Analyze RELIANCE.NS");
+  assert.match(stock,/RELIANCE/);assert.match(stock,/₹1,420/);assert.match(stock,/\+1.20%/);assert.match(stock,/₹1,200/);assert.match(stock,/charts\?symbol=RELIANCE/);assert.doesNotMatch(stock,/Priced holdings value/);
+  const portfolio=await ask("Review my portfolio risk and pnl");
+  assert.match(portfolio,/₹220/);assert.match(portfolio,/₹20/);assert.match(portfolio,/100.0%/);
+  assert.match(await ask("Explain RSI and P\/E"),/Relative Strength Index/);
+  assert.match(await ask("What do FII and DII mean?"),/domestic institutional/);
+  assert.match(await ask("What is market cap?"),/outstanding shares/);
+  const general=await ask("How do I read the opening auction?");
+  assert.match(general,/opening auction/);assert.doesNotMatch(general,/Priced holdings value/);
+});
+
+test("stock fallback survives offline quotes and ticker detection avoids substrings", async () => {
+  let calls=0;
+  const {POST}=loader({
+    "lib/gemini.ts":{...load("lib/gemini.ts"),getGenAI:()=>null},
+    "lib/portfolio-data.ts":{enrichHoldings:async h=>h},
+    "lib/market-data.ts":{getQuotes:async()=>{calls++;throw new Error("offline");}},
+  })("app/api/chat/route.ts");
+  const ask=async query=>(await (await POST(new Request("http://local",{method:"POST",body:JSON.stringify({query,portfolio:[]})}))).json()).content;
+  assert.match(await ask("Compare TCS and INFY"),/TCS[\s\S]*Unavailable[\s\S]*INFY/);
+  assert.equal(calls,1);
+  assert.match(await ask("What is relianceful?"),/Your question/);assert.equal(calls,1);
+});
+
+test("chat retries a missing streaming model before tokens but never after partial output", async () => {
+  for(const partial of [false,true]) {
+    const models=[];
+    const {POST}=loader({
+      "lib/gemini.ts":{...load("lib/gemini.ts"),DEFAULT_GEMINI_MODEL:"missing",getGenAI:()=>({models:{generateContentStream:async function*({model}){
+        models.push(model);
+        if(model==="missing"){if(partial)yield {text:"Partial"};throw Object.assign(new Error("missing"),{status:404});}
+        yield {text:"Recovered AI answer"};
+      }}})},
+      "lib/portfolio-data.ts":{enrichHoldings:async h=>h},
+    })("app/api/chat/route.ts");
+    const response=await POST(new Request("http://local",{method:"POST",body:JSON.stringify({query:"Explain RSI",portfolio:[],stream:true})}));
+    const events=[];await readChatStream(response,e=>events.push(e));
+    assert.equal(models.length,partial?1:2);
+    if(partial)assert.match(events.find(e=>e.type==="fallback").content,/Relative Strength Index/);
+    else assert.equal(events.filter(e=>e.type==="delta").map(e=>e.text).join(""),"Recovered AI answer");
+  }
+});
+
+test("five video templates produce distinct factual scripts with real data and missing feeds", () => {
+  const {normalizeVideoProps,measuredScript,VIDEO_TEMPLATE_DETAILS}=load("lib/video.ts");
+  const props=normalizeVideoProps({benchmarks:[{symbol:"^NSEI",name:"NIFTY 50",price:22000,pct:1},{symbol:"^BSESN",name:"SENSEX",price:72000,pct:-0.5}],movers:{gainers:[{symbol:"TCS",price:2500,pct:2}],losers:[{symbol:"INFY",price:1500,pct:-1}]},sectors:[{name:"Banking",change:-1},{name:"IT",change:2}],coverage:87,universe:100,dateStr:"23 October 2026",sessionStatus:"close",fiiDii:{date:"22 Oct 2026",fiiNet:-100,diiNet:250,asOf:"2026-10-22T13:00:00Z",isStale:true}});
+  const ipos={ongoing:[{symbol:"ISSUE",subscription:{total:2.4}}],upcoming:[{symbol:"NEXT",openDate:"27 Oct 2026"}],listed:[{symbol:"LISTED",listingDate:"22 Oct 2026",listingGain:"+24.5%"}],isStale:true,asOf:"2026-10-23T13:00:00Z"};
+  const scripts=Object.keys(VIDEO_TEMPLATE_DETAILS).map(id=>measuredScript(id,props,ipos));
+  assert.equal(new Set(scripts.map(lines=>lines.join("\n"))).size,5);
+  for(const script of scripts){assert.equal(script.length,3);assert.ok(script.every(line=>line.length<=150));}
+  assert.match(scripts[0][0],/NIFTY 50[\s\S]*SENSEX/);assert.match(scripts[0][2],/closed/);
+  assert.match(scripts[1][0],/-₹100 Cr/);assert.match(scripts[1][2],/\+₹150 Cr[\s\S]*22 Oct 2026[\s\S]*Stale/);
+  assert.match(scripts[2][0],/IT/);assert.match(scripts[2][1],/Banking/);assert.match(scripts[2][2],/3.00 percentage/);
+  assert.match(scripts[3][0],/2.40x/);assert.match(scripts[3][1],/\+24.5%/);assert.match(scripts[3][2],/27 Oct 2026/);assert.doesNotMatch(scripts[3].join(" "),/filed with SEBI/);
+  assert.match(scripts[4][0],/TCS/);assert.match(scripts[4][1],/INFY/);assert.match(scripts[4][2],/87\/100/);
+  assert.equal(new Set(Object.keys(VIDEO_TEMPLATE_DETAILS).map(id=>measuredScript(id,normalizeVideoProps({})).join("\n"))).size,5);
+});
+
+test("video route carries template-specific titles, wraps, counts and IPO inputs through fallback", async () => {
+  const {POST}=loader({
+    "lib/gemini.ts":{...load("lib/gemini.ts"),getGenAI:()=>null},
+    "lib/market-data.ts":{getQuotes:async()=>[],getMovers:async()=>({gainers:[],losers:[],coverage:77,universe:100}),getSectors:async()=>[]},
+    "lib/institutional-flows.ts":{getInstitutionalFlows:async()=>null},
+    "lib/ipo-feed.ts":{getIpos:async()=>({ongoing:[{symbol:"BID",subscription:{total:3}}],upcoming:[],listed:[],isStale:true,asOf:"2026-10-23T10:00:00Z"})},
+  })("app/api/video/route.ts");
+  const results=[];
+  for(const templateId of ["daily-wrap","fii-dii","sector-rotation","ipo-tracker","top-movers"]){
+    results.push(await (await POST(new Request("http://local",{method:"POST",body:JSON.stringify({templateId})}))).json());
+  }
+  for(const field of ["title","wrap"])assert.equal(new Set(results.map(result=>result[field])).size,5);
+  assert.equal(new Set(results.map(result=>result.script.join("\n"))).size,5);
+  assert.match(results[3].script[0],/BID: 3.00x/);assert.match(results[3].script[2],/Cached/);
+  assert.match(results[4].script[2],/77\/100/);
+});
+
 test("health route is dynamic, uncached and reports the current process", async () => {
   const health = load("app/api/health/route.ts");
   assert.equal(health.runtime, "nodejs");
@@ -154,7 +271,7 @@ test("movers rank the entire universe and do not fill missing quotes with fake z
 test("chat route streams before generation completes and replaces partial text on quota failure", async () => {
   const fixtureLoader = loader({
     "lib/portfolio-data.ts": { enrichHoldings: async h => h.map(item => ({ ...item, cmp: 110, quoteTime: "2026-10-22T10:00:00Z" })) },
-    "lib/gemini.ts": { getGenAI: () => ({ models: { generateContentStream: async function* () {
+    "lib/gemini.ts": { ...load("lib/gemini.ts"), getGenAI: () => ({ models: { generateContentStream: async function* () {
       yield { text: "partial" }; throw new Error("429 RESOURCE_EXHAUSTED");
     } } }) },
   });
@@ -171,7 +288,7 @@ test("chat route streams before generation completes and replaces partial text o
 });
 
 test("chat missing-key and provider failure fallback stays usable in JSON and SSE", async () => {
-  const fixtureLoader = loader({ "lib/portfolio-data.ts": { enrichHoldings: async () => { throw new Error("offline"); } }, "lib/gemini.ts": { getGenAI: () => null } });
+  const fixtureLoader = loader({ "lib/portfolio-data.ts": { enrichHoldings: async () => { throw new Error("offline"); } }, "lib/gemini.ts": { ...load("lib/gemini.ts"), getGenAI: () => null } });
   const { POST } = fixtureLoader("app/api/chat/route.ts");
   for (const stream of [false, true]) {
     const response = await POST(new Request("http://localhost/api/chat", { method: "POST", body: JSON.stringify({ query: "my portfolio", portfolio: [{ symbol: "TCS", qty: 2, avgCost: 100 }], stream }) }));
@@ -188,7 +305,7 @@ test("chat emits a status immediately and delivers successful Gemini tokens incr
   const gate = new Promise(resolve => { release = resolve; });
   const fixtureLoader = loader({
     "lib/portfolio-data.ts": { enrichHoldings: async h => h },
-    "lib/gemini.ts": { getGenAI: () => ({ models: { generateContentStream: async function* () {
+    "lib/gemini.ts": { ...load("lib/gemini.ts"), getGenAI: () => ({ models: { generateContentStream: async function* () {
       await gate; yield { text: "Hello " }; yield { text: "₹100" };
     } } }) },
   });
@@ -457,7 +574,7 @@ test("live video adapter reads Indian formatted values and uses provider session
 
 test("video API freezes real inputs and returns labelled factual fallback when AI is unavailable", async () => {
   const routeLoader=loader({
-    "lib/gemini.ts":{getGenAI:()=>null},
+    "lib/gemini.ts":{...load("lib/gemini.ts"),getGenAI:()=>null},
     "lib/market-data.ts":{
       getQuotes:async()=>[{symbol:"^NSEI",regularMarketPrice:22000,regularMarketChange:100,regularMarketChangePercent:0.5,regularMarketTime:new Date("2026-10-22T10:00:00Z"),marketState:"CLOSED"}],
       getMovers:async()=>({gainers:[{stock:"TCS",val:"₹2,500",change:"+2.00%"}],losers:[]}),
@@ -503,7 +620,7 @@ test("video encoder selects a supported container and forwards all 1350 frames w
 test("successful video AI output is attached to the same market snapshot", async () => {
   let prompt="";
   const aiLoader=loader({
-    "lib/gemini.ts":{getGenAI:()=>({models:{generateContent:async request=>{prompt=request.contents;return {text:JSON.stringify({title:"Measured market update",wrap:"A factual session summary.",script:["Benchmark data is unavailable.","No equity movers were supplied.","Sector quotes are unavailable."]})};}}})},
+    "lib/gemini.ts":{...load("lib/gemini.ts"),getGenAI:()=>({models:{generateContent:async request=>{prompt=request.contents;return {text:JSON.stringify({title:"Measured market update",wrap:"A factual session summary.",script:["Benchmark data is unavailable.","No equity movers were supplied.","Sector quotes are unavailable."]})};}}})},
     "lib/market-data.ts":{getQuotes:async()=>[],getMovers:async()=>({gainers:[],losers:[]}),getSectors:async()=>[]},
     "lib/institutional-flows.ts":{getInstitutionalFlows:async()=>({latest:{date:"22 Oct 2026",fiiNet:-10,diiNet:20,asOf:"2026-10-22T13:00:00Z"},isStale:true})},
     "lib/ipo-feed.ts":{getIpos:async()=>null},

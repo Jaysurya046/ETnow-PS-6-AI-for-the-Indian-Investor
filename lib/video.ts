@@ -1,4 +1,4 @@
-import type { FiiDiiResponse } from "@/lib/feed-types";
+import type { FiiDiiResponse, IpoResponse } from "@/lib/feed-types";
 import type { MarketQuote, MoversResponse, SectorQuote } from "@/lib/useMarketFeed";
 
 export const VIDEO = { width: 1920, height: 1080, fps: 30, durationInFrames: 1350 } as const;
@@ -23,6 +23,8 @@ export interface MarketVideoProps extends Record<string, unknown> {
   dateStr: string;
   capturedAt: string;
   sessionStatus: "close" | "live" | "latest";
+  coverage: number | null;
+  universe: number | null;
 }
 export interface VideoBriefing { title: string; wrap: string; script: string[]; videoProps: MarketVideoProps }
 const object = (value: unknown): Record<string, unknown> => value && typeof value === "object" && !Array.isArray(value) ? value as Record<string, unknown> : {};
@@ -57,6 +59,8 @@ export function normalizeVideoProps(value: unknown): MarketVideoProps {
     scriptSource: input.scriptSource === "ai" ? "ai" : input.scriptSource === "measured-data" ? "measured-data" : "awaiting",
     dateStr: clean(input.dateStr,40) || "Session date unavailable", capturedAt: iso(input.capturedAt) || "",
     sessionStatus: input.sessionStatus === "close" ? "close" : input.sessionStatus === "live" ? "live" : "latest",
+    coverage: Number.isInteger(input.coverage) && Number(input.coverage) >= 0 ? Number(input.coverage) : null,
+    universe: Number.isInteger(input.universe) && Number(input.universe) > 0 ? Number(input.universe) : null,
   };
 }
 
@@ -72,17 +76,64 @@ export function videoFromFeeds({ quotes, movers, sectors, flows, capturedAt }: {
     dateStr: sessionTime ? new Date(sessionTime).toLocaleDateString("en-IN", { timeZone:"Asia/Kolkata", day:"2-digit", month:"long", year:"numeric" }) : "Session date unavailable",
     benchmarks: selected.map(q => ({ symbol:q.symbol, name:q.name, price:numeric(q.price), change:numeric(q.change), pct:numeric(q.pct), asOf:q.asOf })),
     movers: { gainers:mapMovers(movers?.gainers ?? []), losers:mapMovers(movers?.losers ?? []) }, sectors,
+    coverage:movers?.coverage, universe:movers?.universe,
     fiiDii: flows ? { ...flows.latest, isStale:flows.isStale } : null,
     scriptLines: [], scriptSource:"awaiting",
   });
 }
 
-export function measuredScript(props: MarketVideoProps): string[] {
-  const benchmark = props.benchmarks[0], gainer = props.movers.gainers[0], sector = props.sectors[0];
+export const VIDEO_TEMPLATE_DETAILS: Record<string, { title: string; emphasis: string }> = {
+  "daily-wrap": { title: "Daily market wrap", emphasis: "Benchmark levels, session movers, lagging sector and actual session status" },
+  "fii-dii": { title: "Institutional cash flows", emphasis: "Dated FII/FPI and DII net cash flows, combined net and stale reporting state" },
+  "sector-rotation": { title: "Sector rotation", emphasis: "Best and worst reported sectors and their percentage-point spread" },
+  "ipo-tracker": { title: "IPO intelligence update", emphasis: "Published ongoing subscriptions, listing-session gains and upcoming opening dates; never infer SEBI filings" },
+  "top-movers": { title: "Gainers & losers", emphasis: "Leading gainer, leading loser and actual universe quote coverage" },
+};
+
+export function measuredScript(templateId: string, props: MarketVideoProps, ipos?: IpoResponse | null): string[] {
+  const sectors = [...props.sectors].sort((a,b) => b.change-a.change);
+  const best = sectors[0], worst = sectors.at(-1);
+  const gainer = props.movers.gainers[0], loser = props.movers.losers[0];
+  const net = (value: number) => `${value >= 0 ? "+" : "-"}₹${Math.abs(value).toLocaleString("en-IN", {maximumFractionDigits:2})} Cr`;
+  if (templateId === "fii-dii") {
+    const flow = props.fiiDii;
+    return flow ? [
+      `FII/FPI net cash flow: ${net(flow.fiiNet)}. ${flow.fiiNet >= 0 ? "Net purchases" : "Net sales"}.`,
+      `DII net cash flow: ${net(flow.diiNet)}. ${flow.diiNet >= 0 ? "Net purchases" : "Net sales"}.`,
+      `Combined net: ${net(flow.fiiNet+flow.diiNet)} for ${flow.date}.${flow.isStale ? " Stale cached report." : " Verified closing report."}`,
+    ] : ["FII/FPI cash-flow figures are unavailable.", "DII cash-flow figures are unavailable.", "No combined institutional posture can be calculated without verified closing reports."];
+  }
+  if (templateId === "sector-rotation") return [
+    best ? `${best.name} leads reported sectors at ${videoSigned(best.change)}%.` : "Leading sector performance is unavailable.",
+    worst ? `${worst.name} is the weakest reported sector at ${videoSigned(worst.change)}%.` : "Lagging sector performance is unavailable.",
+    best && worst ? `Reported sector spread: ${(best.change-worst.change).toFixed(2)} percentage points across ${sectors.length} indices.` : "Sector spread is unavailable without index quotes.",
+  ];
+  if (templateId === "top-movers") return [
+    gainer ? `${gainer.symbol} is the leading reported gainer at ${videoSigned(gainer.pct)}%.` : "No advancing stocks were reported in the available universe.",
+    loser ? `${loser.symbol} is the leading reported loser at ${videoSigned(loser.pct)}%.` : "No declining stocks were reported in the available universe.",
+    props.coverage !== null && props.universe !== null ? `${props.coverage}/${props.universe} universe quotes reported; ranks use available quotes only.` : "Universe quote coverage is unavailable; displayed movers are a partial snapshot.",
+  ];
+  if (templateId === "ipo-tracker") {
+    if (!ipos) return ["Ongoing IPO bidding data is unavailable.", "Recent listing-session gains are unavailable.", "Upcoming issue opening dates are unavailable; no filings are inferred."];
+    const leading = [...ipos.ongoing].filter(issue => Number.isFinite(issue.subscription?.total)).sort((a,b) => b.subscription!.total!-a.subscription!.total!)[0];
+    const listed = [...ipos.listed].sort((a,b) => (Date.parse(b.listingDate ?? "") || 0)-(Date.parse(a.listingDate ?? "") || 0))[0];
+    const upcoming = [...ipos.upcoming].sort((a,b) => (Date.parse(a.openDate) || Infinity)-(Date.parse(b.openDate) || Infinity))[0];
+    return [
+      `${ipos.ongoing.length} ongoing IPO bids.${leading ? ` ${leading.symbol}: ${leading.subscription!.total!.toFixed(2)}x total subscription.` : " Total subscription figures unavailable."}`,
+      listed ? `${listed.symbol}: ${listed.listingGain ?? "listing-session gain unavailable"}${listed.listingDate ? `; listed ${listed.listingDate}` : "; listing date unavailable"}.` : "No recent listings were reported.",
+      `${upcoming ? `Next published issue: ${upcoming.symbol}, opens ${upcoming.openDate || "date unavailable"}.` : "No upcoming opening dates reported."}${ipos.isStale ? ` Cached ${ipos.asOf.slice(0,10)}.` : ""}`,
+    ];
+  }
+  const benchmark = (symbol: string) => {
+    const quote = props.benchmarks.find(quote => quote.symbol === symbol);
+    return quote?.price != null && quote.pct !== null ? `${quote.name} ${quote.price.toLocaleString("en-IN")} (${videoSigned(quote.pct)}%)` : `${symbol === "^NSEI" ? "NIFTY 50" : "SENSEX"} unavailable`;
+  };
+  const changes = props.benchmarks.flatMap(quote => quote.pct === null ? [] : [quote.pct]);
+  const tone = !changes.length ? "Benchmark tone unavailable" : changes.every(change => change >= 0) ? "Benchmarks non-negative" : changes.every(change => change <= 0) ? "Benchmarks non-positive" : "Mixed benchmarks";
   return [
-    benchmark?.price !== null && benchmark?.price !== undefined && benchmark.pct !== null ? `${benchmark.name} is at ${benchmark.price.toLocaleString("en-IN")}, ${videoSigned(benchmark.pct)} percent for the reported session.` : "Benchmark quotes are unavailable for this snapshot.",
-    gainer ? `${gainer.symbol} leads the available gainers at ${videoSigned(gainer.pct)} percent.` : "No advancing stocks were reported in the available universe.",
-    sector ? `${sector.name} has the highest reported sector change at ${videoSigned(sector.change)} percent.` : "Sector performance is unavailable for this snapshot.",
+    `${benchmark("^NSEI")}; ${benchmark("^BSESN")}.`,
+    `${gainer ? `${gainer.symbol} leads gainers at ${videoSigned(gainer.pct)}%` : "Gainer data unavailable"}; ${worst ? `${worst.name} lags at ${videoSigned(worst.change)}%` : "lagging sector unavailable"}.`,
+    `${tone}. ${props.sessionStatus === "close" ? "Reported session closed" : props.sessionStatus === "live" ? "Session in progress" : "Latest available snapshot"}; ${props.dateStr}.`,
   ];
 }
 

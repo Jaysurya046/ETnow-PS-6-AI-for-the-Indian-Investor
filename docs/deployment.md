@@ -12,6 +12,8 @@ The requested default base is `node:20-alpine`. **Node 20 reached end of life on
 
 Supply `GEMINI_API_KEY` only as a runtime environment variable or managed secret. The builder's `build-placeholder` is scoped to the build command; a real key is unnecessary for compilation and is never copied from a host environment file. The lazy Gemini getter supports absent credentials and factual fallbacks.
 
+`GEMINI_MODEL` is an optional runtime override, also forwarded by Compose. Default: `gemini-2.5-flash-lite`. All four AI routes share the same resolver and try distinct models once after HTTP 404 or 503, using Flash-Lite then `gemini-3.8-flash`. Authentication/quota failures do not trigger model hopping. Streaming chat can retry before its first token only; a failure after partial output replaces it with a query-aware fallback. Restart the server after changing the model environment. Available models depend on provider lifecycle and account access; see the [official model catalog](https://ai.google.dev/gemini-api/docs/models).
+
 `.dockerignore` excludes `.env*`, `.git`, local dependencies/builds, tests, private key files and rendered videos. Do not pass a real Gemini key as a Docker build argument. `NEXT_PUBLIC_REMOTION_LICENSE_KEY`, if needed, is a deliberately public build argument embedded into browser JavaScript; setting it only at runtime cannot change an existing bundle. Remotion licensing and vendor telemetry are described in [video production](video-production.md).
 
 ## Docker and Compose

@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getGenAI } from "@/lib/gemini";
+import { getGenAI, DEFAULT_GEMINI_MODEL, withGeminiModel } from "@/lib/gemini";
 import { getQuotes } from "@/lib/market-data";
 import { NIFTY_100 } from "@/lib/nifty100";
 
@@ -23,13 +23,13 @@ export async function GET() {
     const ai = getGenAI();
     if (ai) {
       try {
-        const response = await ai.models.generateContent({
-          model: "gemini-2.5-flash",
+        const response = await withGeminiModel(DEFAULT_GEMINI_MODEL, model => ai.models.generateContent({
+          model,
           contents: `Summarize the supplied daily price momentum only. Never invent news, filings, bulk deals, insider activity, regulatory events, technical indicators, targets, or future returns. No such data has been supplied.
 Measured signals: ${JSON.stringify(signals)}.
 Return a JSON array of {"stock": "supplied ticker", "reasoning": "one short observation based solely on supplied price change; no causal claim or recommendation"}.`,
-          config: { responseMimeType: "application/json" },
-        });
+          config: { responseMimeType: "application/json", httpOptions: { timeout: 20_000 } },
+        }));
         const notes: unknown = JSON.parse(response.text || "[]");
         if (Array.isArray(notes)) for (const note of notes) {
           if (note && typeof note === "object" && typeof note.stock === "string" && typeof note.reasoning === "string") {

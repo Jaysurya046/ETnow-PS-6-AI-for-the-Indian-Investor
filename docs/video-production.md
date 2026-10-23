@@ -15,11 +15,13 @@ The Market briefing workspace now previews and exports one real Remotion composi
 
 ## Snapshot and source integrity
 
-Live preview uses the existing market, movers, sectors and institutional routes. Generate script requests `/api/video`, which gathers one bounded snapshot and supplies it to Gemini 2.5 Flash. The response includes both script and video props. Subsequent quote polling does not mutate that generated video. Export makes its own normalized copy and pauses preview while encoding.
+Live preview uses the existing market, movers, sectors and institutional routes. Generate script requests `/api/video`, which gathers one bounded snapshot and supplies it to the configured Gemini model (default `gemini-2.5-flash-lite`). The response includes both script and video props. Subsequent quote polling does not mutate that generated video. Export makes its own normalized copy and pauses preview while encoding.
 
 Session dates come from provider quote timestamps, not the date on the user's computer. Closed/in-session labels use provider market state when available. Individual benchmark timestamps are printed on the video. Institutional flows retain their own trading date and stale flag, so yesterday's or cached flows are not presented as today's closing figures. Missing values remain unavailable. Partial arrays never get synthetic stock or sector rows.
 
 If AI is missing, exhausted or fails validation, the route returns an explicitly labeled measured-data script using the supplied values. The preview and transcript disclose that fallback. Files are silent, with script captions; browser speech synthesis is deliberately not represented as recorded audio.
+
+Each template has its own factual title, wrap and three-line fallback: benchmarks/session status, dated institutional net flows, sector leaders/laggards and spread, published IPO subscriptions/listings/open dates, or gainers/losers and universe coverage. Missing feeds remain explicit; stale institutional and IPO reports retain date/cache disclosures. IPO calendars are not presented as verified SEBI filings. The AI prompt uses the same template emphasis and source snapshot.
 
 ## Export
 

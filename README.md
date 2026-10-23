@@ -26,7 +26,7 @@ The terminal uses IBM Plex Sans and IBM Plex Mono, tabular numeric figures, cris
 | Financial charting | Lightweight Charts **5.1.0**, EMA/Bollinger overlays and synchronized RSI pane |
 | Indicators | `technicalindicators` **3.1.0**, chronological time-series and measured summaries |
 | Data visualization | Recharts **3.8.1** for institutional flows and sector comparisons |
-| AI | Google Gemini **2.5 Flash** via `@google/genai` **1.46.0**, SSE chat and quota-resilient fallbacks |
+| AI | Configurable Google Gemini via `@google/genai` **1.46.0**; defaults to **2.5 Flash-Lite**, SSE chat and query-aware fallbacks |
 | Market data | `yahoo-finance2` **3.14.0**, shared 30-second in-memory quote caching; official NSE JSON feeds |
 | Video | `remotion`, `@remotion/player`, `@remotion/web-renderer` **4.0.538**; 45 seconds, 1920×1080, 30fps |
 | Verification | Node test runner, TypeScript compilation and ESLint |
@@ -53,6 +53,7 @@ The key is optional for builds and offline regression tests. Without it, AI rout
 | Variable | Purpose |
 | --- | --- |
 | `GEMINI_API_KEY` | Optional server credential for Gemini |
+| `GEMINI_MODEL` | Optional server model override; defaults to `gemini-2.5-flash-lite`; retries 404/503 with Flash-Lite then `gemini-3.8-flash` |
 | `NEXT_PUBLIC_REMOTION_LICENSE_KEY` | Optional **public build-time** browser rendering key, subject to Remotion licensing |
 | `PORT` | Production port; defaults to 3000, supplied by Cloud Run when deployed there |
 | `HOSTNAME` | Production bind address; containers use `0.0.0.0` |
@@ -122,7 +123,7 @@ Vercel uses the Next.js integration (`npx vercel deploy --prod` after account/pr
 
 ## Verification
 
-The 31 feature regression tests cover indicator math/alignment, portfolio validation, SSE parsing, caching/expiry/offline behavior, feed normalization/categorization, coherent video props, scene boundaries, script fallbacks and export capability/progress/cancellation. A health-route regression adds a 32nd test for the production endpoint. Run `npm test`, `npm run lint` and `npm run build` before release.
+The regression suite covers indicator math/alignment, portfolio validation, SSE parsing, caching/expiry/offline behavior, feed normalization/categorization, coherent video props, scene boundaries, template-specific scripts, query-aware research, model retries, health and export capability/progress/cancellation. Run `npm test`, `npm run lint` and `npm run build` before release; the runner reports the current test count.
 
 Recorded browser checks cover 375px–4K layouts. A complete browser export was independently decoded as H.264, 1920×1080, 30fps, 1,350 frames and 45 seconds; see [video verification](docs/video-production.md). These are completed checks, not guarantees for every browser or deployment environment.
 

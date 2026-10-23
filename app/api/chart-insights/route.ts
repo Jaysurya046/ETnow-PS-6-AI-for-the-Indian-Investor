@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getGenAI } from "@/lib/gemini";
+import { getGenAI, DEFAULT_GEMINI_MODEL, withGeminiModel } from "@/lib/gemini";
 import { getQuotes, normalizeSymbol } from "@/lib/market-data";
 import { getChartData, RANGES, type TimeRange } from "@/lib/chart-data";
 
@@ -18,15 +18,15 @@ export async function GET(request: Request) {
       quote: q ? { price: q.regularMarketPrice, change: q.regularMarketChangePercent, pe: q.trailingPE,
         eps: q.epsTrailingTwelveMonths, high52: q.fiftyTwoWeekHigh, low52: q.fiftyTwoWeekLow,
         volume: q.regularMarketVolume, marketCap: q.marketCap } : null };
-    const response = await ai.models.generateContent({
-      model: "gemini-2.5-flash",
+    const response = await withGeminiModel(DEFAULT_GEMINI_MODEL, model => ai.models.generateContent({
+      model,
       contents: `Summarize ONLY this measured data: ${JSON.stringify(context)}.
 Do not invent news, forecasts, peer comparisons, earnings growth, indicators, or missing fields.
 Periods refer to bars at the supplied interval, not necessarily days. Pivot levels use the previous bar.
 Return JSON {"technicalInsights": [3 short observations], "quantitativeInsights": [3 short observations],
 "overallSentiment": "Bullish" or "Bearish" or "Neutral"}. Mark unavailable metrics explicitly.`,
-      config: { responseMimeType: "application/json" },
-    });
+      config: { responseMimeType: "application/json", httpOptions: { timeout: 20_000 }, abortSignal: request.signal },
+    }));
     const data: unknown = JSON.parse(response.text || "{}");
     if (!data || typeof data !== "object" || !("technicalInsights" in data) || !("quantitativeInsights" in data)
       || !Array.isArray(data.technicalInsights) || !Array.isArray(data.quantitativeInsights)
