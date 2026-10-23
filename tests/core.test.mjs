@@ -35,6 +35,76 @@ const { readChatStream } = load("lib/chat-stream.ts");
 const { ttlCache } = load("lib/cache.ts");
 const candles = Array.from({ length: 250 }, (_, i) => ({ time: Math.floor(Date.now()/1000)-(249-i)*86400, open: 100+i, high: 102+i, low: 99+i, close: 101+i, volume: 1000 }));
 
+test("corporate adapters normalize captured NSE announcements, actions and results", () => {
+  const {parseCorporateInfo}=load("lib/corporate-feed.ts");
+  const seed=load("lib/data/corporate-info-fallback.json");
+  for(const tab of ["announcements","actions","results"]){
+    const parsed=parseCorporateInfo(tab,seed.sourceSamples[tab],seed.asOf);
+    assert.ok(parsed[tab].length>0);assert.equal(parsed.isStale,false);
+    assert.equal(new Set(parsed[tab].map(row=>row.id)).size,parsed[tab].length);
+  }
+  const ann=parseCorporateInfo("announcements",seed.sourceSamples.announcements,seed.asOf).announcements[0];
+  assert.equal(ann.symbol,"BPCL");assert.equal(ann.hasPdf,true);assert.match(ann.attachmentSize,/KB/);assert.equal(ann.broadcastDate,"2026-10-23T18:02:41.000Z");
+  const result=parseCorporateInfo("results",[{symbol:"TCS",companyName:"Tata Consultancy Services",audited:"Un-Audited",consolidated:"Non-Consolidated",cumulative:"Cumulative",broadCastDate:"23-Oct-2026 18:30:00",xbrl:"https://nsearchives.nseindia.com/corporate/xbrl/result.xml"}],seed.asOf).results[0];
+  assert.equal(result.audited,"Unaudited");assert.equal(result.cumulative,"Standalone");assert.equal(result.hasXml,true);
+  assert.throws(()=>parseCorporateInfo("results",{error:"upstream schema changed"},seed.asOf));
+});
+
+test("corporate date handling, safe attachments, missing fields and duplicate records", () => {
+  const {corporateTimestamp,upcomingExDate}=load("lib/corporate-utils.ts");
+  const {parseCorporateInfo,corporateAttachment}=load("lib/corporate-feed.ts");
+  assert.equal(corporateTimestamp("31-Feb-2026"),null);assert.equal(corporateTimestamp("99-Oct-2026"),null);
+  assert.equal(corporateTimestamp("23-Oct-2026 23:53:32"),"2026-10-23T18:23:32.000Z");
+  assert.equal(upcomingExDate("26-Oct-2026",Date.parse("2026-10-25T20:00:00Z")),true);
+  assert.equal(upcomingExDate("23-Oct-2026",Date.parse("2026-10-25T20:00:00Z")),false);
+  for(const unsafe of ["javascript:alert(1)","https://evil.example/file.pdf","https://user:password@nsearchives.nseindia.com/file.pdf","https://nsearchives.nseindia.com/corporate/xbrl/-"])assert.equal(corporateAttachment(unsafe),undefined);
+  const row={symbol:"TCS",sm_name:"Tata Consultancy Services",desc:"Investor presentation",an_dt:"23-Oct-2026 18:00:00",attchmntFile:"javascript:alert(1)"};
+  const parsed=parseCorporateInfo("announcements",[row,row,{...row,an_dt:"bad"}],"2026-10-24T00:00:00Z");
+  assert.equal(parsed.announcements.length,1);assert.equal(parsed.announcements[0].hasPdf,false);assert.equal(parsed.announcements[0].attachmentUrl,undefined);
+  assert.equal(parseCorporateInfo("results",[{symbol:"TCS",companyName:"TCS",audited:"unknown",consolidated:"unknown",broadCastDate:row.an_dt}],parsed.asOf).results.length,0);
+});
+
+test("corporate scope filtering is exact, supports portfolio symbols and searches disclosures", () => {
+  const {filterCorporateInfo}=load("lib/corporate-utils.ts");
+  const data={announcements:[{symbol:"KOTAKBANK",companyName:"Kotak",subject:"Investor meeting"},{symbol:"RELIANCE",companyName:"Reliance",subject:"Presentation"},{symbol:"TCS",companyName:"TCS",subject:"Dividend"}],actions:[],results:[],asOf:"2026-10-23T00:00:00Z",isStale:true};
+  assert.deepEqual(filterCorporateInfo(data,["KOTAKBANK","reliance.NS"]).announcements.map(row=>row.symbol),["KOTAKBANK","RELIANCE"]);
+  assert.equal(filterCorporateInfo(data,[]).announcements.length,0);
+  assert.equal(filterCorporateInfo(data,["RELIANCE"],"presentation").announcements.length,1);
+  assert.equal(filterCorporateInfo(data,["RELIANCE"],"TCS").announcements.length,0);
+});
+
+test("corporate TTL observes IST market windows and closing boundary", () => {
+  const {corporateTtl}=load("lib/corporate-feed.ts");
+  assert.equal(corporateTtl(Date.parse("2026-10-23T04:30:00Z")),15*60_000);
+  assert.equal(corporateTtl(Date.parse("2026-10-23T12:29:00Z")),60_000);
+  assert.equal(corporateTtl(Date.parse("2026-10-23T12:30:00Z")),2*60*60_000);
+  assert.equal(corporateTtl(Date.parse("2026-10-24T04:30:00Z")),2*60*60_000);
+});
+
+test("corporate routes preserve verified stale captures during NSE outages and validate filters", async () => {
+  let calls=0;
+  const fixtures=loader({"lib/nse.ts":{...load("lib/nse.ts"),nseJson:async()=>{calls++;throw new Error("offline");}}});
+  const {GET}=fixtures("app/api/corporate-info/route.ts");
+  const seed=load("lib/data/corporate-info-fallback.json");
+  for(const tab of ["announcements","actions","results"]){
+    const first=await GET(new Request(`http://local/api/corporate-info?tab=${tab}`));
+    const data=await first.json();assert.equal(data.isStale,true);assert.equal(data.asOf,seed.asOf);assert.equal(first.headers.get("Cache-Control"),"no-store");assert.ok(data[tab].length>0);
+    const count=calls;await GET(new Request(`http://local/api/corporate-info?tab=${tab}`));assert.equal(calls,count);
+  }
+  const filtered=await (await GET(new Request("http://local/api/corporate-info?tab=announcements&symbol=KOTAKBANK,RELIANCE"))).json();
+  assert.ok(filtered.announcements.every(row=>["KOTAKBANK","RELIANCE"].includes(row.symbol)));
+  for(const query of ["tab=bad","symbol=","symbol=bad%3Cscript%3E"])assert.equal((await GET(new Request(`http://local/api/corporate-info?${query}`))).status,400);
+});
+
+test("corporate cache shares fresh loads across symbol filters without cross-category leakage", async () => {
+  let calls=0;
+  const seed=load("lib/data/corporate-info-fallback.json");
+  const {GET}=loader({"lib/nse.ts":{...load("lib/nse.ts"),nseJson:async path=>{calls++;return path.includes("announcements") ? seed.sourceSamples.announcements : [];}}})("app/api/corporate-info/route.ts");
+  const responses=await Promise.all(["BPCL","RELIANCE"].map(symbol=>GET(new Request(`http://local/api/corporate-info?symbol=${symbol}`))));
+  assert.equal(calls,1);
+  const data=await responses[0].json();assert.equal(data.isStale,false);assert.equal(data.announcements[0].symbol,"BPCL");assert.deepEqual(data.actions,[]);assert.deepEqual(data.results,[]);
+});
+
 test("Gemini model resolution retries 404/503 once per model and preserves other failures", async () => {
   const { withGeminiModel } = load("lib/gemini.ts");
   const tried = [];

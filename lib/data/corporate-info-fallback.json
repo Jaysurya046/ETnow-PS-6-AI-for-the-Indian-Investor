@@ -1,0 +1,4103 @@
+{
+  "asOf": "2026-10-23T21:06:06.121Z",
+  "isStale": true,
+  "announcements": [
+    {
+      "id": "ann-106827243",
+      "symbol": "BPCL",
+      "companyName": "Bharat Petroleum Corporation Limited",
+      "subject": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "broadcastDate": "2026-10-23T18:02:41.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/BPCL26_23102026233208_stexinvestorhandouts231026s.pdf",
+      "attachmentSize": "399.40 KB"
+    },
+    {
+      "id": "ann-106827220",
+      "symbol": "BPCL",
+      "companyName": "Bharat Petroleum Corporation Limited",
+      "subject": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "broadcastDate": "2026-10-23T18:00:54.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/BPCL26_23102026233001_revisedintimationanalystmeet231026s.pdf",
+      "attachmentSize": "866.06 KB"
+    },
+    {
+      "id": "ann-106827198",
+      "symbol": "SHRIRAMFIN",
+      "companyName": "Shriram Finance Limited",
+      "subject": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "broadcastDate": "2026-10-23T17:58:46.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/Mathew_23102026232836_BSENSE_Concall_Q2.pdf",
+      "attachmentSize": "300.63 KB"
+    },
+    {
+      "id": "ann-106827180",
+      "symbol": "HDFCBANK",
+      "companyName": "HDFC Bank Limited",
+      "subject": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "broadcastDate": "2026-10-23T17:20:22.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/HDFCBANK_23102026224657_SEintimationTranscriptofearningscall17oct2026.pdf",
+      "attachmentSize": "468.74 KB"
+    },
+    {
+      "id": "ann-106827170",
+      "symbol": "TMCV",
+      "companyName": "Tata Motors Limited",
+      "subject": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "broadcastDate": "2026-10-23T17:11:06.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/TMLCOMMERCIAL_23102026224044_AudioandtranscriptletterCV.pdf",
+      "attachmentSize": "3.19 MB"
+    },
+    {
+      "id": "ann-106827158",
+      "symbol": "DRREDDY",
+      "companyName": "Dr. Reddy's Laboratories Limited",
+      "subject": "General Updates",
+      "broadcastDate": "2026-10-23T16:47:48.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/DRREDDY_23102026221731_SE_Intimation_results_with_UDIN_signed.pdf",
+      "attachmentSize": "4.47 MB"
+    },
+    {
+      "id": "ann-106827072",
+      "symbol": "JINDALSTEL",
+      "companyName": "JINDAL STEEL LIMITED",
+      "subject": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "broadcastDate": "2026-10-23T15:32:34.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/JINDALSTEL_23102026210225_stx_231026.pdf",
+      "attachmentSize": "335.61 KB"
+    },
+    {
+      "id": "ann-106827037",
+      "symbol": "PFC",
+      "companyName": "Power Finance Corporation Limited",
+      "subject": "General Updates",
+      "broadcastDate": "2026-10-23T15:00:06.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/PFC2023_23102026202953_Intimation23102026Signed.pdf",
+      "attachmentSize": "248.85 KB"
+    },
+    {
+      "id": "ann-106826996",
+      "symbol": "INFY",
+      "companyName": "Infosys Limited",
+      "subject": "Updates",
+      "broadcastDate": "2026-10-23T14:37:11.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/Infosys_23102026200652_SE_filing_Auditors_report_with_UDIN.pdf",
+      "attachmentSize": "4.73 MB"
+    },
+    {
+      "id": "ann-106826990",
+      "symbol": "TITAN",
+      "companyName": "Titan Company Limited",
+      "subject": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "broadcastDate": "2026-10-23T14:28:53.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/TITAN_23102026195704_SEQ2FY27EarningCall.pdf",
+      "attachmentSize": "431.92 KB"
+    },
+    {
+      "id": "ann-106826976",
+      "symbol": "TRENT",
+      "companyName": "Trent Limited",
+      "subject": "Sale or disposal",
+      "broadcastDate": "2026-10-23T14:18:20.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/TRENT_23102026194710_Reg30DivestmentofstepdownsubsidiaryofNahar.pdf",
+      "attachmentSize": "320.92 KB"
+    },
+    {
+      "id": "ann-106826961",
+      "symbol": "TORNTPHARM",
+      "companyName": "Torrent Pharmaceuticals Limited",
+      "subject": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "broadcastDate": "2026-10-23T14:06:54.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/TORNTPHARM_23102026193638_Audio_recording.pdf",
+      "attachmentSize": "553.57 KB"
+    },
+    {
+      "id": "ann-106826951",
+      "symbol": "BPCL",
+      "companyName": "Bharat Petroleum Corporation Limited",
+      "subject": "General Updates",
+      "broadcastDate": "2026-10-23T13:56:18.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/BPCL26_23102026192552_stexintimationWoS23102026APrefinerys.pdf",
+      "attachmentSize": "305.00 KB"
+    },
+    {
+      "id": "ann-106826933",
+      "symbol": "BPCL",
+      "companyName": "Bharat Petroleum Corporation Limited",
+      "subject": "Outcome of Board Meeting",
+      "broadcastDate": "2026-10-23T13:41:30.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/BPCL26_23102026191050_stexintimationoutcome231026s.pdf",
+      "attachmentSize": "7.55 MB"
+    },
+    {
+      "id": "ann-106826922",
+      "symbol": "CGPOWER",
+      "companyName": "CG Power and Industrial Solutions Limited",
+      "subject": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "broadcastDate": "2026-10-23T13:36:27.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/CGPOWER_23102026190537_IntimationofRecording_InvestorCall_Q2_2026_27.pdf",
+      "attachmentSize": "254.93 KB"
+    },
+    {
+      "id": "ann-106826883",
+      "symbol": "DRREDDY",
+      "companyName": "Dr. Reddy's Laboratories Limited",
+      "subject": "Change in Management",
+      "broadcastDate": "2026-10-23T13:13:05.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/DRREDDY_23102026184253_SE_intimation_Reg30_change_in_mgt_23102026_Signed.pdf",
+      "attachmentSize": "302.90 KB"
+    },
+    {
+      "id": "ann-106826874",
+      "symbol": "DRREDDY",
+      "companyName": "Dr. Reddy's Laboratories Limited",
+      "subject": "Outcome of Board Meeting",
+      "broadcastDate": "2026-10-23T13:11:15.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/DRREDDY_23102026184026_SE_Intimation_Outcome_23102026_Signed.pdf",
+      "attachmentSize": "2.92 MB"
+    },
+    {
+      "id": "ann-106826834",
+      "symbol": "MAXHEALTH",
+      "companyName": "Max Healthcare Institute Limited",
+      "subject": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "broadcastDate": "2026-10-23T12:55:03.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/MAXHEALTH_23102026182445_SE_Intimation_Schedule_of_Earnings_Call.pdf",
+      "attachmentSize": "545.28 KB"
+    },
+    {
+      "id": "ann-106826829",
+      "symbol": "BANKBARODA",
+      "companyName": "Bank of Baroda",
+      "subject": "Change in Director(s)",
+      "broadcastDate": "2026-10-23T12:53:31.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/BANKBARODA_23102026182250_SEAppointment.pdf",
+      "attachmentSize": "378.80 KB"
+    },
+    {
+      "id": "ann-106826782",
+      "symbol": "GRASIM",
+      "companyName": "Grasim Industries Limited",
+      "subject": "News Verification",
+      "broadcastDate": "2026-10-23T12:37:08.000Z",
+      "hasPdf": false,
+      "attachmentSize": "0 Bytes"
+    },
+    {
+      "id": "ann-106826784",
+      "symbol": "SUNPHARMA",
+      "companyName": "Sun Pharmaceutical Industries Limited",
+      "subject": "Press Release",
+      "broadcastDate": "2026-10-23T12:31:41.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/SUNSEC_23102026180028_SE_Intimation_of_Press_Release_-_ESMO.pdf",
+      "attachmentSize": "562.54 KB"
+    },
+    {
+      "id": "ann-106826781",
+      "symbol": "ICICIBANK",
+      "companyName": "ICICI Bank Limited",
+      "subject": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "broadcastDate": "2026-10-23T12:30:27.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/ICICI2022_23102026175603_NSEBSE23102026.pdf",
+      "attachmentSize": "626.46 KB"
+    },
+    {
+      "id": "ann-106826779",
+      "symbol": "TATACONSUM",
+      "companyName": "TATA CONSUMER PRODUCTS LIMITED",
+      "subject": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "broadcastDate": "2026-10-23T12:29:34.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/Sukhvinder_23102026175914_TCPL_Analystmeeting_23102026.pdf",
+      "attachmentSize": "220.68 KB"
+    },
+    {
+      "id": "ann-106826724",
+      "symbol": "DRREDDY",
+      "companyName": "Dr. Reddy's Laboratories Limited",
+      "subject": "Investor Presentation",
+      "broadcastDate": "2026-10-23T12:08:06.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/DRREDDY_23102026173751_SEintimation_Investor_presentation_23102026_1.pdf",
+      "attachmentSize": "1.53 MB"
+    },
+    {
+      "id": "ann-106826700",
+      "symbol": "SHRIRAMFIN",
+      "companyName": "Shriram Finance Limited",
+      "subject": "Record Date",
+      "broadcastDate": "2026-10-23T12:00:42.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/Mathew_23102026172848_BSENSE_Record_Date_Intimation.pdf",
+      "attachmentSize": "340.70 KB"
+    },
+    {
+      "id": "ann-106826698",
+      "symbol": "DRREDDY",
+      "companyName": "Dr. Reddy's Laboratories Limited",
+      "subject": "Outcome of Board Meeting",
+      "broadcastDate": "2026-10-23T11:59:45.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/DRREDDY_23102026172921_SE_Intimation_results_23102026.pdf",
+      "attachmentSize": "2.75 MB"
+    },
+    {
+      "id": "ann-106826678",
+      "symbol": "NTPC",
+      "companyName": "NTPC Limited",
+      "subject": "Appointment",
+      "broadcastDate": "2026-10-23T11:53:49.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/NTPC_23102026172037_20261023_APPOINTMENTOFGOIDIRECTOR.pdf",
+      "attachmentSize": "769.10 KB"
+    },
+    {
+      "id": "ann-106826666",
+      "symbol": "TMCV",
+      "companyName": "Tata Motors Limited",
+      "subject": "Investor Presentation",
+      "broadcastDate": "2026-10-23T11:47:47.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/TMLCOMMERCIAL_23102026171720_IR.pdf",
+      "attachmentSize": "1.54 MB"
+    },
+    {
+      "id": "ann-106826621",
+      "symbol": "SHRIRAMFIN",
+      "companyName": "Shriram Finance Limited",
+      "subject": "Updates",
+      "broadcastDate": "2026-10-23T11:40:51.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/Mathew_23102026171011_BSENSE023102026_.pdf",
+      "attachmentSize": "281.25 KB"
+    },
+    {
+      "id": "ann-106826598",
+      "symbol": "POWERGRID",
+      "companyName": "Power Grid Corporation of India Limited",
+      "subject": "General Updates",
+      "broadcastDate": "2026-10-23T11:34:39.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/POWERGRID1_23102026170415_BSENSEReg30dt23102026_signed.pdf",
+      "attachmentSize": "311.15 KB"
+    },
+    {
+      "id": "ann-106826576",
+      "symbol": "GODREJCP",
+      "companyName": "Godrej Consumer Products Limited",
+      "subject": "Commencement of commercial production/operations",
+      "broadcastDate": "2026-10-23T11:28:03.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/GODREJCP_23102026165750_Disclosure_signed.pdf",
+      "attachmentSize": "232.55 KB"
+    },
+    {
+      "id": "ann-106826566",
+      "symbol": "CANBK",
+      "companyName": "Canara Bank",
+      "subject": "Updates",
+      "broadcastDate": "2026-10-23T11:23:05.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/CANBK_23102026165232_lettertoses.pdf",
+      "attachmentSize": "752.73 KB"
+    },
+    {
+      "id": "ann-106826561",
+      "symbol": "TORNTPHARM",
+      "companyName": "Torrent Pharmaceuticals Limited",
+      "subject": "Press Release",
+      "broadcastDate": "2026-10-23T11:20:10.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/TORNTPHARM_23102026165000_outcome.pdf",
+      "attachmentSize": "10.95 MB"
+    },
+    {
+      "id": "ann-106826553",
+      "symbol": "TORNTPHARM",
+      "companyName": "Torrent Pharmaceuticals Limited",
+      "subject": "Outcome of Board Meeting",
+      "broadcastDate": "2026-10-23T11:15:57.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/TORNTPHARM_23102026164512_Results.pdf",
+      "attachmentSize": "10.95 MB"
+    },
+    {
+      "id": "ann-106826547",
+      "symbol": "CGPOWER",
+      "companyName": "CG Power and Industrial Solutions Limited",
+      "subject": "Monitoring Agency Report",
+      "broadcastDate": "2026-10-23T11:14:31.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/CGPOWER_23102026164358_SEDisclosureMonitoringAgencyReport.pdf",
+      "attachmentSize": "646.75 KB"
+    },
+    {
+      "id": "ann-106826524",
+      "symbol": "TRENT",
+      "companyName": "Trent Limited",
+      "subject": "General Updates",
+      "broadcastDate": "2026-10-23T11:04:41.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/TRENT_23102026163319_Reg30Reminderlettertoshareholder2026.pdf",
+      "attachmentSize": "9.69 MB"
+    },
+    {
+      "id": "ann-106826485",
+      "symbol": "SHRIRAMFIN",
+      "companyName": "Shriram Finance Limited",
+      "subject": "Investor Presentation",
+      "broadcastDate": "2026-10-23T10:47:56.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/Mathew_23102026161446_OutcomeofBoardMeetingOct23.pdf",
+      "attachmentSize": "20.10 MB"
+    },
+    {
+      "id": "ann-106826486",
+      "symbol": "SHRIRAMFIN",
+      "companyName": "Shriram Finance Limited",
+      "subject": "Change in Management",
+      "broadcastDate": "2026-10-23T10:47:56.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/Mathew_23102026161744_OutcomeofBoardMeetingOct23.pdf",
+      "attachmentSize": "20.10 MB"
+    },
+    {
+      "id": "ann-106826469",
+      "symbol": "INFY",
+      "companyName": "Infosys Limited",
+      "subject": "Record Date",
+      "broadcastDate": "2026-10-23T10:40:52.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/Infosys_23102026160926_BM_Outcome_Oct232026_1.pdf",
+      "attachmentSize": "25.48 MB"
+    },
+    {
+      "id": "ann-106826465",
+      "symbol": "INFY",
+      "companyName": "Infosys Limited",
+      "subject": "Outcome of Board Meeting",
+      "broadcastDate": "2026-10-23T10:38:26.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/Infosys_23102026160704_BM_Outcome_Oct232026_1.pdf",
+      "attachmentSize": "25.48 MB"
+    },
+    {
+      "id": "ann-106826433",
+      "symbol": "GRASIM",
+      "companyName": "Grasim Industries Limited",
+      "subject": "Copy of Newspaper Publication",
+      "broadcastDate": "2026-10-23T10:27:16.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/GRASIM_23102026155658_SEIntimationNewspaperAdv.pdf",
+      "attachmentSize": "4.73 MB"
+    },
+    {
+      "id": "ann-106826400",
+      "symbol": "ADANIGREEN",
+      "companyName": "Adani Green Energy Limited",
+      "subject": "Shareholders meeting",
+      "broadcastDate": "2026-10-23T10:18:21.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/ADANIGREEN_23102026154746_EGMNotice16112026.pdf",
+      "attachmentSize": "439.31 KB"
+    },
+    {
+      "id": "ann-106826393",
+      "symbol": "TMCV",
+      "companyName": "Tata Motors Limited",
+      "subject": "Outcome of Board Meeting",
+      "broadcastDate": "2026-10-23T10:14:06.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/TMLCOMMERCIAL_23102026154330_NSEBSELETTER.pdf",
+      "attachmentSize": "12.34 MB"
+    },
+    {
+      "id": "ann-106826372",
+      "symbol": "HDFCLIFE",
+      "companyName": "HDFC Life Insurance Company Limited",
+      "subject": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "broadcastDate": "2026-10-23T10:06:23.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/HDFCLIFE2_23102026153545_SE_Transcript.pdf",
+      "attachmentSize": "400.34 KB"
+    },
+    {
+      "id": "ann-106826367",
+      "symbol": "HINDZINC",
+      "companyName": "Hindustan Zinc Limited",
+      "subject": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "broadcastDate": "2026-10-23T10:05:20.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/HINDZINCNSE_23102026153438_SEIntimation23102026.pdf",
+      "attachmentSize": "652.02 KB"
+    },
+    {
+      "id": "ann-106826364",
+      "symbol": "JINDALSTEL",
+      "companyName": "JINDAL STEEL LIMITED",
+      "subject": "Investor Presentation",
+      "broadcastDate": "2026-10-23T10:03:19.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/JINDALSTEL_23102026153233_stx__1_.pdf",
+      "attachmentSize": "2.25 MB"
+    },
+    {
+      "id": "ann-106826359",
+      "symbol": "JSWSTEEL",
+      "companyName": "JSW Steel Limited",
+      "subject": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "broadcastDate": "2026-10-23T10:01:34.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/jessydenny_23102026153118_Analysts_Presentation.pdf",
+      "attachmentSize": "5.54 MB"
+    },
+    {
+      "id": "ann-106826350",
+      "symbol": "SHRIRAMFIN",
+      "companyName": "Shriram Finance Limited",
+      "subject": "Change in Management",
+      "broadcastDate": "2026-10-23T09:55:02.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/Mathew_23102026152441_OutcomeofBoardMeetingOct23.pdf",
+      "attachmentSize": "20.10 MB"
+    },
+    {
+      "id": "ann-106826351",
+      "symbol": "SHRIRAMFIN",
+      "companyName": "Shriram Finance Limited",
+      "subject": "Statement of deviation(s) or variation(s) under Reg. 32",
+      "broadcastDate": "2026-10-23T09:55:02.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/Mathew_23102026152453_OutcomeofBoardMeetingOct23.pdf",
+      "attachmentSize": "20.10 MB"
+    },
+    {
+      "id": "ann-106826349",
+      "symbol": "SHRIRAMFIN",
+      "companyName": "Shriram Finance Limited",
+      "subject": "Investor Presentation",
+      "broadcastDate": "2026-10-23T09:55:02.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/Mathew_23102026152246_OutcomeofBoardMeetingOct23.pdf",
+      "attachmentSize": "20.10 MB"
+    },
+    {
+      "id": "ann-106826348",
+      "symbol": "SHRIRAMFIN",
+      "companyName": "Shriram Finance Limited",
+      "subject": "Press Release",
+      "broadcastDate": "2026-10-23T09:55:02.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/Mathew_23102026152201_OutcomeofBoardMeetingOct23.pdf",
+      "attachmentSize": "20.10 MB"
+    },
+    {
+      "id": "ann-106826340",
+      "symbol": "BAJAJFINSV",
+      "companyName": "Bajaj Finserv Limited",
+      "subject": "Press Release",
+      "broadcastDate": "2026-10-23T09:51:41.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/walimbelk_23102026152108_SEIntimation_BajajgeneralCEO23102026.pdf",
+      "attachmentSize": "654.81 KB"
+    },
+    {
+      "id": "ann-106826336",
+      "symbol": "PNB",
+      "companyName": "Punjab National Bank",
+      "subject": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "broadcastDate": "2026-10-23T09:49:06.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/pnb2_23102026151409_Intimation_Transcript_23102026_DS.pdf",
+      "attachmentSize": "703.05 KB"
+    },
+    {
+      "id": "ann-106826328",
+      "symbol": "JINDALSTEL",
+      "companyName": "JINDAL STEEL LIMITED",
+      "subject": "Outcome of Board Meeting",
+      "broadcastDate": "2026-10-23T09:44:16.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/JINDALSTEL_23102026151136_STX23102026.pdf",
+      "attachmentSize": "1.79 MB"
+    },
+    {
+      "id": "ann-106826326",
+      "symbol": "CGPOWER",
+      "companyName": "CG Power and Industrial Solutions Limited",
+      "subject": "Statement of deviation(s) or variation(s) under Reg. 32",
+      "broadcastDate": "2026-10-23T09:43:02.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/CGPOWER_23102026151236_SEDisclosure_StatementofDeviation.pdf",
+      "attachmentSize": "321.14 KB"
+    },
+    {
+      "id": "ann-106826287",
+      "symbol": "JSWSTEEL",
+      "companyName": "JSW Steel Limited",
+      "subject": "Outcome of Board Meeting",
+      "broadcastDate": "2026-10-23T09:25:21.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/jessydenny_23102026145448_Outcome_of_Board_Meeting.pdf",
+      "attachmentSize": "287.23 KB"
+    },
+    {
+      "id": "ann-106826285",
+      "symbol": "CGPOWER",
+      "companyName": "CG Power and Industrial Solutions Limited",
+      "subject": "Press Release",
+      "broadcastDate": "2026-10-23T09:24:40.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/CGPOWER_23102026145423_SEDisclosure_PressRelease.pdf",
+      "attachmentSize": "1.06 MB"
+    },
+    {
+      "id": "ann-106826279",
+      "symbol": "JSWSTEEL",
+      "companyName": "JSW Steel Limited",
+      "subject": "Outcome of Board Meeting",
+      "broadcastDate": "2026-10-23T09:23:31.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/jessydenny_23102026145014_Results.pdf",
+      "attachmentSize": "19.02 MB"
+    },
+    {
+      "id": "ann-106826278",
+      "symbol": "BAJFINANCE",
+      "companyName": "Bajaj Finance Limited",
+      "subject": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "broadcastDate": "2026-10-23T09:23:17.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/BAJFINANCE_23102026145254_BFL_Investor_Call_outcome_Transcript_for_filing.pdf",
+      "attachmentSize": "399.33 KB"
+    },
+    {
+      "id": "ann-106826253",
+      "symbol": "SHRIRAMFIN",
+      "companyName": "Shriram Finance Limited",
+      "subject": "Dividend",
+      "broadcastDate": "2026-10-23T09:07:24.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/Mathew_23102026143607_OutcomeofBoardMeetingOct23.pdf",
+      "attachmentSize": "13.67 MB"
+    },
+    {
+      "id": "ann-106826252",
+      "symbol": "SHRIRAMFIN",
+      "companyName": "Shriram Finance Limited",
+      "subject": "Outcome of Board Meeting",
+      "broadcastDate": "2026-10-23T09:07:24.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/Mathew_23102026143441_OutcomeofBoardMeetingOct23.pdf",
+      "attachmentSize": "13.67 MB"
+    },
+    {
+      "id": "ann-106826249",
+      "symbol": "ADANIPOWER",
+      "companyName": "Adani Power Limited",
+      "subject": "Outcome of Board Meeting",
+      "broadcastDate": "2026-10-23T09:06:10.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/ADANIPOWER_23102026143517_APLoutcomeBM23102026final.pdf",
+      "attachmentSize": "7.44 MB"
+    },
+    {
+      "id": "ann-106826247",
+      "symbol": "POLYCAB",
+      "companyName": "Polycab India Limited",
+      "subject": "General Updates",
+      "broadcastDate": "2026-10-23T09:04:30.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/POLYCAB_23102026143418_Intimationtostockexchange.pdf",
+      "attachmentSize": "257.08 KB"
+    },
+    {
+      "id": "ann-106826240",
+      "symbol": "CGPOWER",
+      "companyName": "CG Power and Industrial Solutions Limited",
+      "subject": "Outcome of Board Meeting",
+      "broadcastDate": "2026-10-23T09:00:47.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/CGPOWER_23102026143024_OutcomeoftheBoardMeeting23102026.pdf",
+      "attachmentSize": "16.78 MB"
+    },
+    {
+      "id": "ann-106826232",
+      "symbol": "CGPOWER",
+      "companyName": "CG Power and Industrial Solutions Limited",
+      "subject": "Change in Management",
+      "broadcastDate": "2026-10-23T08:58:41.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/CGPOWER_23102026142822_OutcomeoftheBoardMeeting23102026.pdf",
+      "attachmentSize": "16.78 MB"
+    },
+    {
+      "id": "ann-106826231",
+      "symbol": "CGPOWER",
+      "companyName": "CG Power and Industrial Solutions Limited",
+      "subject": "Capacity addition",
+      "broadcastDate": "2026-10-23T08:57:28.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/CGPOWER_23102026142708_OutcomeoftheBoardMeeting23102026.pdf",
+      "attachmentSize": "16.78 MB"
+    },
+    {
+      "id": "ann-106826227",
+      "symbol": "CGPOWER",
+      "companyName": "CG Power and Industrial Solutions Limited",
+      "subject": "Outcome of Board Meeting",
+      "broadcastDate": "2026-10-23T08:56:10.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/CGPOWER_23102026142554_OutcomeoftheBoardMeeting23102026.pdf",
+      "attachmentSize": "16.78 MB"
+    },
+    {
+      "id": "ann-106826173",
+      "symbol": "ONGC",
+      "companyName": "Oil & Natural Gas Corporation Limited",
+      "subject": "General Updates",
+      "broadcastDate": "2026-10-23T07:48:34.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/ONGC_23102026131801_ministryletterchairman.pdf",
+      "attachmentSize": "721.93 KB"
+    },
+    {
+      "id": "ann-106826065",
+      "symbol": "GODREJCP",
+      "companyName": "Godrej Consumer Products Limited",
+      "subject": "General Updates",
+      "broadcastDate": "2026-10-23T06:50:24.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/GODREJCP_23102026121930_SE_Intimation_for_Loss_of_Share_Certificate_Signed.pdf",
+      "attachmentSize": "1.07 MB"
+    },
+    {
+      "id": "ann-106826043",
+      "symbol": "SIEMENS",
+      "companyName": "Siemens Limited",
+      "subject": "Copy of Newspaper Publication",
+      "broadcastDate": "2026-10-23T06:34:22.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/SIEMENS57_23102026120411_SE_Disclosure.pdf",
+      "attachmentSize": "958.45 KB"
+    },
+    {
+      "id": "ann-106826010",
+      "symbol": "TECHM",
+      "companyName": "Tech Mahindra Limited",
+      "subject": "General Updates",
+      "broadcastDate": "2026-10-23T06:18:04.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/TECHM_23102026114750_Signed_SEIntimation_PostNewspaperAdvt_PostalBallot.pdf",
+      "attachmentSize": "3.33 MB"
+    },
+    {
+      "id": "ann-106825934",
+      "symbol": "JINDALSTEL",
+      "companyName": "JINDAL STEEL LIMITED",
+      "subject": "General Updates",
+      "broadcastDate": "2026-10-23T05:23:59.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/JINDALSTEL_23102026105145_stx_intimation_23102026.pdf",
+      "attachmentSize": "406.60 KB"
+    },
+    {
+      "id": "ann-106825922",
+      "symbol": "LTM",
+      "companyName": "LTM Limited",
+      "subject": "Press Release",
+      "broadcastDate": "2026-10-23T05:11:59.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/LTI_23102026103744_Stockexchangeintimationsigned.pdf",
+      "attachmentSize": "982.09 KB"
+    },
+    {
+      "id": "ann-106825743",
+      "symbol": "CIPLA",
+      "companyName": "Cipla Limited",
+      "subject": "General Updates",
+      "broadcastDate": "2026-10-23T03:33:45.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/CIPLA_23102026090259_SE_USFDA_Inspection_Hauppage_20261023_F.pdf",
+      "attachmentSize": "517.43 KB"
+    },
+    {
+      "id": "ann-106825704",
+      "symbol": "ADANIENSOL",
+      "companyName": "Adani Energy Solutions Limited",
+      "subject": "General Updates",
+      "broadcastDate": "2026-10-22T18:37:08.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/ADANITRANS_23102026000657_Presentation_-_H1.pdf",
+      "attachmentSize": "1.84 MB"
+    },
+    {
+      "id": "ann-106825634",
+      "symbol": "TVSMOTOR",
+      "companyName": "TVS Motor Company Limited",
+      "subject": "Shareholders meeting",
+      "broadcastDate": "2026-10-22T17:40:44.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/TVSMOTOR_22102026230230_TVSM_PBoutcome_sd.pdf",
+      "attachmentSize": "2.66 MB"
+    },
+    {
+      "id": "ann-106825525",
+      "symbol": "SBILIFE",
+      "companyName": "SBI Life Insurance Company Limited",
+      "subject": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "broadcastDate": "2026-10-22T16:46:49.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/SBILIFE_22102026221604_EC22102026_Signed.pdf",
+      "attachmentSize": "301.26 KB"
+    },
+    {
+      "id": "ann-106825493",
+      "symbol": "IDEA",
+      "companyName": "Vodafone Idea Limited",
+      "subject": "Shareholders meeting",
+      "broadcastDate": "2026-10-22T15:49:42.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/IDEA_22102026210849_SEIntimationPostalBallotVotingResultsScrutinizersreportsigned.pdf",
+      "attachmentSize": "1.48 MB"
+    },
+    {
+      "id": "ann-106825433",
+      "symbol": "INDIGO",
+      "companyName": "InterGlobe Aviation Limited",
+      "subject": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "broadcastDate": "2026-10-22T14:24:29.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/Indigo1_22102026195358_Board_Meeting_Intimation-Oct2026.pdf",
+      "attachmentSize": "301.67 KB"
+    },
+    {
+      "id": "ann-106825414",
+      "symbol": "ADANIENSOL",
+      "companyName": "Adani Energy Solutions Limited",
+      "subject": "Change in Management",
+      "broadcastDate": "2026-10-22T14:15:04.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/ADANITRANS_22102026194431_AESL_-_Change_in_SMPs.pdf",
+      "attachmentSize": "214.37 KB"
+    },
+    {
+      "id": "ann-106825396",
+      "symbol": "MOTHERSON",
+      "companyName": "Samvardhana Motherson International Limited",
+      "subject": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "broadcastDate": "2026-10-22T14:01:05.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/MOTHERSON_22102026193058_Investor_Call.pdf",
+      "attachmentSize": "705.86 KB"
+    },
+    {
+      "id": "ann-106825356",
+      "symbol": "CHOLAFIN",
+      "companyName": "Cholamandalam Investment and Finance Company Limited",
+      "subject": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "broadcastDate": "2026-10-22T13:38:11.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/lakshmits_22102026190022_Intimation_EarningsCall_Oct2026.pdf",
+      "attachmentSize": "279.42 KB"
+    },
+    {
+      "id": "ann-106825290",
+      "symbol": "DLF",
+      "companyName": "DLF Limited",
+      "subject": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "broadcastDate": "2026-10-22T13:09:26.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/DLF_22102026183910_Letter.pdf",
+      "attachmentSize": "3.33 MB"
+    },
+    {
+      "id": "ann-106825033",
+      "symbol": "HYUNDAI",
+      "companyName": "Hyundai Motor India Limited",
+      "subject": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "broadcastDate": "2026-10-22T11:35:31.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/HMILNSE_22102026165958_EARNINGCALL28102026.pdf",
+      "attachmentSize": "437.54 KB"
+    },
+    {
+      "id": "ann-106825022",
+      "symbol": "IRFC",
+      "companyName": "Indian Railway Finance Corporation Limited",
+      "subject": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "broadcastDate": "2026-10-22T11:33:06.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/IRFC_22102026165348_AnnouncementunderRegulation30EarningsCallTranscriptQ2FY202627.pdf",
+      "attachmentSize": "1.27 MB"
+    },
+    {
+      "id": "ann-106824971",
+      "symbol": "ICICIBANK",
+      "companyName": "ICICI Bank Limited",
+      "subject": "ESOP/ESOS/ESPS",
+      "broadcastDate": "2026-10-22T11:15:26.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/ICICIBANK1_22102026164514_Lettertoexchange.pdf",
+      "attachmentSize": "435.96 KB"
+    },
+    {
+      "id": "ann-106824967",
+      "symbol": "VAML",
+      "companyName": "Vedanta Aluminium Metal Limited",
+      "subject": "Trading Window",
+      "broadcastDate": "2026-10-22T11:10:46.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/VAML_22102026163804_VAMLPriorIntimationofBoardMeetingSeptember302026signed.pdf",
+      "attachmentSize": "273.58 KB"
+    },
+    {
+      "id": "ann-106824968",
+      "symbol": "VAML",
+      "companyName": "Vedanta Aluminium Metal Limited",
+      "subject": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "broadcastDate": "2026-10-22T11:10:46.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/VAML_22102026163942_VAMLPriorIntimationofBoardMeetingSeptember302026signed.pdf",
+      "attachmentSize": "273.58 KB"
+    },
+    {
+      "id": "ann-106824933",
+      "symbol": "TECHM",
+      "companyName": "Tech Mahindra Limited",
+      "subject": "Shareholders meeting",
+      "broadcastDate": "2026-10-22T11:02:19.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/Apekshakhemka_22102026163120_PostalBallotnotice_Intimation_S.pdf",
+      "attachmentSize": "601.11 KB"
+    },
+    {
+      "id": "ann-106824876",
+      "symbol": "ADANIGREEN",
+      "companyName": "Adani Green Energy Limited",
+      "subject": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "broadcastDate": "2026-10-22T10:37:20.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/ADANIGREEN_22102026160043_Letter.pdf",
+      "attachmentSize": "195.86 KB"
+    },
+    {
+      "id": "ann-106824809",
+      "symbol": "JIOFIN",
+      "companyName": "Jio Financial Services Limited",
+      "subject": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "broadcastDate": "2026-10-22T10:08:34.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/JIOFINANCIAL_22102026153806_Transcript_of_Presentation_on_Unaudited_Financial_Results_Q2_2026-27.pdf",
+      "attachmentSize": "696.98 KB"
+    },
+    {
+      "id": "ann-106824806",
+      "symbol": "ADANIENSOL",
+      "companyName": "Adani Energy Solutions Limited",
+      "subject": "Press Release",
+      "broadcastDate": "2026-10-22T10:07:04.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/ADANITRANS_22102026153655_AESL_Q2_FY27_Earnings_Press_release_vF.pdf",
+      "attachmentSize": "412.22 KB"
+    },
+    {
+      "id": "ann-106824791",
+      "symbol": "VEDL",
+      "companyName": "Vedanta Limited",
+      "subject": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "broadcastDate": "2026-10-22T09:56:17.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/VEDL_22102026152535_VEDLPriorIntimationofBoardMeetingsigned.pdf",
+      "attachmentSize": "316.84 KB"
+    },
+    {
+      "id": "ann-106824792",
+      "symbol": "VEDL",
+      "companyName": "Vedanta Limited",
+      "subject": "Trading Window",
+      "broadcastDate": "2026-10-22T09:56:17.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/VEDL_22102026152603_VEDLPriorIntimationofBoardMeetingsigned.pdf",
+      "attachmentSize": "316.84 KB"
+    },
+    {
+      "id": "ann-106824764",
+      "symbol": "ADANIPORTS",
+      "companyName": "Adani Ports and Special Economic Zone Limited",
+      "subject": "General Updates",
+      "broadcastDate": "2026-10-22T09:40:58.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/rkbhagia_22102026151039_SEIntimation_Oman.pdf",
+      "attachmentSize": "439.02 KB"
+    },
+    {
+      "id": "ann-106824761",
+      "symbol": "HDFCAMC",
+      "companyName": "HDFC Asset Management Company Limited",
+      "subject": "ESOP/ESOS/ESPS",
+      "broadcastDate": "2026-10-22T09:40:03.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/DEEPTI_22102026150825_NSEBSE_Cover_Letter.pdf",
+      "attachmentSize": "524.95 KB"
+    },
+    {
+      "id": "ann-106824728",
+      "symbol": "ADANIENSOL",
+      "companyName": "Adani Energy Solutions Limited",
+      "subject": "Outcome of Board Meeting",
+      "broadcastDate": "2026-10-22T09:17:54.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/ADANITRANS_22102026144617_UFR_FINAL.pdf",
+      "attachmentSize": "14.61 MB"
+    },
+    {
+      "id": "ann-106824710",
+      "symbol": "ULTRACEMCO",
+      "companyName": "UltraTech Cement Limited",
+      "subject": "Copy of Newspaper Publication",
+      "broadcastDate": "2026-10-22T09:02:54.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/ULTRACEMCO_22102026143236_SEIntimation22102026.pdf",
+      "attachmentSize": "892.41 KB"
+    },
+    {
+      "id": "ann-106824670",
+      "symbol": "HDFCBANK",
+      "companyName": "HDFC Bank Limited",
+      "subject": "ESOP/ESOS/ESPS",
+      "broadcastDate": "2026-10-22T08:27:50.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/HDFCBANK_22102026135701_SELetterESOP22102026.pdf",
+      "attachmentSize": "285.79 KB"
+    },
+    {
+      "id": "ann-106824618",
+      "symbol": "HAL",
+      "companyName": "Hindustan Aeronautics Limited",
+      "subject": "Updates",
+      "broadcastDate": "2026-10-22T07:40:54.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/HAL_22102026131032_GeneralUpdates22102026.pdf",
+      "attachmentSize": "219.82 KB"
+    },
+    {
+      "id": "ann-106824500",
+      "symbol": "LTM",
+      "companyName": "LTM Limited",
+      "subject": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "broadcastDate": "2026-10-22T06:26:41.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/LTI_22102026115536_Stockexchangesigned_1.pdf",
+      "attachmentSize": "1.26 MB"
+    },
+    {
+      "id": "ann-106824495",
+      "symbol": "HDFCBANK",
+      "companyName": "HDFC Bank Limited",
+      "subject": "Copy of Newspaper Publication",
+      "broadcastDate": "2026-10-22T06:25:18.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/HDFCBANK3_22102026115451_PB_adv_22102026.pdf",
+      "attachmentSize": "5.47 MB"
+    },
+    {
+      "id": "ann-106824439",
+      "symbol": "PFC",
+      "companyName": "Power Finance Corporation Limited",
+      "subject": "General Updates",
+      "broadcastDate": "2026-10-22T05:44:16.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/PFC2023_22102026111403_Intimation22102026Signed.pdf",
+      "attachmentSize": "343.04 KB"
+    },
+    {
+      "id": "ann-106824432",
+      "symbol": "BSE",
+      "companyName": "BSE Limited",
+      "subject": "Copy of Newspaper Publication",
+      "broadcastDate": "2026-10-22T05:41:54.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/BSE1_22102026111144_NSEIntimation.pdf",
+      "attachmentSize": "6.40 MB"
+    },
+    {
+      "id": "ann-106824041",
+      "symbol": "M&M",
+      "companyName": "Mahindra & Mahindra Limited",
+      "subject": "Updates",
+      "broadcastDate": "2026-10-21T17:38:46.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/Deepak_21102026230741_Employeeslist21102026.pdf",
+      "attachmentSize": "895.62 KB"
+    },
+    {
+      "id": "ann-106823997",
+      "symbol": "RELIANCE",
+      "companyName": "Reliance Industries Limited",
+      "subject": "Updates",
+      "broadcastDate": "2026-10-21T17:14:39.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/kavinavora_21102026224413_SE_21102026.pdf",
+      "attachmentSize": "411.70 KB"
+    },
+    {
+      "id": "ann-106823950",
+      "symbol": "TECHM",
+      "companyName": "Tech Mahindra Limited",
+      "subject": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "broadcastDate": "2026-10-21T15:28:18.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/Apekshakhemka_21102026205758_SeItimationtranscript_S.pdf",
+      "attachmentSize": "547.51 KB"
+    },
+    {
+      "id": "ann-106823937",
+      "symbol": "RELIANCE",
+      "companyName": "Reliance Industries Limited",
+      "subject": "Credit Rating",
+      "broadcastDate": "2026-10-21T15:13:30.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/PVIVINMA_21102026204310_SE_ICRA.pdf",
+      "attachmentSize": "679.18 KB"
+    },
+    {
+      "id": "ann-106823888",
+      "symbol": "NESTLEIND",
+      "companyName": "Nestle India Limited",
+      "subject": "Change in Management",
+      "broadcastDate": "2026-10-21T14:06:53.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/NESTLEIND1_21102026193438_CommunicationChangeinSMPssigned.pdf",
+      "attachmentSize": "203.26 KB"
+    },
+    {
+      "id": "ann-106823852",
+      "symbol": "AXISBANK",
+      "companyName": "Axis Bank Limited",
+      "subject": "ESOP/ESOS/ESPS",
+      "broadcastDate": "2026-10-21T13:43:06.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/Kapil_21102026191242_SE21102026.pdf",
+      "attachmentSize": "242.13 KB"
+    },
+    {
+      "id": "ann-106823771",
+      "symbol": "ZYDUSLIFE",
+      "companyName": "Zydus Lifesciences Limited",
+      "subject": "Press Release",
+      "broadcastDate": "2026-10-21T12:57:15.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/Cadilahc_21102026182006_PressRelease211020261.pdf",
+      "attachmentSize": "867.29 KB"
+    },
+    {
+      "id": "ann-106823745",
+      "symbol": "BEL",
+      "companyName": "Bharat Electronics Limited",
+      "subject": "Press Release",
+      "broadcastDate": "2026-10-21T12:46:04.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/BEL_21102026181543_Press_release_21102026.pdf",
+      "attachmentSize": "1.16 MB"
+    },
+    {
+      "id": "ann-106823642",
+      "symbol": "ETERNAL",
+      "companyName": "ETERNAL LIMITED",
+      "subject": "Monitoring Agency Report",
+      "broadcastDate": "2026-10-21T12:05:22.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/ZOMATO_21102026173358_SignedMALletter.pdf",
+      "attachmentSize": "1.16 MB"
+    },
+    {
+      "id": "ann-106823503",
+      "symbol": "HINDUNILVR",
+      "companyName": "Hindustan Unilever Limited",
+      "subject": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "broadcastDate": "2026-10-21T11:06:15.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/HINDUNILVR_21102026163513_SEIntimationEarningscallsigned.pdf",
+      "attachmentSize": "200.58 KB"
+    },
+    {
+      "id": "ann-106823455",
+      "symbol": "TVSMOTOR",
+      "companyName": "TVS Motor Company Limited",
+      "subject": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "broadcastDate": "2026-10-21T10:35:18.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/TVSMOTOR_21102026160043_AnalystMeetIntimation_sd.pdf",
+      "attachmentSize": "322.51 KB"
+    },
+    {
+      "id": "ann-106823450",
+      "symbol": "SHRIRAMFIN",
+      "companyName": "Shriram Finance Limited",
+      "subject": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "broadcastDate": "2026-10-21T10:31:40.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/Mathew_21102026160114_BSENSE_AnalystMeet_23102026.pdf",
+      "attachmentSize": "341.36 KB"
+    },
+    {
+      "id": "ann-106823442",
+      "symbol": "TMCV",
+      "companyName": "Tata Motors Limited",
+      "subject": "General Updates",
+      "broadcastDate": "2026-10-21T10:30:51.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/TMLCOMMERCIAL_21102026160034_NSEESGRATING_NSE.pdf",
+      "attachmentSize": "286.78 KB"
+    },
+    {
+      "id": "ann-106823400",
+      "symbol": "MARUTI",
+      "companyName": "Maruti Suzuki India Limited",
+      "subject": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "broadcastDate": "2026-10-21T10:09:05.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/MARUTIASHISH_21102026153744_STxIntimation_EarningsCall_27Oct2026.pdf",
+      "attachmentSize": "1.41 MB"
+    },
+    {
+      "id": "ann-106823393",
+      "symbol": "ETERNAL",
+      "companyName": "ETERNAL LIMITED",
+      "subject": "Sale or disposal",
+      "broadcastDate": "2026-10-21T10:03:41.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/ZOMATO_21102026153325_OutcomeSIGNED.pdf",
+      "attachmentSize": "3.78 MB"
+    },
+    {
+      "id": "ann-106823380",
+      "symbol": "ETERNAL",
+      "companyName": "ETERNAL LIMITED",
+      "subject": "General Updates",
+      "broadcastDate": "2026-10-21T09:55:20.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/ZOMATO_21102026152512_SHLsigned.pdf",
+      "attachmentSize": "12.02 MB"
+    },
+    {
+      "id": "ann-106823374",
+      "symbol": "ETERNAL",
+      "companyName": "ETERNAL LIMITED",
+      "subject": "Outcome of Board Meeting",
+      "broadcastDate": "2026-10-21T09:52:31.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/ZOMATO_21102026152051_OutcomeSIGNED.pdf",
+      "attachmentSize": "3.78 MB"
+    },
+    {
+      "id": "ann-106823370",
+      "symbol": "HCLTECH",
+      "companyName": "HCL Technologies Limited",
+      "subject": "Updates",
+      "broadcastDate": "2026-10-21T09:49:24.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/HCLTECH_21102026151907_Release21October2026.pdf",
+      "attachmentSize": "263.78 KB"
+    },
+    {
+      "id": "ann-106823346",
+      "symbol": "SHRIRAMFIN",
+      "companyName": "Shriram Finance Limited",
+      "subject": "Certificate under SEBI (Depositories and Participants) Regulations, 2018",
+      "broadcastDate": "2026-10-21T09:38:06.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/Mathew_21102026150553_BSENSE_21102026_74-5_Upload.pdf",
+      "attachmentSize": "668.90 KB"
+    },
+    {
+      "id": "ann-106823316",
+      "symbol": "GRASIM",
+      "companyName": "Grasim Industries Limited",
+      "subject": "Commencement of commercial production/operations",
+      "broadcastDate": "2026-10-21T09:21:59.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/GRASIM_21102026145138_SEIntimationCommencement.pdf",
+      "attachmentSize": "184.24 KB"
+    },
+    {
+      "id": "ann-106823291",
+      "symbol": "ADANIGREEN",
+      "companyName": "Adani Green Energy Limited",
+      "subject": "Updates",
+      "broadcastDate": "2026-10-21T09:03:05.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/ADANIGREEN_21102026143042_OutcomeBM21102026presentation.pdf",
+      "attachmentSize": "3.56 MB"
+    },
+    {
+      "id": "ann-106823276",
+      "symbol": "ADANIGREEN",
+      "companyName": "Adani Green Energy Limited",
+      "subject": "Outcome of Board Meeting",
+      "broadcastDate": "2026-10-21T08:52:27.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/ADANIGREEN_21102026142038_OutcomeBM21102026.pdf",
+      "attachmentSize": "13.46 MB"
+    },
+    {
+      "id": "ann-106823240",
+      "symbol": "BSE",
+      "companyName": "BSE Limited",
+      "subject": "General Updates",
+      "broadcastDate": "2026-10-21T07:38:07.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/BSE1_21102026130745_NSEintimation.pdf",
+      "attachmentSize": "800.27 KB"
+    },
+    {
+      "id": "ann-106823197",
+      "symbol": "BAJFINANCE",
+      "companyName": "Bajaj Finance Limited",
+      "subject": "Allotment of Securities",
+      "broadcastDate": "2026-10-21T06:59:52.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/BAJFINANCE_21102026122914_REG30_Allotment_intimation.pdf",
+      "attachmentSize": "243.94 KB"
+    },
+    {
+      "id": "ann-106823178",
+      "symbol": "HDFCAMC",
+      "companyName": "HDFC Asset Management Company Limited",
+      "subject": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "broadcastDate": "2026-10-21T06:47:53.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/DEEPTI_21102026121612_NSEBSE_Transcript.pdf",
+      "attachmentSize": "957.00 KB"
+    },
+    {
+      "id": "ann-106823131",
+      "symbol": "HDFCBANK",
+      "companyName": "HDFC Bank Limited",
+      "subject": "Shareholders meeting",
+      "broadcastDate": "2026-10-21T06:22:36.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/HDFCBANK3_21102026115151_SEIntimationPostalBallotNoticeOct2026.pdf",
+      "attachmentSize": "573.38 KB"
+    },
+    {
+      "id": "ann-106823056",
+      "symbol": "ZYDUSLIFE",
+      "companyName": "Zydus Lifesciences Limited",
+      "subject": "Press Release",
+      "broadcastDate": "2026-10-21T05:39:22.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/Cadilahc_21102026110803_PressRelease21102026.pdf",
+      "attachmentSize": "1.16 MB"
+    },
+    {
+      "id": "ann-106823044",
+      "symbol": "LTM",
+      "companyName": "LTM Limited",
+      "subject": "Press Release",
+      "broadcastDate": "2026-10-21T05:17:15.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/LTI_21102026104657_StockexchangeSigned.pdf",
+      "attachmentSize": "1.20 MB"
+    },
+    {
+      "id": "ann-106822983",
+      "symbol": "LT",
+      "companyName": "Larsen & Toubro Limited",
+      "subject": "Bagging/Receiving of orders/contracts",
+      "broadcastDate": "2026-10-21T04:16:52.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/PAM_21102026094637_PressRelease21102026.pdf",
+      "attachmentSize": "3.23 MB"
+    },
+    {
+      "id": "ann-106822981",
+      "symbol": "DRREDDY",
+      "companyName": "Dr. Reddy's Laboratories Limited",
+      "subject": "Press Release",
+      "broadcastDate": "2026-10-21T04:14:09.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/DRREDDY_21102026094355_DRL_SE_intimation_Press_release_21102026_signed.pdf",
+      "attachmentSize": "400.13 KB"
+    },
+    {
+      "id": "ann-106822872",
+      "symbol": "SBIN",
+      "companyName": "State Bank of India",
+      "subject": "General Updates",
+      "broadcastDate": "2026-10-21T03:21:09.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/SBIN_21102026084938_BSE_NSE_21102026.pdf",
+      "attachmentSize": "267.23 KB"
+    },
+    {
+      "id": "ann-106822854",
+      "symbol": "BPCL",
+      "companyName": "Bharat Petroleum Corporation Limited",
+      "subject": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "broadcastDate": "2026-10-20T15:30:09.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/BPCL26_20102026205949_stexconcall201026s.pdf",
+      "attachmentSize": "882.36 KB"
+    },
+    {
+      "id": "ann-106822819",
+      "symbol": "TVSMOTOR",
+      "companyName": "TVS Motor Company Limited",
+      "subject": "Credit Rating",
+      "broadcastDate": "2026-10-20T13:38:54.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/TVSMOTOR_20102026190843_NSEBSEIntimation_sgd.pdf",
+      "attachmentSize": "690.91 KB"
+    },
+    {
+      "id": "ann-106822810",
+      "symbol": "NTPC",
+      "companyName": "NTPC Limited",
+      "subject": "Updates",
+      "broadcastDate": "2026-10-20T13:06:10.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/NTPC_20102026183417_20261020_NEWSCLARIFICATION_STEX.pdf",
+      "attachmentSize": "734.00 KB"
+    },
+    {
+      "id": "ann-106822794",
+      "symbol": "HINDZINC",
+      "companyName": "Hindustan Zinc Limited",
+      "subject": "Copy of Newspaper Publication",
+      "broadcastDate": "2026-10-20T12:11:23.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/HINDZINCNSE_20102026174101_SEIntimation20102026.pdf",
+      "attachmentSize": "1.48 MB"
+    },
+    {
+      "id": "ann-106822793",
+      "symbol": "SUNPHARMA",
+      "companyName": "Sun Pharmaceutical Industries Limited",
+      "subject": "Press Release",
+      "broadcastDate": "2026-10-20T12:05:31.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/SUNSEC_20102026173321_SE_Intimation_of_Press_Release_on_NCCN_Gudelines_Update.pdf",
+      "attachmentSize": "407.36 KB"
+    },
+    {
+      "id": "ann-106822742",
+      "symbol": "ULTRACEMCO",
+      "companyName": "UltraTech Cement Limited",
+      "subject": "Copy of Newspaper Publication",
+      "broadcastDate": "2026-10-20T08:56:30.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/ULTRACEMCO1_20102026142616_Newspaper_Publication.pdf",
+      "attachmentSize": "10.43 MB"
+    },
+    {
+      "id": "ann-106822718",
+      "symbol": "VEDL",
+      "companyName": "Vedanta Limited",
+      "subject": "Updates",
+      "broadcastDate": "2026-10-20T07:03:30.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/VEDL_20102026123223_VEDLSEIntimationReg30_9_HZLResultsQ2FY2027signed.pdf",
+      "attachmentSize": "12.48 MB"
+    },
+    {
+      "id": "ann-106822486",
+      "symbol": "PFC",
+      "companyName": "Power Finance Corporation Limited",
+      "subject": "Amalgamation/Merger",
+      "broadcastDate": "2026-10-19T17:08:22.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/PFC2023_19102026223732_IntimationNoCNSEBSE19102026signed.pdf",
+      "attachmentSize": "2.96 MB"
+    },
+    {
+      "id": "ann-106822468",
+      "symbol": "MAXHEALTH",
+      "companyName": "Max Healthcare Institute Limited",
+      "subject": "General Updates",
+      "broadcastDate": "2026-10-19T16:25:45.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/MAXHEALTH_19102026215500_SE_Disclosure__PRSU_Alteration_of_MOA.pdf",
+      "attachmentSize": "360.47 KB"
+    },
+    {
+      "id": "ann-106822463",
+      "symbol": "MAXHEALTH",
+      "companyName": "Max Healthcare Institute Limited",
+      "subject": "Shareholders meeting",
+      "broadcastDate": "2026-10-19T16:19:13.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/MAXHEALTH_19102026214552_SE_Disclosure.pdf",
+      "attachmentSize": "1.19 MB"
+    },
+    {
+      "id": "ann-106822444",
+      "symbol": "BAJFINANCE",
+      "companyName": "Bajaj Finance Limited",
+      "subject": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "broadcastDate": "2026-10-19T15:30:04.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/BAJFINANCE_19102026205822_Outcome_of_investor_call_-_Q2FY27.pdf",
+      "attachmentSize": "233.04 KB"
+    },
+    {
+      "id": "ann-106822342",
+      "symbol": "TATACONSUM",
+      "companyName": "TATA CONSUMER PRODUCTS LIMITED",
+      "subject": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "broadcastDate": "2026-10-19T13:45:57.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/Sukhvinder_19102026191546_TCPL_Earning_Call_Intimation.pdf",
+      "attachmentSize": "432.33 KB"
+    },
+    {
+      "id": "ann-106822305",
+      "symbol": "TATACAP",
+      "companyName": "Tata Capital Limited",
+      "subject": "General Updates",
+      "broadcastDate": "2026-10-19T13:25:08.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/TATACAPITAL_19102026185454_SEIntimationEarningSCallOctober272026signed.pdf",
+      "attachmentSize": "322.95 KB"
+    },
+    {
+      "id": "ann-106822304",
+      "symbol": "TATACAP",
+      "companyName": "Tata Capital Limited",
+      "subject": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "broadcastDate": "2026-10-19T13:23:31.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/TATACAPITAL_19102026185315_SEIntimationEarningSCallOctober272026signed.pdf",
+      "attachmentSize": "322.95 KB"
+    },
+    {
+      "id": "ann-106822299",
+      "symbol": "KOTAKBANK",
+      "companyName": "Kotak Mahindra Bank Limited",
+      "subject": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "broadcastDate": "2026-10-19T13:20:15.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/KMBLTAB_19102026182736_Earnings_call_intimation_-_Q2FY27.pdf",
+      "attachmentSize": "3.15 MB"
+    },
+    {
+      "id": "ann-106822280",
+      "symbol": "ULTRACEMCO",
+      "companyName": "UltraTech Cement Limited",
+      "subject": "Options to purchase securities",
+      "broadcastDate": "2026-10-19T13:08:20.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/ULTRACEMCO_19102026183754_SEGrant19102026.pdf",
+      "attachmentSize": "208.90 KB"
+    },
+    {
+      "id": "ann-106822263",
+      "symbol": "ULTRACEMCO",
+      "companyName": "UltraTech Cement Limited",
+      "subject": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "broadcastDate": "2026-10-19T12:57:30.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/ULTRACEMCO1_19102026182721_Covering_Letter_-_Earnings_call_-_audio.pdf",
+      "attachmentSize": "242.66 KB"
+    },
+    {
+      "id": "ann-106822209",
+      "symbol": "BAJFINANCE",
+      "companyName": "Bajaj Finance Limited",
+      "subject": "Change in Management",
+      "broadcastDate": "2026-10-19T12:27:20.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/BAJFINANCE_19102026175648_Change_in_SMT_Prashant_Verma_CISO_signed.pdf",
+      "attachmentSize": "246.41 KB"
+    },
+    {
+      "id": "ann-106822208",
+      "symbol": "BAJFINANCE",
+      "companyName": "Bajaj Finance Limited",
+      "subject": "Issue of Securities",
+      "broadcastDate": "2026-10-19T12:27:20.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/BAJFINANCE_19102026175355_Issue_of_Securities_19102026.pdf",
+      "attachmentSize": "224.68 KB"
+    },
+    {
+      "id": "ann-106822201",
+      "symbol": "UNIONBANK",
+      "companyName": "Union Bank of India",
+      "subject": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "broadcastDate": "2026-10-19T12:20:01.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/UNIONBANK_19102026174905_Audiorecording_Analyst_Meet_19102026_NSE_BSE.pdf",
+      "attachmentSize": "318.42 KB"
+    },
+    {
+      "id": "ann-106822154",
+      "symbol": "ULTRACEMCO",
+      "companyName": "UltraTech Cement Limited",
+      "subject": "Rumour Verification - Regulation 30(11)",
+      "broadcastDate": "2026-10-19T12:08:09.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/ULTRACEMCO_19102026173746_MPM19102026.pdf",
+      "attachmentSize": "306.89 KB"
+    },
+    {
+      "id": "ann-106822137",
+      "symbol": "BAJFINANCE",
+      "companyName": "Bajaj Finance Limited",
+      "subject": "Investor Presentation",
+      "broadcastDate": "2026-10-19T11:56:39.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/BAJFINANCE_19102026172612_SEIntimation_InvestorPPT_19102026.pdf",
+      "attachmentSize": "979.72 KB"
+    },
+    {
+      "id": "ann-106822132",
+      "symbol": "TRENT",
+      "companyName": "Trent Limited",
+      "subject": "Resignation of Director/KMP/SMP",
+      "broadcastDate": "2026-10-19T11:55:08.000Z",
+      "hasPdf": false,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/TRENT_ROID_100856_KMP_Doc.zip",
+      "attachmentSize": "3.56 MB"
+    },
+    {
+      "id": "ann-106822125",
+      "symbol": "BAJFINANCE",
+      "companyName": "Bajaj Finance Limited",
+      "subject": "Outcome of Board Meeting",
+      "broadcastDate": "2026-10-19T11:50:38.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/BAJFINANCE_19102026172017_BMOutcome_19102026.pdf",
+      "attachmentSize": "18.40 MB"
+    },
+    {
+      "id": "ann-106822066",
+      "symbol": "AXISBANK",
+      "companyName": "Axis Bank Limited",
+      "subject": "Copy of Newspaper Publication",
+      "broadcastDate": "2026-10-19T11:22:48.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/AXISBANK1_19102026165204_Newspaper_PublicationSigned.pdf",
+      "attachmentSize": "605.96 KB"
+    },
+    {
+      "id": "ann-106822047",
+      "symbol": "POLYCAB",
+      "companyName": "Polycab India Limited",
+      "subject": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "broadcastDate": "2026-10-19T11:09:28.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/POLYCAB_19102026163912_Intimation_of_Earnings_Call_Transcript.pdf",
+      "attachmentSize": "493.10 KB"
+    },
+    {
+      "id": "ann-106822031",
+      "symbol": "POLYCAB",
+      "companyName": "Polycab India Limited",
+      "subject": "General Updates",
+      "broadcastDate": "2026-10-19T10:53:29.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/POLYCAB_19102026162313_Intimationtostockexchange.pdf",
+      "attachmentSize": "264.70 KB"
+    },
+    {
+      "id": "ann-106822030",
+      "symbol": "BAJAJFINSV",
+      "companyName": "Bajaj Finserv Limited",
+      "subject": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "broadcastDate": "2026-10-19T10:52:58.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/walimbelk_19102026162219_Intimation.pdf",
+      "attachmentSize": "3.20 MB"
+    },
+    {
+      "id": "ann-106822022",
+      "symbol": "NTPC",
+      "companyName": "NTPC Limited",
+      "subject": "General Updates",
+      "broadcastDate": "2026-10-19T10:49:47.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/NTPC_19102026161940_20261019_STEX_APPOINTMENTOFGOINOMINEE.pdf",
+      "attachmentSize": "754.80 KB"
+    },
+    {
+      "id": "ann-106822014",
+      "symbol": "ULTRACEMCO",
+      "companyName": "UltraTech Cement Limited",
+      "subject": "Resignation of Director/KMP/SMP",
+      "broadcastDate": "2026-10-19T10:44:32.000Z",
+      "hasPdf": false,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/ULTRACEMCO_ROID_100834_KMP_Doc.zip",
+      "attachmentSize": "629.47 KB"
+    },
+    {
+      "id": "ann-106822009",
+      "symbol": "TITAN",
+      "companyName": "Titan Company Limited",
+      "subject": "General Updates",
+      "broadcastDate": "2026-10-19T10:41:44.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/TITAN_19102026161128_SECPRedemption16102026.pdf",
+      "attachmentSize": "174.17 KB"
+    },
+    {
+      "id": "ann-106822003",
+      "symbol": "ULTRACEMCO",
+      "companyName": "UltraTech Cement Limited",
+      "subject": "Resignation of Director/KMP/SMP",
+      "broadcastDate": "2026-10-19T10:37:59.000Z",
+      "hasPdf": false,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/ULTRACEMCO_ROID_100832_KMP_Doc.zip",
+      "attachmentSize": "629.50 KB"
+    },
+    {
+      "id": "ann-106821961",
+      "symbol": "HINDZINC",
+      "companyName": "Hindustan Zinc Limited",
+      "subject": "Investor Presentation",
+      "broadcastDate": "2026-10-19T10:16:50.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/HINDZINCNSE_19102026154642_SEintimationinvestorpresentation.pdf",
+      "attachmentSize": "13.22 MB"
+    },
+    {
+      "id": "ann-106821953",
+      "symbol": "HINDZINC",
+      "companyName": "Hindustan Zinc Limited",
+      "subject": "Press Release",
+      "broadcastDate": "2026-10-19T10:15:16.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/HINDZINCNSE_19102026154508_SEintimationpressrelease.pdf",
+      "attachmentSize": "820.60 KB"
+    },
+    {
+      "id": "ann-106821945",
+      "symbol": "INFY",
+      "companyName": "Infosys Limited",
+      "subject": "Updates",
+      "broadcastDate": "2026-10-19T10:10:54.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/Infosys_19102026154028_PR_19102026.pdf",
+      "attachmentSize": "3.31 MB"
+    },
+    {
+      "id": "ann-106821932",
+      "symbol": "INFY",
+      "companyName": "Infosys Limited",
+      "subject": "Updates",
+      "broadcastDate": "2026-10-19T10:04:02.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/Infosys_19102026153335_PR_19102026_2.pdf",
+      "attachmentSize": "3.33 MB"
+    },
+    {
+      "id": "ann-106821930",
+      "symbol": "HINDZINC",
+      "companyName": "Hindustan Zinc Limited",
+      "subject": "Outcome of Board Meeting",
+      "broadcastDate": "2026-10-19T10:03:40.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/HINDZINCNSE_19102026153330_Finaloutcome.pdf",
+      "attachmentSize": "1.13 MB"
+    },
+    {
+      "id": "ann-106821853",
+      "symbol": "ULTRACEMCO",
+      "companyName": "UltraTech Cement Limited",
+      "subject": "Giving guarantees/indemnity/ becoming a surety for third party",
+      "broadcastDate": "2026-10-19T08:41:53.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/ULTRACEMCO1_19102026141143_Outcome_of_BM_-_Corporate_Guarantee.pdf",
+      "attachmentSize": "343.21 KB"
+    },
+    {
+      "id": "ann-106821851",
+      "symbol": "ULTRACEMCO",
+      "companyName": "UltraTech Cement Limited",
+      "subject": "Investor Presentation",
+      "broadcastDate": "2026-10-19T08:40:01.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/ULTRACEMCO1_19102026140953_SEinvestorpresentation.pdf",
+      "attachmentSize": "15.52 MB"
+    },
+    {
+      "id": "ann-106821846",
+      "symbol": "ULTRACEMCO",
+      "companyName": "UltraTech Cement Limited",
+      "subject": "Press Release",
+      "broadcastDate": "2026-10-19T08:38:28.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/ULTRACEMCO1_19102026140819_Outcome_of_BM_-_Financial_Results.pdf",
+      "attachmentSize": "7.72 MB"
+    },
+    {
+      "id": "ann-106821839",
+      "symbol": "ULTRACEMCO",
+      "companyName": "UltraTech Cement Limited",
+      "subject": "Change in Director(s)",
+      "broadcastDate": "2026-10-19T08:26:39.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/ULTRACEMCO1_19102026135628_SE_Intimation_Change_in_board_composition.pdf",
+      "attachmentSize": "716.74 KB"
+    },
+    {
+      "id": "ann-106821838",
+      "symbol": "ULTRACEMCO",
+      "companyName": "UltraTech Cement Limited",
+      "subject": "Giving guarantees/indemnity/ becoming a surety for third party",
+      "broadcastDate": "2026-10-19T08:24:56.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/ULTRACEMCO1_19102026135435_Outcome_of_BM_-_Corporate_Guarantee.pdf",
+      "attachmentSize": "343.21 KB"
+    },
+    {
+      "id": "ann-106821837",
+      "symbol": "ULTRACEMCO",
+      "companyName": "UltraTech Cement Limited",
+      "subject": "Outcome of Board Meeting",
+      "broadcastDate": "2026-10-19T08:23:48.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/ULTRACEMCO1_19102026135333_Outcome_of_BM_-_Corporate_Guarantee.pdf",
+      "attachmentSize": "343.21 KB"
+    },
+    {
+      "id": "ann-106821835",
+      "symbol": "ULTRACEMCO",
+      "companyName": "UltraTech Cement Limited",
+      "subject": "Outcome of Board Meeting",
+      "broadcastDate": "2026-10-19T08:22:33.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/ULTRACEMCO1_19102026135143_SE_Intimation_Change_in_board_composition.pdf",
+      "attachmentSize": "716.74 KB"
+    },
+    {
+      "id": "ann-106821834",
+      "symbol": "ULTRACEMCO",
+      "companyName": "UltraTech Cement Limited",
+      "subject": "Resignation",
+      "broadcastDate": "2026-10-19T08:20:27.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/ULTRACEMCO1_19102026135017_SE_Intimation_Change_in_board_composition.pdf",
+      "attachmentSize": "716.74 KB"
+    },
+    {
+      "id": "ann-106821833",
+      "symbol": "ULTRACEMCO",
+      "companyName": "UltraTech Cement Limited",
+      "subject": "Press Release",
+      "broadcastDate": "2026-10-19T08:18:04.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/ULTRACEMCO1_19102026134753_Outcome_of_BM_-_Financial_Results.pdf",
+      "attachmentSize": "7.72 MB"
+    },
+    {
+      "id": "ann-106821830",
+      "symbol": "ULTRACEMCO",
+      "companyName": "UltraTech Cement Limited",
+      "subject": "Outcome of Board Meeting",
+      "broadcastDate": "2026-10-19T08:15:47.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/ULTRACEMCO1_19102026134508_Outcome_of_BM_-_Financial_Results.pdf",
+      "attachmentSize": "7.72 MB"
+    },
+    {
+      "id": "ann-106821813",
+      "symbol": "JINDALSTEL",
+      "companyName": "JINDAL STEEL LIMITED",
+      "subject": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "broadcastDate": "2026-10-19T07:58:34.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/JINDALSTEL_19102026132744_Binder1.pdf",
+      "attachmentSize": "474.41 KB"
+    },
+    {
+      "id": "ann-106821799",
+      "symbol": "ADANIPOWER",
+      "companyName": "Adani Power Limited",
+      "subject": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "broadcastDate": "2026-10-19T07:33:27.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/ADANIPOWER_19102026130319_APLEarningsCallInvite19102026.pdf",
+      "attachmentSize": "694.72 KB"
+    },
+    {
+      "id": "ann-106821771",
+      "symbol": "UNIONBANK",
+      "companyName": "Union Bank of India",
+      "subject": "Investor Presentation",
+      "broadcastDate": "2026-10-19T06:59:43.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/UNIONBANK_19102026122926_Presentation_Sept2026.pdf",
+      "attachmentSize": "4.49 MB"
+    },
+    {
+      "id": "ann-106821770",
+      "symbol": "UNIONBANK",
+      "companyName": "Union Bank of India",
+      "subject": "Press Release",
+      "broadcastDate": "2026-10-19T06:55:56.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/UNIONBANK_19102026122544_Press_Release_Sept2026.pdf",
+      "attachmentSize": "929.72 KB"
+    },
+    {
+      "id": "ann-106821757",
+      "symbol": "UNIONBANK",
+      "companyName": "Union Bank of India",
+      "subject": "General Updates",
+      "broadcastDate": "2026-10-19T06:43:49.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/UNIONBANK_19102026121340_Results_Sept2026.pdf",
+      "attachmentSize": "12.65 MB"
+    },
+    {
+      "id": "ann-106821746",
+      "symbol": "UNIONBANK",
+      "companyName": "Union Bank of India",
+      "subject": "Outcome of Board Meeting",
+      "broadcastDate": "2026-10-19T06:33:22.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/UNIONBANK_19102026120305_Results_Sept2026.pdf",
+      "attachmentSize": "12.65 MB"
+    },
+    {
+      "id": "ann-106821698",
+      "symbol": "TCS",
+      "companyName": "Tata Consultancy Services Limited",
+      "subject": "Updates",
+      "broadcastDate": "2026-10-19T06:00:07.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/TCS_CORPCS_19102026112258_PR_19Oct26_signed.pdf",
+      "attachmentSize": "523.38 KB"
+    },
+    {
+      "id": "ann-106821609",
+      "symbol": "TRENT",
+      "companyName": "Trent Limited",
+      "subject": "Copy of Newspaper Publication",
+      "broadcastDate": "2026-10-19T05:30:59.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/TRENT_19102026105951_Reg30Noticeofrelodgementoftransferrequestsofphysicalshares.pdf",
+      "attachmentSize": "890.17 KB"
+    },
+    {
+      "id": "ann-106821590",
+      "symbol": "SHRIRAMFIN",
+      "companyName": "Shriram Finance Limited",
+      "subject": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "broadcastDate": "2026-10-19T05:22:31.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/Mathew_19102026105216_BSENSE_ConCall_19102026.pdf",
+      "attachmentSize": "319.49 KB"
+    },
+    {
+      "id": "ann-106821513",
+      "symbol": "LT",
+      "companyName": "Larsen & Toubro Limited",
+      "subject": "Bagging/Receiving of orders/contracts",
+      "broadcastDate": "2026-10-19T04:48:20.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/PAM_19102026101805_PressRelease19102026.pdf",
+      "attachmentSize": "3.25 MB"
+    },
+    {
+      "id": "ann-106821444",
+      "symbol": "TRENT",
+      "companyName": "Trent Limited",
+      "subject": "Resignation",
+      "broadcastDate": "2026-10-18T13:17:05.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/TRENT_18102026184315_Intimation_of_Resignation_of_NED.pdf",
+      "attachmentSize": "3.88 MB"
+    },
+    {
+      "id": "ann-106821408",
+      "symbol": "JSWSTEEL",
+      "companyName": "JSW Steel Limited",
+      "subject": "Pendency of Litigation(s)/dispute(s) or the outcome impacting the Company",
+      "broadcastDate": "2026-10-18T06:55:39.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/DivyaMascarenhas_18102026122524_SEIntimationJajangMinesHCOrdersOct162026.pdf",
+      "attachmentSize": "658.62 KB"
+    },
+    {
+      "id": "ann-106821407",
+      "symbol": "VEDL",
+      "companyName": "Vedanta Limited",
+      "subject": "Press Release",
+      "broadcastDate": "2026-10-18T06:34:01.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/VEDL_18102026120209_SEintimationGamsbergExpansionfinalsigned.pdf",
+      "attachmentSize": "643.25 KB"
+    },
+    {
+      "id": "ann-106821395",
+      "symbol": "LTM",
+      "companyName": "LTM Limited",
+      "subject": "Copy of Newspaper Publication",
+      "broadcastDate": "2026-10-18T05:12:01.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/LTI_18102026104152_StockExchangeintimationsigned.pdf",
+      "attachmentSize": "7.80 MB"
+    },
+    {
+      "id": "ann-106821383",
+      "symbol": "AXISBANK",
+      "companyName": "Axis Bank Limited",
+      "subject": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "broadcastDate": "2026-10-17T17:37:27.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/AXISBANK1_17102026230706_EarningsCallRecordingSigned.pdf",
+      "attachmentSize": "176.57 KB"
+    },
+    {
+      "id": "ann-106821374",
+      "symbol": "HDFCBANK",
+      "companyName": "HDFC Bank Limited",
+      "subject": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "broadcastDate": "2026-10-17T16:39:24.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/HDFCBANK_17102026220738_SEintimation-RECORDING-17oct2026.pdf",
+      "attachmentSize": "238.06 KB"
+    },
+    {
+      "id": "ann-106821354",
+      "symbol": "ICICIBANK",
+      "companyName": "ICICI Bank Limited",
+      "subject": "Analysts/Institutional Investor Meet/Con. Call Updates",
+      "broadcastDate": "2026-10-17T15:05:19.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/ICICI2022_17102026202758_NSEBSE_17102026.pdf",
+      "attachmentSize": "179.06 KB"
+    },
+    {
+      "id": "ann-106821332",
+      "symbol": "RELIANCE",
+      "companyName": "Reliance Industries Limited",
+      "subject": "Updates",
+      "broadcastDate": "2026-10-17T14:02:52.000Z",
+      "hasPdf": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/PVIVINMA_17102026193113_RIL_SE_171026.pdf",
+      "attachmentSize": "2.69 MB"
+    }
+  ],
+  "actions": [
+    {
+      "id": "act-VEDL-14-Oct-2026-14-Oct-2026-Interim Dividend - Rs 5 Per Share",
+      "symbol": "VEDL",
+      "companyName": "Vedanta Limited",
+      "purpose": "Interim Dividend - Rs 5 Per Share",
+      "series": "EQ",
+      "exDate": "14-Oct-2026",
+      "recordDate": "14-Oct-2026"
+    },
+    {
+      "id": "act-TCS-14-Oct-2026-14-Oct-2026-Interim Dividend - Rs 12 Per Share",
+      "symbol": "TCS",
+      "companyName": "Tata Consultancy Services Limited",
+      "purpose": "Interim Dividend - Rs 12 Per Share",
+      "series": "EQ",
+      "exDate": "14-Oct-2026",
+      "recordDate": "14-Oct-2026"
+    },
+    {
+      "id": "act-HCLTECH-16-Oct-2026-16-Oct-2026-Interim Dividend - Rs 12 Per Share",
+      "symbol": "HCLTECH",
+      "companyName": "HCL Technologies Limited",
+      "purpose": "Interim Dividend - Rs 12 Per Share",
+      "series": "EQ",
+      "exDate": "16-Oct-2026",
+      "recordDate": "16-Oct-2026"
+    },
+    {
+      "id": "act-LTM-23-Oct-2026-23-Oct-2026-Interim Dividend - Rs 25 Per Share",
+      "symbol": "LTM",
+      "companyName": "LTM Limited",
+      "purpose": "Interim Dividend - Rs 25 Per Share",
+      "series": "EQ",
+      "exDate": "23-Oct-2026",
+      "recordDate": "23-Oct-2026"
+    },
+    {
+      "id": "act-IRFC-23-Oct-2026-23-Oct-2026-Interim Dividend - Rs 1.15 Per Share",
+      "symbol": "IRFC",
+      "companyName": "Indian Railway Finance Corporation Limited",
+      "purpose": "Interim Dividend - Rs 1.15 Per Share",
+      "series": "EQ",
+      "exDate": "23-Oct-2026",
+      "recordDate": "23-Oct-2026"
+    },
+    {
+      "id": "act-TECHM-23-Oct-2026-23-Oct-2026-Interim Dividend - Rs  15 Per Share",
+      "symbol": "TECHM",
+      "companyName": "Tech Mahindra Limited",
+      "purpose": "Interim Dividend - Rs  15 Per Share",
+      "series": "EQ",
+      "exDate": "23-Oct-2026",
+      "recordDate": "23-Oct-2026"
+    }
+  ],
+  "results": [
+    {
+      "id": "res-1197046",
+      "symbol": "ABB",
+      "companyName": "ABB India Limited",
+      "audited": "Audited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-02-17T17:01:51.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_120943_1386884_17022025103150.xml"
+    },
+    {
+      "id": "res-1196387",
+      "symbol": "MOTHERSON",
+      "companyName": "Samvardhana Motherson International Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-02-14T11:36:49.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_120613_1384471_14022025050649.xml"
+    },
+    {
+      "id": "res-1196385",
+      "symbol": "MOTHERSON",
+      "companyName": "Samvardhana Motherson International Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-02-14T11:35:08.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_120612_1384462_14022025050508.xml"
+    },
+    {
+      "id": "res-1195965",
+      "symbol": "HINDALCO",
+      "companyName": "Hindalco Industries Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-02-13T14:39:41.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_120402_1382932_13022025080941.xml"
+    },
+    {
+      "id": "res-1195961",
+      "symbol": "HINDALCO",
+      "companyName": "Hindalco Industries Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-02-13T14:37:27.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_120400_1382924_13022025080726.xml"
+    },
+    {
+      "id": "res-1195411",
+      "symbol": "MUTHOOTFIN",
+      "companyName": "Muthoot Finance Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-02-13T06:42:30.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/NBFC_INDAS_120125_1381159_13022025121224.xml"
+    },
+    {
+      "id": "res-1195405",
+      "symbol": "MUTHOOTFIN",
+      "companyName": "Muthoot Finance Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-02-13T06:38:35.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/NBFC_INDAS_120122_1381145_13022025120830.xml"
+    },
+    {
+      "id": "res-1195092",
+      "symbol": "SIEMENS",
+      "companyName": "Siemens Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-02-12T12:21:41.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_119965_1380196_12022025055141.xml"
+    },
+    {
+      "id": "res-1195079",
+      "symbol": "SIEMENS",
+      "companyName": "Siemens Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-02-12T12:13:39.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_119958_1380158_12022025054339.xml"
+    },
+    {
+      "id": "res-1194955",
+      "symbol": "PFC",
+      "companyName": "Power Finance Corporation Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-02-12T11:15:21.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/NBFC_INDAS_119896_1379852_12022025044515.xml"
+    },
+    {
+      "id": "res-1194953",
+      "symbol": "PFC",
+      "companyName": "Power Finance Corporation Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-02-12T11:13:54.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/NBFC_INDAS_119895_1379846_12022025044347.xml"
+    },
+    {
+      "id": "res-1194861",
+      "symbol": "HAL",
+      "companyName": "Hindustan Aeronautics Limited",
+      "audited": "Audited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-02-12T10:01:27.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_119849_1379555_12022025033127.xml"
+    },
+    {
+      "id": "res-1194859",
+      "symbol": "HAL",
+      "companyName": "Hindustan Aeronautics Limited",
+      "audited": "Audited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-02-12T10:00:20.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_119848_1379548_12022025033019.xml"
+    },
+    {
+      "id": "res-1194584",
+      "symbol": "IDEA",
+      "companyName": "Vodafone Idea Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-02-11T13:58:01.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_119710_1378709_11022025072801.xml"
+    },
+    {
+      "id": "res-1194580",
+      "symbol": "IDEA",
+      "companyName": "Vodafone Idea Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-02-11T13:53:23.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_119708_1378703_11022025072322.xml"
+    },
+    {
+      "id": "res-1194285",
+      "symbol": "APOLLOHOSP",
+      "companyName": "Apollo Hospitals Enterprise Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-02-11T09:01:24.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_119560_1377813_11022025023124.xml"
+    },
+    {
+      "id": "res-1194283",
+      "symbol": "APOLLOHOSP",
+      "companyName": "Apollo Hospitals Enterprise Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-02-11T08:59:23.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_119559_1377807_11022025022922.xml"
+    },
+    {
+      "id": "res-1194245",
+      "symbol": "EICHERMOT",
+      "companyName": "Eicher Motors Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-02-11T07:04:29.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_119540_1377661_11022025123429.xml"
+    },
+    {
+      "id": "res-1194241",
+      "symbol": "EICHERMOT",
+      "companyName": "Eicher Motors Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-02-11T07:02:41.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_119538_1377654_11022025123240.xml"
+    },
+    {
+      "id": "res-1194147",
+      "symbol": "GRASIM",
+      "companyName": "Grasim Industries Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-02-10T15:59:57.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_119491_1377333_10022025092957.xml"
+    },
+    {
+      "id": "res-1194145",
+      "symbol": "GRASIM",
+      "companyName": "Grasim Industries Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-02-10T15:56:41.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_119490_1377330_10022025092640.xml"
+    },
+    {
+      "id": "res-1193953",
+      "symbol": "VBL",
+      "companyName": "Varun Beverages Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-02-10T11:56:08.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_119394_1376694_10022025052608.xml"
+    },
+    {
+      "id": "res-1193951",
+      "symbol": "VBL",
+      "companyName": "Varun Beverages Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-02-10T11:53:39.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_119393_1376689_10022025052339.xml"
+    },
+    {
+      "id": "res-1193289",
+      "symbol": "MAZDOCK",
+      "companyName": "Mazagon Dock Shipbuilders Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-02-07T11:12:31.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_119060_1374501_07022025044230.xml"
+    },
+    {
+      "id": "res-1193287",
+      "symbol": "MAZDOCK",
+      "companyName": "Mazagon Dock Shipbuilders Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-02-07T11:08:25.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_119059_1374494_07022025043825.xml"
+    },
+    {
+      "id": "res-1193275",
+      "symbol": "M&M",
+      "companyName": "Mahindra & Mahindra Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-02-07T10:40:02.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_119053_1374435_07022025041001.xml"
+    },
+    {
+      "id": "res-1193273",
+      "symbol": "M&M",
+      "companyName": "Mahindra & Mahindra Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-02-07T10:37:54.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_119052_1374430_07022025040754.xml"
+    },
+    {
+      "id": "res-1193121",
+      "symbol": "BHARTIARTL",
+      "companyName": "Bharti Airtel Limited",
+      "audited": "Audited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-02-06T17:45:57.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118976_1373835_06022025111555.xml"
+    },
+    {
+      "id": "res-1193119",
+      "symbol": "BHARTIARTL",
+      "companyName": "Bharti Airtel Limited",
+      "audited": "Audited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-02-06T16:49:57.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118975_1373825_06022025101955.xml"
+    },
+    {
+      "id": "res-1193107",
+      "symbol": "BRITANNIA",
+      "companyName": "Britannia Industries Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-02-06T16:13:20.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118969_1373806_06022025094319.xml"
+    },
+    {
+      "id": "res-1193103",
+      "symbol": "BRITANNIA",
+      "companyName": "Britannia Industries Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-02-06T16:11:15.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118967_1373799_06022025094114.xml"
+    },
+    {
+      "id": "res-1193051",
+      "symbol": "ITC",
+      "companyName": "ITC Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-02-06T13:50:20.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118941_1373614_06022025072019.xml"
+    },
+    {
+      "id": "res-1193045",
+      "symbol": "ITC",
+      "companyName": "ITC Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-02-06T13:45:00.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118938_1373597_06022025071500.xml"
+    },
+    {
+      "id": "res-1193033",
+      "symbol": "BSE",
+      "companyName": "BSE Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-02-06T13:25:08.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118932_1373545_06022025065508.xml"
+    },
+    {
+      "id": "res-1193029",
+      "symbol": "BSE",
+      "companyName": "BSE Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-02-06T13:23:22.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118930_1373537_06022025065322.xml"
+    },
+    {
+      "id": "res-1192917",
+      "symbol": "SBIN",
+      "companyName": "State Bank of India",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-02-06T11:22:42.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/BANKING_118874_1373047_06022025045242.xml"
+    },
+    {
+      "id": "res-1192915",
+      "symbol": "SBIN",
+      "companyName": "State Bank of India",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-02-06T11:20:52.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/BANKING_118873_1373034_06022025045052.xml"
+    },
+    {
+      "id": "res-1192865",
+      "symbol": "TRENT",
+      "companyName": "Trent Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-02-06T10:10:57.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118848_1372740_06022025034057.xml"
+    },
+    {
+      "id": "res-1192863",
+      "symbol": "TRENT",
+      "companyName": "Trent Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-02-06T10:08:26.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118847_1372734_06022025033826.xml"
+    },
+    {
+      "id": "res-1192773",
+      "symbol": "CUMMINSIND",
+      "companyName": "Cummins India Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-02-06T06:17:06.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118802_1372332_06022025114706.xml"
+    },
+    {
+      "id": "res-1192769",
+      "symbol": "CUMMINSIND",
+      "companyName": "Cummins India Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-02-06T06:03:32.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118800_1372315_06022025113331.xml"
+    },
+    {
+      "id": "res-1192763",
+      "symbol": "SOLARINDS",
+      "companyName": "Solar Industries India Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-02-06T04:45:05.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118797_1372268_06022025101504.xml"
+    },
+    {
+      "id": "res-1192761",
+      "symbol": "SOLARINDS",
+      "companyName": "Solar Industries India Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-02-06T04:41:41.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118796_1372265_06022025101141.xml"
+    },
+    {
+      "id": "res-1192639",
+      "symbol": "ZYDUSLIFE",
+      "companyName": "Zydus Lifesciences Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-02-05T10:57:32.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118733_1371636_05022025042732.xml"
+    },
+    {
+      "id": "res-1192637",
+      "symbol": "ZYDUSLIFE",
+      "companyName": "Zydus Lifesciences Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-02-05T10:55:09.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118732_1371625_05022025042508.xml"
+    },
+    {
+      "id": "res-1192509",
+      "symbol": "TITAN",
+      "companyName": "Titan Company Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-02-04T17:24:42.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118668_1371012_04022025105441.xml"
+    },
+    {
+      "id": "res-1192507",
+      "symbol": "TITAN",
+      "companyName": "Titan Company Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-02-04T17:21:59.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118667_1371006_04022025105158.xml"
+    },
+    {
+      "id": "res-1192489",
+      "symbol": "ASIANPAINT",
+      "companyName": "Asian Paints Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-02-04T14:36:34.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118658_1370927_04022025080634.xml"
+    },
+    {
+      "id": "res-1192487",
+      "symbol": "ASIANPAINT",
+      "companyName": "Asian Paints Limited",
+      "audited": "Audited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-02-04T14:34:23.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118657_1370924_04022025080422.xml"
+    },
+    {
+      "id": "res-1192461",
+      "symbol": "ADANIENSOL",
+      "companyName": "Adani Energy Solutions Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-02-04T13:59:11.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118643_1370853_04022025072911.xml"
+    },
+    {
+      "id": "res-1192459",
+      "symbol": "ADANIENSOL",
+      "companyName": "Adani Energy Solutions Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-02-04T13:57:12.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118642_1370848_04022025072712.xml"
+    },
+    {
+      "id": "res-1192405",
+      "symbol": "POWERGRID",
+      "companyName": "Power Grid Corporation of India Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-02-04T12:27:54.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118615_1370657_04022025055754.xml"
+    },
+    {
+      "id": "res-1192391",
+      "symbol": "POWERGRID",
+      "companyName": "Power Grid Corporation of India Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-02-04T12:15:38.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118608_1370603_04022025054537.xml"
+    },
+    {
+      "id": "res-1192373",
+      "symbol": "TATAPOWER",
+      "companyName": "Tata Power Company Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-02-04T11:17:54.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118595_1370400_04022025044754.xml"
+    },
+    {
+      "id": "res-1192371",
+      "symbol": "TATAPOWER",
+      "companyName": "Tata Power Company Limited",
+      "audited": "Audited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-02-04T11:16:31.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118594_1370393_04022025044631.xml"
+    },
+    {
+      "id": "res-1192135",
+      "symbol": "DIVISLAB",
+      "companyName": "Divi's Laboratories Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-02-03T11:42:12.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118476_1369222_03022025051211.xml"
+    },
+    {
+      "id": "res-1192133",
+      "symbol": "DIVISLAB",
+      "companyName": "Divi's Laboratories Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-02-03T11:39:07.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118475_1369213_03022025050906.xml"
+    },
+    {
+      "id": "res-1192009",
+      "symbol": "CHOLAFIN",
+      "companyName": "Cholamandalam Investment and Finance Company Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-02-01T06:42:51.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/NBFC_INDAS_118412_1368220_01022025121245.xml"
+    },
+    {
+      "id": "res-1192005",
+      "symbol": "CHOLAFIN",
+      "companyName": "Cholamandalam Investment and Finance Company Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-02-01T06:36:53.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118410_1368204_01022025120653.xml"
+    },
+    {
+      "id": "res-1191981",
+      "symbol": "GAIL",
+      "companyName": "GAIL (India) Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-31T15:43:42.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118398_1368065_31012025091342.xml"
+    },
+    {
+      "id": "res-1191975",
+      "symbol": "ONGC",
+      "companyName": "Oil & Natural Gas Corporation Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-31T15:15:19.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118395_1368047_31012025084518.xml"
+    },
+    {
+      "id": "res-1191973",
+      "symbol": "ONGC",
+      "companyName": "Oil & Natural Gas Corporation Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-31T15:12:28.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118394_1368042_31012025084227.xml"
+    },
+    {
+      "id": "res-1191935",
+      "symbol": "NESTLEIND",
+      "companyName": "Nestle India Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-31T14:06:06.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118375_1367903_31012025073606.xml"
+    },
+    {
+      "id": "res-1191929",
+      "symbol": "NESTLEIND",
+      "companyName": "Nestle India Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-31T14:04:16.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118372_1367894_31012025073415.xml"
+    },
+    {
+      "id": "res-1191927",
+      "symbol": "SUNPHARMA",
+      "companyName": "Sun Pharmaceutical Industries Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-31T14:03:05.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118371_1367891_31012025073304.xml"
+    },
+    {
+      "id": "res-1191921",
+      "symbol": "SUNPHARMA",
+      "companyName": "Sun Pharmaceutical Industries Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-31T14:01:41.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118368_1367880_31012025073140.xml"
+    },
+    {
+      "id": "res-1191907",
+      "symbol": "PNB",
+      "companyName": "Punjab National Bank",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-31T13:50:53.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/BANKING_118361_1367843_31012025072053.xml"
+    },
+    {
+      "id": "res-1191887",
+      "symbol": "PNB",
+      "companyName": "Punjab National Bank",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-31T13:18:19.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/BANKING_118351_1367762_31012025064818.xml"
+    },
+    {
+      "id": "res-1191859",
+      "symbol": "VEDL",
+      "companyName": "Vedanta Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-31T12:33:36.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118337_1367620_31012025060335.xml"
+    },
+    {
+      "id": "res-1191855",
+      "symbol": "VEDL",
+      "companyName": "Vedanta Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-31T12:31:03.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118335_1367604_31012025060102.xml"
+    },
+    {
+      "id": "res-1191709",
+      "symbol": "LT",
+      "companyName": "Larsen & Toubro Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-31T08:27:53.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118261_1367033_31012025015753.xml"
+    },
+    {
+      "id": "res-1191707",
+      "symbol": "LT",
+      "companyName": "Larsen & Toubro Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-31T08:25:54.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118260_1367030_31012025015554.xml"
+    },
+    {
+      "id": "res-1191690",
+      "symbol": "ADANIENT",
+      "companyName": "Adani Enterprises Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-31T07:10:40.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118251_1366948_31012025124039.xml"
+    },
+    {
+      "id": "res-1191686",
+      "symbol": "ADANIENT",
+      "companyName": "Adani Enterprises Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-31T07:08:52.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118249_1366942_31012025123852.xml"
+    },
+    {
+      "id": "res-1191682",
+      "symbol": "JINDALSTEL",
+      "companyName": "JINDAL STEEL LIMITED",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-31T06:58:58.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118247_1366926_31012025122858.xml"
+    },
+    {
+      "id": "res-1191680",
+      "symbol": "JINDALSTEL",
+      "companyName": "JINDAL STEEL LIMITED",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-31T06:57:51.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118246_1366921_31012025122750.xml"
+    },
+    {
+      "id": "res-1191641",
+      "symbol": "TATACONSUM",
+      "companyName": "TATA CONSUMER PRODUCTS LIMITED",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-30T17:36:13.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118223_1366708_30012025110612.xml"
+    },
+    {
+      "id": "res-1191639",
+      "symbol": "TATACONSUM",
+      "companyName": "TATA CONSUMER PRODUCTS LIMITED",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-30T17:23:23.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118222_1366704_30012025105322.xml"
+    },
+    {
+      "id": "res-1191619",
+      "symbol": "BAJAJFINSV",
+      "companyName": "Bajaj Finserv Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-30T14:05:41.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/NBFC_INDAS_118212_1366575_30012025073535.xml"
+    },
+    {
+      "id": "res-1191615",
+      "symbol": "BAJAJFINSV",
+      "companyName": "Bajaj Finserv Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-30T14:02:45.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/NBFC_INDAS_118210_1366557_30012025073240.xml"
+    },
+    {
+      "id": "res-1191611",
+      "symbol": "BAJAJHLDNG",
+      "companyName": "Bajaj Holdings & Investment Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-30T13:56:26.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118208_1366543_30012025072626.xml"
+    },
+    {
+      "id": "res-1191609",
+      "symbol": "BAJAJHLDNG",
+      "companyName": "Bajaj Holdings & Investment Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-30T13:53:24.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118207_1366539_30012025072324.xml"
+    },
+    {
+      "id": "res-1191549",
+      "symbol": "BANKBARODA",
+      "companyName": "Bank of Baroda",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-30T12:28:14.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/BANKING_118177_1366266_30012025055814.xml"
+    },
+    {
+      "id": "res-1191547",
+      "symbol": "BANKBARODA",
+      "companyName": "Bank of Baroda",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-30T12:26:30.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/BANKING_118176_1366263_30012025055630.xml"
+    },
+    {
+      "id": "res-1191537",
+      "symbol": "GAIL",
+      "companyName": "GAIL (India) Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-30T12:07:45.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118171_1366191_30012025053745.xml"
+    },
+    {
+      "id": "res-1191533",
+      "symbol": "GAIL",
+      "companyName": "GAIL (India) Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-30T12:04:19.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118169_1366176_30012025053418.xml"
+    },
+    {
+      "id": "res-1191483",
+      "symbol": "ADANIPORTS",
+      "companyName": "Adani Ports and Special Economic Zone Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-30T10:40:38.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118144_1365888_30012025041037.xml"
+    },
+    {
+      "id": "res-1191479",
+      "symbol": "ADANIPORTS",
+      "companyName": "Adani Ports and Special Economic Zone Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-30T10:39:27.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118142_1365880_30012025040927.xml"
+    },
+    {
+      "id": "res-1191461",
+      "symbol": "BEL",
+      "companyName": "Bharat Electronics Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-30T10:07:17.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118133_1365796_30012025033716.xml"
+    },
+    {
+      "id": "res-1191459",
+      "symbol": "BEL",
+      "companyName": "Bharat Electronics Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-30T10:03:52.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118132_1365788_30012025033352.xml"
+    },
+    {
+      "id": "res-1191441",
+      "symbol": "MAXHEALTH",
+      "companyName": "Max Healthcare Institute Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-30T09:30:03.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118123_1365717_30012025030002.xml"
+    },
+    {
+      "id": "res-1191435",
+      "symbol": "MAXHEALTH",
+      "companyName": "Max Healthcare Institute Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-30T09:25:22.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118120_1365703_30012025025522.xml"
+    },
+    {
+      "id": "res-1191343",
+      "symbol": "BAJFINANCE",
+      "companyName": "Bajaj Finance Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-29T14:19:23.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/NBFC_INDAS_118072_1365160_29012025074915.xml"
+    },
+    {
+      "id": "res-1191339",
+      "symbol": "BAJFINANCE",
+      "companyName": "Bajaj Finance Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-29T14:17:36.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/NBFC_INDAS_118070_1365151_29012025074729.xml"
+    },
+    {
+      "id": "res-1191305",
+      "symbol": "POWERINDIA",
+      "companyName": "Hitachi Energy India Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-29T13:04:09.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118052_1364997_29012025063408.xml"
+    },
+    {
+      "id": "res-1191283",
+      "symbol": "MARUTI",
+      "companyName": "Maruti Suzuki India Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-29T12:20:35.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118041_1364863_29012025055034.xml"
+    },
+    {
+      "id": "res-1191281",
+      "symbol": "MARUTI",
+      "companyName": "Maruti Suzuki India Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-29T12:18:29.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118040_1364859_29012025054829.xml"
+    },
+    {
+      "id": "res-1191269",
+      "symbol": "ADANIPOWER",
+      "companyName": "Adani Power Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-29T12:03:56.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118034_1364816_29012025053355.xml"
+    },
+    {
+      "id": "res-1191265",
+      "symbol": "ADANIPOWER",
+      "companyName": "Adani Power Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-29T12:02:46.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118032_1364811_29012025053245.xml"
+    },
+    {
+      "id": "res-1191255",
+      "symbol": "TMPV",
+      "companyName": "Tata Motors Passenger Vehicles Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-29T11:50:00.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118027_1364768_29012025052000.xml"
+    },
+    {
+      "id": "res-1191251",
+      "symbol": "TMPV",
+      "companyName": "Tata Motors Passenger Vehicles Limited",
+      "audited": "Audited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-29T11:47:33.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118025_1364758_29012025051733.xml"
+    },
+    {
+      "id": "res-1191235",
+      "symbol": "AMBUJACEM",
+      "companyName": "Ambuja Cements Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-29T11:35:07.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118017_1364685_29012025050507.xml"
+    },
+    {
+      "id": "res-1191233",
+      "symbol": "AMBUJACEM",
+      "companyName": "Ambuja Cements Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-29T11:33:05.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_118016_1364675_29012025050305.xml"
+    },
+    {
+      "id": "res-1191111",
+      "symbol": "CGPOWER",
+      "companyName": "CG Power and Industrial Solutions Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-29T07:34:22.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117955_1364192_29012025010421.xml"
+    },
+    {
+      "id": "res-1191109",
+      "symbol": "CGPOWER",
+      "companyName": "CG Power and Industrial Solutions Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-29T07:32:58.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117954_1364189_29012025010258.xml"
+    },
+    {
+      "id": "res-1191107",
+      "symbol": "BAJAJ-AUTO",
+      "companyName": "Bajaj Auto Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-29T07:01:51.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117953_1364158_29012025123151.xml"
+    },
+    {
+      "id": "res-1191105",
+      "symbol": "BAJAJ-AUTO",
+      "companyName": "Bajaj Auto Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-29T07:00:17.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117952_1364153_29012025123017.xml"
+    },
+    {
+      "id": "res-1191095",
+      "symbol": "CIPLA",
+      "companyName": "Cipla Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-29T06:04:25.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117946_1364025_29012025113424.xml"
+    },
+    {
+      "id": "res-1191081",
+      "symbol": "CIPLA",
+      "companyName": "Cipla Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-29T05:01:32.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117939_1363949_29012025103132.xml"
+    },
+    {
+      "id": "res-1191075",
+      "symbol": "KOTAKBANK",
+      "companyName": "Kotak Mahindra Bank Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-29T05:00:03.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/BANKING_117936_1363939_29012025103003.xml"
+    },
+    {
+      "id": "res-1190983",
+      "symbol": "BOSCHLTD",
+      "companyName": "Bosch Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-28T12:45:20.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117889_1363498_28012025061520.xml"
+    },
+    {
+      "id": "res-1190979",
+      "symbol": "BOSCHLTD",
+      "companyName": "Bosch Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-28T12:43:11.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117887_1363486_28012025061311.xml"
+    },
+    {
+      "id": "res-1190961",
+      "symbol": "HINDZINC",
+      "companyName": "Hindustan Zinc Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-28T12:26:57.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117878_1363403_28012025055656.xml"
+    },
+    {
+      "id": "res-1190959",
+      "symbol": "HINDZINC",
+      "companyName": "Hindustan Zinc Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-28T12:24:11.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117877_1363387_28012025055411.xml"
+    },
+    {
+      "id": "res-1190937",
+      "symbol": "HYUNDAI",
+      "companyName": "Hyundai Motor India Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-28T11:40:57.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117866_1363247_28012025051057.xml"
+    },
+    {
+      "id": "res-1190935",
+      "symbol": "HYUNDAI",
+      "companyName": "Hyundai Motor India Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-28T11:39:54.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117865_1363240_28012025050954.xml"
+    },
+    {
+      "id": "res-1190933",
+      "symbol": "UNIONBANK",
+      "companyName": "Union Bank of India",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-28T11:29:05.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/BANKING_117864_1363200_28012025045905.xml"
+    },
+    {
+      "id": "res-1190925",
+      "symbol": "UNIONBANK",
+      "companyName": "Union Bank of India",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-28T11:21:48.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/BANKING_117860_1363165_28012025045147.xml"
+    },
+    {
+      "id": "res-1190899",
+      "symbol": "TVSMOTOR",
+      "companyName": "TVS Motor Company Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-28T10:45:56.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117847_1363057_28012025041555.xml"
+    },
+    {
+      "id": "res-1190895",
+      "symbol": "TVSMOTOR",
+      "companyName": "TVS Motor Company Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-28T10:42:06.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117845_1363038_28012025041205.xml"
+    },
+    {
+      "id": "res-1190785",
+      "symbol": "TATASTEEL",
+      "companyName": "Tata Steel Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-27T13:45:59.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117788_1362364_27012025071559.xml"
+    },
+    {
+      "id": "res-1190783",
+      "symbol": "TATASTEEL",
+      "companyName": "Tata Steel Limited",
+      "audited": "Audited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-27T13:43:33.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117787_1362360_27012025071333.xml"
+    },
+    {
+      "id": "res-1190751",
+      "symbol": "IOC",
+      "companyName": "Indian Oil Corporation Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-27T11:44:04.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117771_1362072_27012025051403.xml"
+    },
+    {
+      "id": "res-1190749",
+      "symbol": "IOC",
+      "companyName": "Indian Oil Corporation Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-27T11:42:33.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117770_1362066_27012025051232.xml"
+    },
+    {
+      "id": "res-1190743",
+      "symbol": "CANBK",
+      "companyName": "Canara Bank",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-27T11:21:46.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/BANKING_117767_1362030_27012025045146.xml"
+    },
+    {
+      "id": "res-1190741",
+      "symbol": "CANBK",
+      "companyName": "Canara Bank",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-27T11:09:44.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/BANKING_117766_1362002_27012025043944.xml"
+    },
+    {
+      "id": "res-1190737",
+      "symbol": "COALINDIA",
+      "companyName": "Coal India Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-27T10:50:34.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117764_1361971_27012025042033.xml"
+    },
+    {
+      "id": "res-1190735",
+      "symbol": "COALINDIA",
+      "companyName": "Coal India Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-27T10:48:27.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117763_1361966_27012025041826.xml"
+    },
+    {
+      "id": "res-1190707",
+      "symbol": "NTPC",
+      "companyName": "NTPC Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-25T14:14:00.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117749_1361511_25012025074359.xml"
+    },
+    {
+      "id": "res-1190705",
+      "symbol": "NTPC",
+      "companyName": "NTPC Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-25T14:07:39.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117748_1361507_25012025073738.xml"
+    },
+    {
+      "id": "res-1190655",
+      "symbol": "ICICIBANK",
+      "companyName": "ICICI Bank Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-25T10:47:35.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/BANKING_117723_1361304_25012025041735.xml"
+    },
+    {
+      "id": "res-1190653",
+      "symbol": "ICICIBANK",
+      "companyName": "ICICI Bank Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-25T10:15:05.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/BANKING_117722_1361289_25012025034505.xml"
+    },
+    {
+      "id": "res-1190567",
+      "symbol": "DLF",
+      "companyName": "DLF Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-24T14:19:12.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117679_1360883_24012025074912.xml"
+    },
+    {
+      "id": "res-1190565",
+      "symbol": "DLF",
+      "companyName": "DLF Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-24T14:17:40.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117678_1360879_24012025074739.xml"
+    },
+    {
+      "id": "res-1190543",
+      "symbol": "JSWSTEEL",
+      "companyName": "JSW Steel Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-24T13:43:42.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117667_1360809_24012025071342.xml"
+    },
+    {
+      "id": "res-1190541",
+      "symbol": "JSWSTEEL",
+      "companyName": "JSW Steel Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-24T13:41:59.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117666_1360803_24012025071158.xml"
+    },
+    {
+      "id": "res-1190539",
+      "symbol": "SHRIRAMFIN",
+      "companyName": "Shriram Finance Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-24T13:39:36.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/NBFC_INDAS_117665_1360798_24012025070921.xml"
+    },
+    {
+      "id": "res-1190537",
+      "symbol": "SHRIRAMFIN",
+      "companyName": "Shriram Finance Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-24T13:37:05.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/NBFC_INDAS_117664_1360794_24012025070653.xml"
+    },
+    {
+      "id": "res-1190513",
+      "symbol": "GODREJCP",
+      "companyName": "Godrej Consumer Products Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-24T12:59:59.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117652_1360697_24012025062958.xml"
+    },
+    {
+      "id": "res-1190509",
+      "symbol": "GODREJCP",
+      "companyName": "Godrej Consumer Products Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-24T12:56:46.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117650_1360677_24012025062646.xml"
+    },
+    {
+      "id": "res-1190487",
+      "symbol": "TORNTPHARM",
+      "companyName": "Torrent Pharmaceuticals Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-24T12:03:08.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117639_1360534_24012025053307.xml"
+    },
+    {
+      "id": "res-1190485",
+      "symbol": "TORNTPHARM",
+      "companyName": "Torrent Pharmaceuticals Limited",
+      "audited": "Audited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-24T12:00:59.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117638_1360530_24012025053059.xml"
+    },
+    {
+      "id": "res-1190457",
+      "symbol": "INDIGO",
+      "companyName": "InterGlobe Aviation Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-24T11:12:52.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117624_1360398_24012025044252.xml"
+    },
+    {
+      "id": "res-1190453",
+      "symbol": "INDIGO",
+      "companyName": "InterGlobe Aviation Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-24T11:10:59.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117622_1360385_24012025044059.xml"
+    },
+    {
+      "id": "res-1190421",
+      "symbol": "ADANIENSOL",
+      "companyName": "Adani Energy Solutions Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-24T09:35:53.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117606_1360184_24012025030552.xml"
+    },
+    {
+      "id": "res-1190419",
+      "symbol": "ADANIENSOL",
+      "companyName": "Adani Energy Solutions Limited",
+      "audited": "Audited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-24T09:34:19.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117605_1360180_24012025030418.xml"
+    },
+    {
+      "id": "res-1190411",
+      "symbol": "DRREDDY",
+      "companyName": "Dr. Reddy's Laboratories Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-24T08:28:37.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117601_1360103_24012025015837.xml"
+    },
+    {
+      "id": "res-1190409",
+      "symbol": "DRREDDY",
+      "companyName": "Dr. Reddy's Laboratories Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-24T08:25:58.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117600_1360097_24012025015557.xml"
+    },
+    {
+      "id": "res-1190363",
+      "symbol": "ADANIGREEN",
+      "companyName": "Adani Green Energy Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-23T14:25:50.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117577_1359751_23012025075549.xml"
+    },
+    {
+      "id": "res-1190347",
+      "symbol": "ADANIGREEN",
+      "companyName": "Adani Green Energy Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-23T14:07:24.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117569_1359714_23012025073724.xml"
+    },
+    {
+      "id": "res-1190337",
+      "symbol": "ULTRACEMCO",
+      "companyName": "UltraTech Cement Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-23T13:29:30.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117564_1359649_23012025065930.xml"
+    },
+    {
+      "id": "res-1190335",
+      "symbol": "ULTRACEMCO",
+      "companyName": "UltraTech Cement Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-23T13:26:02.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117563_1359645_23012025065602.xml"
+    },
+    {
+      "id": "res-1190261",
+      "symbol": "HDFCBANK",
+      "companyName": "HDFC Bank Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-23T06:57:21.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/BANKING_117525_1359016_23012025122721.xml"
+    },
+    {
+      "id": "res-1190259",
+      "symbol": "HDFCBANK",
+      "companyName": "HDFC Bank Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-23T06:55:53.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/BANKING_117524_1359008_23012025122553.xml"
+    },
+    {
+      "id": "res-1190247",
+      "symbol": "PIDILITIND",
+      "companyName": "Pidilite Industries Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-23T06:00:09.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117518_1358926_23012025113009.xml"
+    },
+    {
+      "id": "res-1190245",
+      "symbol": "BPCL",
+      "companyName": "Bharat Petroleum Corporation Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-23T05:57:49.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117517_1358921_23012025112749.xml"
+    },
+    {
+      "id": "res-1190243",
+      "symbol": "PIDILITIND",
+      "companyName": "Pidilite Industries Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-23T05:57:08.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117516_1358916_23012025112708.xml"
+    },
+    {
+      "id": "res-1190241",
+      "symbol": "BPCL",
+      "companyName": "Bharat Petroleum Corporation Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-23T05:55:51.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117515_1358911_23012025112550.xml"
+    },
+    {
+      "id": "res-1190225",
+      "symbol": "HINDUNILVR",
+      "companyName": "Hindustan Unilever Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-22T14:42:35.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117507_1357438_22012025081234.xml"
+    },
+    {
+      "id": "res-1190223",
+      "symbol": "HINDUNILVR",
+      "companyName": "Hindustan Unilever Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-22T14:31:13.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117506_1357422_22012025080113.xml"
+    },
+    {
+      "id": "res-1190191",
+      "symbol": "POLYCAB",
+      "companyName": "Polycab India Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-22T11:45:28.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117488_1357164_22012025051528.xml"
+    },
+    {
+      "id": "res-1190189",
+      "symbol": "POLYCAB",
+      "companyName": "Polycab India Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-22T11:42:22.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117487_1357150_22012025051222.xml"
+    },
+    {
+      "id": "res-1190037",
+      "symbol": "ETERNAL",
+      "companyName": "ETERNAL LIMITED",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-20T12:59:47.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117409_1353529_20012025062946.xml"
+    },
+    {
+      "id": "res-1190035",
+      "symbol": "ETERNAL",
+      "companyName": "ETERNAL LIMITED",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-20T12:58:59.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117408_1353522_20012025062858.xml"
+    },
+    {
+      "id": "res-1189987",
+      "symbol": "IRFC",
+      "companyName": "Indian Railway Finance Corporation Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-20T09:29:11.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/NBFC_INDAS_117384_1352202_20012025025904.xml"
+    },
+    {
+      "id": "res-1189967",
+      "symbol": "KOTAKBANK",
+      "companyName": "Kotak Mahindra Bank Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-18T14:06:16.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/BANKING_117372_1351221_18012025073616.xml"
+    },
+    {
+      "id": "res-1189903",
+      "symbol": "JIOFIN",
+      "companyName": "Jio Financial Services Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-17T14:31:16.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/NBFC_INDAS_117340_1350263_17012025080115.xml"
+    },
+    {
+      "id": "res-1189901",
+      "symbol": "JIOFIN",
+      "companyName": "Jio Financial Services Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-17T14:29:46.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/NBFC_INDAS_117339_1350260_17012025075945.xml"
+    },
+    {
+      "id": "res-1189863",
+      "symbol": "WIPRO",
+      "companyName": "Wipro Limited",
+      "audited": "Audited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-17T10:56:02.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117318_1349352_17012025042601.xml"
+    },
+    {
+      "id": "res-1189861",
+      "symbol": "WIPRO",
+      "companyName": "Wipro Limited",
+      "audited": "Audited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-17T10:54:24.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117317_1349345_17012025042424.xml"
+    },
+    {
+      "id": "res-1189859",
+      "symbol": "TECHM",
+      "companyName": "Tech Mahindra Limited",
+      "audited": "Audited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-17T10:49:11.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117316_1349320_17012025041910.xml"
+    },
+    {
+      "id": "res-1189857",
+      "symbol": "TECHM",
+      "companyName": "Tech Mahindra Limited",
+      "audited": "Audited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-17T10:47:59.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117315_1349311_17012025041758.xml"
+    },
+    {
+      "id": "res-1189823",
+      "symbol": "RELIANCE",
+      "companyName": "Reliance Industries Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-16T14:50:21.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117298_1348254_16012025082021.xml"
+    },
+    {
+      "id": "res-1189821",
+      "symbol": "RELIANCE",
+      "companyName": "Reliance Industries Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-16T14:45:20.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117297_1348248_16012025081520.xml"
+    },
+    {
+      "id": "res-1189819",
+      "symbol": "AXISBANK",
+      "companyName": "Axis Bank Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-16T14:36:54.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/BANKING_117296_1348238_16012025080654.xml"
+    },
+    {
+      "id": "res-1189817",
+      "symbol": "AXISBANK",
+      "companyName": "Axis Bank Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-16T14:35:46.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/BANKING_117295_1348235_16012025080546.xml"
+    },
+    {
+      "id": "res-1189815",
+      "symbol": "INFY",
+      "companyName": "Infosys Limited",
+      "audited": "Audited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-16T14:12:10.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117294_1348219_16012025074210.xml"
+    },
+    {
+      "id": "res-1189811",
+      "symbol": "INFY",
+      "companyName": "Infosys Limited",
+      "audited": "Audited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-16T14:10:13.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117292_1348213_16012025074012.xml"
+    },
+    {
+      "id": "res-1189791",
+      "symbol": "LTM",
+      "companyName": "LTM Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-16T11:36:17.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117282_1347670_16012025050617.xml"
+    },
+    {
+      "id": "res-1189787",
+      "symbol": "LTM",
+      "companyName": "LTM Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-16T11:34:44.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117280_1347659_16012025050443.xml"
+    },
+    {
+      "id": "res-1189683",
+      "symbol": "HCLTECH",
+      "companyName": "HCL Technologies Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-14T12:23:35.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117225_1345251_14012025055334.xml"
+    },
+    {
+      "id": "res-1189681",
+      "symbol": "HCLTECH",
+      "companyName": "HCL Technologies Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-14T12:19:01.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117224_1345238_14012025054901.xml"
+    },
+    {
+      "id": "res-1189675",
+      "symbol": "HDFCAMC",
+      "companyName": "HDFC Asset Management Company Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-14T10:13:32.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/NBFC_INDAS_117221_1344944_14012025034330.xml"
+    },
+    {
+      "id": "res-1189673",
+      "symbol": "HDFCAMC",
+      "companyName": "HDFC Asset Management Company Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-14T10:09:33.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/NBFC_INDAS_117220_1344935_14012025033931.xml"
+    },
+    {
+      "id": "res-1189639",
+      "symbol": "DMART",
+      "companyName": "Avenue Supermarts Limited",
+      "audited": "Unaudited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-11T15:45:34.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117203_1343091_11012025091534.xml"
+    },
+    {
+      "id": "res-1189637",
+      "symbol": "DMART",
+      "companyName": "Avenue Supermarts Limited",
+      "audited": "Unaudited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-11T15:43:48.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117202_1343088_11012025091348.xml"
+    },
+    {
+      "id": "res-1189599",
+      "symbol": "TCS",
+      "companyName": "Tata Consultancy Services Limited",
+      "audited": "Audited",
+      "cumulative": "Consolidated",
+      "broadcastDate": "2025-01-09T16:09:43.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117182_1341298_09012025093940.xml"
+    },
+    {
+      "id": "res-1189595",
+      "symbol": "TCS",
+      "companyName": "Tata Consultancy Services Limited",
+      "audited": "Audited",
+      "cumulative": "Standalone",
+      "broadcastDate": "2025-01-09T16:06:33.000Z",
+      "hasXml": true,
+      "attachmentUrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_117180_1341293_09012025093547.xml"
+    }
+  ],
+  "sourceCaptures": [
+    {
+      "tab": "announcements",
+      "url": "https://www.nseindia.com/api/corporate-announcements?index=equities&from_date=01-10-2026&to_date=24-10-2026",
+      "asOf": "2026-10-23T21:06:08.022Z",
+      "upstreamRows": 9306
+    },
+    {
+      "tab": "actions",
+      "url": "https://www.nseindia.com/api/corporates-corporateActions?index=equities&from_date=01-10-2026&to_date=24-10-2026",
+      "asOf": "2026-10-23T21:06:06.121Z",
+      "upstreamRows": 47
+    },
+    {
+      "tab": "results",
+      "url": "https://www.nseindia.com/api/corporates-financial-results?index=equities&period=Quarterly",
+      "asOf": "2026-10-23T21:06:31.146Z",
+      "upstreamRows": 3816
+    }
+  ],
+  "sourceSamples": {
+    "announcements": [
+      {
+        "an_dt": "23-Oct-2026 23:32:41",
+        "attFileSize": "399.40 KB",
+        "attchmntFile": "https://nsearchives.nseindia.com/corporate/BPCL26_23102026233208_stexinvestorhandouts231026s.pdf",
+        "attchmntText": "Bharat Petroleum Corporation Limited has informed the Exchange about Presentation",
+        "bflag": null,
+        "csvName": null,
+        "desc": "Analysts/Institutional Investor Meet/Con. Call Updates",
+        "difference": "00:00:01",
+        "dt": "23102026233241",
+        "exchdisstime": "23-Oct-2026 23:32:42",
+        "fileSize": "399.40 KB",
+        "hasXbrl": true,
+        "old_new": null,
+        "orgid": null,
+        "seq_id": "106827243",
+        "smIndustry": "Refineries",
+        "sm_isin": "INE029A01011",
+        "sm_name": "Bharat Petroleum Corporation Limited",
+        "sort_date": "2026-10-23 23:32:41",
+        "symbol": "BPCL"
+      },
+      {
+        "an_dt": "23-Oct-2026 23:30:54",
+        "attFileSize": "866.06 KB",
+        "attchmntFile": "https://nsearchives.nseindia.com/corporate/BPCL26_23102026233001_revisedintimationanalystmeet231026s.pdf",
+        "attchmntText": "Bharat Petroleum Corporation Limited has informed the Exchange about Rescheduling of Post Results Conference Call",
+        "bflag": null,
+        "csvName": null,
+        "desc": "Analysts/Institutional Investor Meet/Con. Call Updates",
+        "difference": "00:00:00",
+        "dt": "23102026233054",
+        "exchdisstime": "23-Oct-2026 23:30:54",
+        "fileSize": "866.06 KB",
+        "hasXbrl": true,
+        "old_new": null,
+        "orgid": null,
+        "seq_id": "106827220",
+        "smIndustry": "Refineries",
+        "sm_isin": "INE029A01011",
+        "sm_name": "Bharat Petroleum Corporation Limited",
+        "sort_date": "2026-10-23 23:30:54",
+        "symbol": "BPCL"
+      }
+    ],
+    "actions": [
+      {
+        "bcEndDate": "-",
+        "bcStartDate": "-",
+        "caBroadcastDate": null,
+        "comp": "Vedanta Limited",
+        "exDate": "14-Oct-2026",
+        "faceVal": "1",
+        "ind": "-",
+        "isin": "INE205A01025",
+        "ndEndDate": "-",
+        "ndStartDate": "-",
+        "recDate": "14-Oct-2026",
+        "series": "EQ",
+        "subject": "Interim Dividend - Rs 5 Per Share",
+        "symbol": "VEDL"
+      },
+      {
+        "bcEndDate": "-",
+        "bcStartDate": "-",
+        "caBroadcastDate": null,
+        "comp": "Tata Consultancy Services Limited",
+        "exDate": "14-Oct-2026",
+        "faceVal": "1",
+        "ind": "-",
+        "isin": "INE467B01029",
+        "ndEndDate": "-",
+        "ndStartDate": "-",
+        "recDate": "14-Oct-2026",
+        "series": "EQ",
+        "subject": "Interim Dividend - Rs 12 Per Share",
+        "symbol": "TCS"
+      }
+    ],
+    "results": [
+      {
+        "audited": "Audited",
+        "bank": "N",
+        "broadCastDate": "17-Feb-2025 22:31:51",
+        "companyName": "ABB India Limited",
+        "consolidated": "Non-Consolidated",
+        "cumulative": "Non-cumulative",
+        "difference": "00:00:22",
+        "exchdisstime": "17-Feb-2025 22:32:13",
+        "filingDate": "17-Feb-2025 22:31",
+        "financialYear": "01-Jan-2024 To 31-Dec-2024",
+        "format": "New",
+        "fromDate": "01-Oct-2024",
+        "indAs": "Ind-AS New",
+        "industry": "-",
+        "isin": "INE117A01022",
+        "oldNewFlag": "N",
+        "params": "01-Oct-202431-Dec-2024Q4ANNNNEABB",
+        "period": "Quarterly",
+        "reInd": "N",
+        "relatingTo": "Fourth Quarter",
+        "resultDescription": null,
+        "resultDetailedDataLink": null,
+        "seqNumber": "1197046",
+        "symbol": "ABB",
+        "toDate": "31-Dec-2024",
+        "xbrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_120943_1386884_17022025103150.xml"
+      },
+      {
+        "audited": "Un-Audited",
+        "bank": "N",
+        "broadCastDate": "14-Feb-2025 17:06:49",
+        "companyName": "Samvardhana Motherson International Limited",
+        "consolidated": "Consolidated",
+        "cumulative": "Non-cumulative",
+        "difference": "00:00:40",
+        "exchdisstime": "14-Feb-2025 17:07:29",
+        "filingDate": "14-Feb-2025 17:06",
+        "financialYear": "01-Apr-2024 To 31-Mar-2025",
+        "format": "New",
+        "fromDate": "01-Oct-2024",
+        "indAs": "Ind-AS New",
+        "industry": "-",
+        "isin": "INE775A01035",
+        "oldNewFlag": "N",
+        "params": "01-Oct-202431-Dec-2024Q3UNNCNEMOTHERSON",
+        "period": "Quarterly",
+        "reInd": "N",
+        "relatingTo": "Third Quarter",
+        "resultDescription": null,
+        "resultDetailedDataLink": null,
+        "seqNumber": "1196387",
+        "symbol": "MOTHERSON",
+        "toDate": "31-Dec-2024",
+        "xbrl": "https://nsearchives.nseindia.com/corporate/xbrl/INDAS_120613_1384471_14022025050649.xml"
+      }
+    ]
+  }
+}

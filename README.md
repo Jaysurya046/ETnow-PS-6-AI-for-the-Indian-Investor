@@ -80,6 +80,7 @@ Client workspaces consume Next.js route handlers. Server adapters normalize Yaho
 | `GET /api/radar` | Grounded market signals |
 | `GET /api/fii-dii` | Daily institutional flows, history, acquisition timestamp and stale state |
 | `GET /api/ipo` | Ongoing, upcoming and listed issues; published/verified fields only |
+| `GET /api/corporate-info` | Official NSE announcements, corporate actions and financial results; index or portfolio symbol scope |
 | `POST /api/chat` | Portfolio-aware SSE research |
 | `POST /api/video` | Script and coherent video input snapshot |
 | `GET /api/health` | Uncached application health, UTC timestamp and process uptime in seconds |
@@ -94,6 +95,7 @@ The video Player and export share four scenes: benchmarks (0–8s), movers (8–
 
 - [Terminal design system and 375px–4K verification](docs/terminal-design.md)
 - [NSE institutional and IPO feed contracts, sources and fallbacks](docs/feed-pipelines.md)
+- [Corporate Info: filings, portfolio filters and verified offline snapshots](docs/corporate-info.md)
 - [Chart indicators and pane behavior](docs/chart-indicators.md)
 - [Remotion composition, encoding, browser support and licensing](docs/video-production.md)
 - [Production deployment and operations](docs/deployment.md)

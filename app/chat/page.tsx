@@ -1,4 +1,5 @@
 "use client";
+import CorporateInfo from "@/components/CorporateInfo";
 import { useState, useRef, useEffect } from "react";
 import { Plus, X, Send, Wallet } from "lucide-react";
 import { PageHeading, PanelHeading, inr, signed } from "@/components/Terminal";
@@ -39,6 +40,7 @@ export default function ChatPage() {
   const [portfolio, setPortfolio] = useState<PortfolioItem[]>([]);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
+  const [corporateOpen, setCorporateOpen] = useState(false);
   const [showPortfolio, setShowPortfolio] = useState(false);
   const [portfolioReady, setPortfolioReady] = useState(false);
   const [portfolioError, setPortfolioError] = useState("");
@@ -130,6 +132,7 @@ export default function ChatPage() {
         if (!parsed) {setPortfolioError("Enter a valid NSE symbol, positive quantity and average cost.");return;}
         setPortfolio(current => [...current,parsed[0]]);setAddingHolding(false);setNewHolding({symbol:"",qty:"",cost:""});
       }}><label className="field">NSE symbol<input value={newHolding.symbol} onChange={e => setNewHolding({...newHolding,symbol:e.target.value})} placeholder="e.g. TCS" required autoComplete="off" maxLength={30} /></label><div className="field-row"><label className="field">Quantity<input type="number" min="0.000001" step="any" value={newHolding.qty} onChange={e => setNewHolding({...newHolding,qty:e.target.value})} required /></label><label className="field">Average cost / ₹<input type="number" min="0.000001" step="any" value={newHolding.cost} onChange={e => setNewHolding({...newHolding,cost:e.target.value})} required /></label></div><button className="btn btn-primary" type="submit">Save holding</button></form>}
+    <details className="corporate-drawer" onToggle={event=>setCorporateOpen(event.currentTarget.open)}><summary>Corporate Info / Market Signals</summary>{corporateOpen && <CorporateInfo portfolioSymbols={portfolio.map(holding=>holding.symbol)} defaultScope="portfolio" compact />}</details>
     </aside>
     <section className="conversation" aria-label="Research conversation"><PanelHeading title="Research thread" meta={isTyping ? "Receiving response" : "Portfolio context attached"} /><div className="messages" aria-busy={isTyping}>
       {messages.map((message,i) => <article className={`message ${message.role}`} key={i}><div className="message-author"><span className="numeric">{String(i+1).padStart(2,"0")}</span><span>{message.role === "ai" ? "ETNow Research" : "You"}</span></div>
@@ -138,6 +141,6 @@ export default function ChatPage() {
         {!!message.suggestions?.length && <div className="suggestions">{message.suggestions.map(query => <button className="suggestion-pill" key={query} disabled={isTyping} onClick={() => void sendMessage(query)}>{query}</button>)}</div>}
       </article>)}<div ref={messagesEndRef} />
     </div><form className="composer" onSubmit={e => {e.preventDefault();void sendMessage(input);}}><label className="field">Research question<textarea value={input} onChange={e => setInput(e.target.value)} onKeyDown={e => {if(e.key === "Enter" && !e.shiftKey){e.preventDefault();if(!isTyping) void sendMessage(input);}}} disabled={isTyping} placeholder="Ask about your holdings or a market concept. Shift+Enter for a new line." /></label><button className="btn btn-primary" type="submit" disabled={isTyping || !input.trim()}><Send size={14} aria-hidden="true" /><span>{isTyping ? "Receiving" : "Send"}</span></button></form></section>
-    <aside className="context-pane" aria-label="Research context"><PanelHeading title="Context & sources" /><div className="context-note"><h3>Portfolio coverage</h3><p className="numeric">{totals.priced}/{portfolio.length} holdings priced</p><p>Latest available Yahoo Finance quotes. Unpriced holdings are excluded from valuation.</p></div><div className="context-note"><h3>Browser storage</h3><p>Holdings stay in this browser. Quotes are refreshed when you open the workspace and every 30 seconds.</p></div><div className="context-note"><h3>Research scope</h3><p>Responses use the supplied portfolio context. Current news and filings are not connected.</p></div><div className="context-note"><h3>Suggested questions</h3><div className="suggestions">{QUICK_QUERIES.slice(0,3).map(query => <button className="suggestion-pill" key={query} disabled={isTyping} onClick={() => void sendMessage(query)}>{query}</button>)}</div></div></aside></div>
+    <aside className="context-pane" aria-label="Research context"><PanelHeading title="Context & sources" /><div className="context-note"><h3>Portfolio coverage</h3><p className="numeric">{totals.priced}/{portfolio.length} holdings priced</p><p>Latest available Yahoo Finance quotes. Unpriced holdings are excluded from valuation.</p></div><div className="context-note"><h3>Browser storage</h3><p>Holdings stay in this browser. Quotes are refreshed when you open the workspace and every 30 seconds.</p></div><div className="context-note"><h3>Research scope</h3><p>AI responses use portfolio and quote context. Official filings are available in the holdings drawer; they are not automatically supplied to AI.</p></div><div className="context-note"><h3>Suggested questions</h3><div className="suggestions">{QUICK_QUERIES.slice(0,3).map(query => <button className="suggestion-pill" key={query} disabled={isTyping} onClick={() => void sendMessage(query)}>{query}</button>)}</div></div></aside></div>
   </div>;
 }
