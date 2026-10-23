@@ -1,6 +1,6 @@
-# CLAUDE.md — Claude Code Operational Guidelines
+# Context — Agentic IDE Operational Guidelines
 
-This document provides concise project instructions, commands, and conventions for Claude Code when developing in the **ETNow AI** repository. For full architectural specifications, see [AGENTS.md](AGENTS.md).
+This document provides concise project instructions, commands, and conventions for Codex when developing in the **ETNow AI** repository. For full architectural specifications, see [AGENTS.md](AGENTS.md).
 
 ---
 
