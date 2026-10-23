@@ -35,6 +35,21 @@ const { readChatStream } = load("lib/chat-stream.ts");
 const { ttlCache } = load("lib/cache.ts");
 const candles = Array.from({ length: 250 }, (_, i) => ({ time: Math.floor(Date.now()/1000)-(249-i)*86400, open: 100+i, high: 102+i, low: 99+i, close: 101+i, volume: 1000 }));
 
+test("health route is dynamic, uncached and reports the current process", async () => {
+  const health = load("app/api/health/route.ts");
+  assert.equal(health.runtime, "nodejs");
+  assert.equal(health.dynamic, "force-dynamic");
+  const before = Date.now();
+  const response = health.GET();
+  const data = await response.json();
+  assert.equal(response.status, 200);
+  assert.equal(response.headers.get("cache-control"), "no-store");
+  assert.equal(data.status, "ok");
+  assert.ok(Date.parse(data.timestamp) >= before && Date.parse(data.timestamp) <= Date.now());
+  assert.ok(Number.isFinite(data.uptime) && data.uptime >= 0 && data.uptime <= process.uptime());
+  assert.deepEqual(Object.keys(data).sort(), ["status", "timestamp", "uptime"]);
+});
+
 test("indicator math has enough history for EMA200 and uses previous-bar pivots", () => {
   const result = calculateIndicators(candles);
   assert.equal(result.rsi, 100);

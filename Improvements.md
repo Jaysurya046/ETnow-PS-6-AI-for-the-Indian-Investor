@@ -4,7 +4,7 @@
 
 The original audit and broader architecture proposals below are retained for context. The user's three-phase roadmap has been implemented: safe markdown/lazy Gemini/grounded radar; measured chart indicators, live insights, sectors and movers, real counters and caching; persistent holdings, live landing snapshot, and SSE chat. See `implementationReport.md` and `docs/development-execution.md` for the current interfaces and verification.
 
-Remaining work from this broader audit includes live FII/DII ingestion, live IPO ingestion, distributed caching/rate limiting, account/broker persistence, real MP4 rendering. Home module cards now describe implemented capabilities rather than unmeasured usage or accuracy counters. FII/DII and IPO sample panels are labeled historical. The NSE universe is now a verified 100-symbol snapshot and still requires periodic membership maintenance.
+The later milestones also implement live FII/DII ingestion, live IPO ingestion, interactive chart overlays, real MP4/WebM rendering and standalone deployment assets. See `docs/feed-pipelines.md`, `docs/chart-indicators.md`, `docs/video-production.md` and `docs/deployment.md`. Remaining broader architecture work includes distributed caching/rate limiting and account/broker persistence. Home module cards describe implemented capabilities rather than unmeasured usage or accuracy counters. The NSE universe is a verified 100-symbol snapshot and still requires periodic membership maintenance.
 
 ---
 

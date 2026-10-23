@@ -26,11 +26,11 @@ Native selects, buttons, forms and disclosure elements replace mouse-only contro
 
 Reduced-motion settings disable transitions and scrolling motion. No automatically moving content requires pausing. Existing network feeds, SSE responses, quote validation, local holdings and sanitized markdown remain in use.
 
-Historical FII/DII and IPO sample data is retained under closed archive disclosures so it does not crowd current-session data.
+The briefing workspace now uses active FII/DII and IPO feeds with explicit source timestamps and stale state. Its Remotion studio shares the terminal typography and colors. See [feed pipelines](feed-pipelines.md) and [video production](video-production.md) for the later milestones.
 
 ## Verification
 
-- `npm run lint`, `npm run build` and all 13 existing regression tests pass.
+- The original redesign passed `npm run lint`, `npm run build` and 13 regression tests. Subsequent feed, chart, video and deployment work extends the suite to 32 tests; see the README and dated implementation notes for current validation.
 - Browser checks at 375px, 768px, 812px landscape, 1024px, 1440px and 3840px confirmed contained layouts. Mobile page width remained within the viewport; wide tables use internal scrolling. The mobile signal region was also verified to scroll with the keyboard without widening the page.
 - Verified mover filtering, symbol deep links, chart range selection, signal filtering, visible keyboard focus, the mobile holdings pane, labeled holding entry, live P&L and streaming fallback. The synthetic holding was removed after testing.
 - Computed text-token contrast against panel backgrounds: primary 13.65:1, secondary 8.91:1, muted 6.14:1; semantic figure colors all above 7:1. Strong control borders are 3.49:1. This is a targeted check, not a full accessibility conformance audit.

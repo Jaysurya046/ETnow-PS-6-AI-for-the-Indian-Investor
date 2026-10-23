@@ -1,0 +1,15 @@
+services:
+  etnow:
+    image: etnow-ai:local
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        NODE_VERSION: ${NODE_VERSION:-20}
+        NEXT_PUBLIC_REMOTION_LICENSE_KEY: ${NEXT_PUBLIC_REMOTION_LICENSE_KEY:-}
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+    restart: unless-stopped
