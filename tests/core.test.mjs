@@ -21,7 +21,7 @@ function loader(mocks = {}) {
     const code = ts.transpileModule(readFileSync(filename, "utf8"), {
       compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022, jsx: ts.JsxEmit.ReactJSX, esModuleInterop: true },
     }).outputText;
-    const resolve = id => id.startsWith("@/") ? load(id.slice(2)+(id.endsWith(".json") ? "" : ".ts")) : runtimeRequire(id);
+    const resolve = id => id in mocks ? mocks[id] : id.startsWith("@/") ? load(id.slice(2)+(id.endsWith(".json") ? "" : ".ts")) : runtimeRequire(id);
     new Function("require", "module", "exports", code)(resolve, loaded, loaded.exports);
     return loaded.exports;
   }
@@ -398,4 +398,104 @@ test("chart overlays use warm-up bars and only expose points in the visible cand
     assert.equal(series[0].time, result.candles[0].time);
     assert.equal(series.at(-1).time, result.candles.at(-1).time);
   }
+});
+
+test("market video is exactly 45 seconds and scene boundaries cover every frame once", () => {
+  const { VIDEO, VIDEO_SCENES, sceneAtFrame } = load("lib/video.ts");
+  assert.equal(VIDEO.durationInFrames,1350); assert.equal(VIDEO.durationInFrames/VIDEO.fps,45);
+  assert.deepEqual(VIDEO_SCENES.map(scene=>[scene.from,scene.from+scene.duration]),[[0,240],[240,600],[600,960],[960,1350]]);
+  for(let frame=0;frame<1350;frame++) assert.equal(VIDEO_SCENES.filter(scene=>frame>=scene.from && frame<scene.from+scene.duration).length,1);
+  assert.equal(sceneAtFrame(239).id,"headline");assert.equal(sceneAtFrame(240).id,"movers");
+  assert.equal(sceneAtFrame(600).id,"sectors");assert.equal(sceneAtFrame(960).id,"script");
+  assert.equal(sceneAtFrame(-1),null);assert.equal(sceneAtFrame(1350),null);
+});
+
+test("video input normalization bounds payloads and preserves missing values without fictional rows", () => {
+  const { normalizeVideoProps } = load("lib/video.ts");
+  const empty=normalizeVideoProps(null);
+  assert.deepEqual(empty.movers,{gainers:[],losers:[]});assert.deepEqual(empty.sectors,[]);assert.equal(empty.fiiDii,null);
+  const input={
+    title:"x".repeat(200),benchmarks:[{symbol:"^NSEI",name:"NIFTY 50",price:NaN,change:null,pct:null}],
+    movers:{gainers:[{symbol:"TCS",price:2500,pct:2},{symbol:"BAD",price:NaN,pct:4},{symbol:"DOWN",price:2,pct:-1}],losers:[{symbol:"INFY",price:1500,pct:-2}]},
+    sectors:[{name:"IT",change:2},{name:"Banking",change:1},{name:"Missing",change:null}],
+    fiiDii:{date:"22 Oct 2026",fiiNet:-100,diiNet:200,asOf:"2026-10-22T13:00:00Z",isStale:true},
+    scriptLines:Array(9).fill("x".repeat(200)),scriptSource:"ai",capturedAt:"invalid",
+  };
+  const result=normalizeVideoProps(input);
+  assert.equal(result.title.length,72);assert.equal(result.benchmarks[0].price,null);
+  assert.equal(result.movers.gainers.length,1);assert.equal(result.movers.losers.length,1);
+  assert.deepEqual(result.sectors.map(row=>row.name),["IT","Banking"]);
+  assert.equal(result.fiiDii.isStale,true);assert.equal(result.fiiDii.fiiNet,-100);
+  assert.equal(result.scriptLines.length,5);assert.equal(result.scriptLines[0].length,150);
+  assert.equal(result.capturedAt,"");assert.equal(result.sessionStatus,"latest");
+  assert.equal(input.scriptLines.length,9);
+});
+
+test("live video adapter reads Indian formatted values and uses provider session dates", () => {
+  const { videoFromFeeds, videoFilename }=load("lib/video.ts");
+  const props=videoFromFeeds({quotes:[{symbol:"^NSEI",name:"NIFTY 50",price:"22,687.65",change:"-123.45",pct:"-0.54%",asOf:"2026-10-22T10:00:00Z"}],movers:{gainers:[{stock:"TCS",val:"₹2,500.50",change:"+2.25%"}],losers:[]},sectors:[],flows:null,capturedAt:"2026-10-22T23:30:00Z"});
+  assert.equal(props.benchmarks[0].price,22687.65);assert.equal(props.benchmarks[0].change,-123.45);
+  assert.equal(props.movers.gainers[0].pct,2.25);assert.match(props.dateStr,/22/);
+  assert.equal(videoFilename(props,"mp4"),"etnow-market-wrap-2026-10-23.mp4");
+  assert.equal(props.scriptSource,"awaiting");assert.deepEqual(props.scriptLines,[]);
+});
+
+test("video API freezes real inputs and returns labelled factual fallback when AI is unavailable", async () => {
+  const routeLoader=loader({
+    "lib/gemini.ts":{getGenAI:()=>null},
+    "lib/market-data.ts":{
+      getQuotes:async()=>[{symbol:"^NSEI",regularMarketPrice:22000,regularMarketChange:100,regularMarketChangePercent:0.5,regularMarketTime:new Date("2026-10-22T10:00:00Z"),marketState:"CLOSED"}],
+      getMovers:async()=>({gainers:[{stock:"TCS",val:"₹2,500",change:"+2.00%"}],losers:[]}),
+      getSectors:async()=>[{name:"IT",change:1.25}],
+    },
+    "lib/institutional-flows.ts":{getInstitutionalFlows:async()=>{throw new Error("offline");}},
+    "lib/ipo-feed.ts":{getIpos:async()=>null},
+  });
+  const {POST}=routeLoader("app/api/video/route.ts");
+  const response=await POST(new Request("http://local/api/video",{method:"POST",body:JSON.stringify({templateId:"daily-wrap"})}));
+  assert.equal(response.status,200);
+  const result=await response.json();
+  assert.equal(result.videoProps.scriptSource,"measured-data");assert.equal(result.videoProps.sessionStatus,"close");
+  assert.equal(result.videoProps.fiiDii,null);assert.equal(result.script.length,3);
+  assert.match(result.script[0],/22,000/);assert.match(result.script[1],/TCS/);
+  assert.deepEqual(result.script,result.videoProps.scriptLines);
+  assert.equal((await POST(new Request("http://local",{method:"POST",body:"{}"}))).status,400);
+});
+
+test("video encoder selects a supported container and forwards all 1350 frames with real progress", async () => {
+  const originalDocument=globalThis.document;
+  globalThis.document={fonts:{ready:Promise.resolve(),load:async()=>[]}};
+  let captured;
+  const exporter=loader({
+    "components/video/MarketComposition.ts":{MarketVideoComposition:()=>null},
+    "@remotion/web-renderer":{
+      canRenderMediaOnWeb:async options=>({canRender:options.container==="webm"}),
+      renderMediaOnWeb:async options=>{captured=options;options.onProgress({progress:.425});return {getBlob:async()=>new Blob(["encoder-fixture"],{type:"video/webm"})};},
+    },
+  })("lib/video-export.ts");
+  try {
+    const events=[],props=load("lib/video.ts").normalizeVideoProps({capturedAt:"2026-10-22T12:30:00Z"});
+    const output=await exporter.exportMarketVideo(props,new AbortController().signal,value=>events.push(value));
+    assert.equal(captured.composition.durationInFrames,1350);assert.equal(captured.composition.fps,30);
+    assert.equal(captured.composition.width,1920);assert.equal(captured.composition.height,1080);
+    assert.equal(output.format,"webm");assert.match(output.filename,/\.webm$/);
+    assert.deepEqual(events,[42,100]);assert.ok(output.blob.size>0);
+    const controller=new AbortController();controller.abort();
+    await assert.rejects(exporter.exportMarketVideo(props,controller.signal,()=>{}),{name:"AbortError"});
+  } finally {globalThis.document=originalDocument;}
+});
+
+test("successful video AI output is attached to the same market snapshot", async () => {
+  let prompt="";
+  const aiLoader=loader({
+    "lib/gemini.ts":{getGenAI:()=>({models:{generateContent:async request=>{prompt=request.contents;return {text:JSON.stringify({title:"Measured market update",wrap:"A factual session summary.",script:["Benchmark data is unavailable.","No equity movers were supplied.","Sector quotes are unavailable."]})};}}})},
+    "lib/market-data.ts":{getQuotes:async()=>[],getMovers:async()=>({gainers:[],losers:[]}),getSectors:async()=>[]},
+    "lib/institutional-flows.ts":{getInstitutionalFlows:async()=>({latest:{date:"22 Oct 2026",fiiNet:-10,diiNet:20,asOf:"2026-10-22T13:00:00Z"},isStale:true})},
+    "lib/ipo-feed.ts":{getIpos:async()=>null},
+  });
+  const response=await aiLoader("app/api/video/route.ts").POST(new Request("http://local/api/video",{method:"POST",body:JSON.stringify({templateId:"fii-dii"})}));
+  const data=await response.json();
+  assert.equal(data.videoProps.scriptSource,"ai");assert.equal(data.videoProps.fiiDii.isStale,true);
+  assert.deepEqual(data.script,data.videoProps.scriptLines);assert.equal(data.title,data.videoProps.title);
+  assert.match(prompt,/Do not invent news/);assert.match(prompt,/22 Oct 2026/);
 });

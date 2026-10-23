@@ -277,3 +277,7 @@ Implemented `/api/fii-dii` and `/api/ipo`, typed NSE normalization, cookie/sessi
 ## Interactive chart overlays — 23 October 2026
 
 Added full EMA/Bollinger/RSI time-series calculations and warm-up-aware `/api/chart` payloads. The chart now has persistent EMA 20/50/200 and Bollinger toggles plus a native synchronized RSI pane with fixed 0–100 scale and 70/50/30 thresholds. Extracted the canvas lifecycle into `components/CandlestickChart.tsx`, including responsive resizing and complete cleanup. See `docs/chart-indicators.md` for period semantics and the library's integer-width constraint.
+
+## Remotion video production — 23 October 2026
+
+Added a shared 45-second 1080p Remotion composition, interactive Player with scene navigation, and genuine client-side MP4/WebM export using the official WebCodecs renderer. Generated scripts and source data now travel as one snapshot; AI failures return explicitly labeled factual scripts. Export supports real progress, cancellation, automatic download and encoded-file review. See `docs/video-production.md` for frame boundaries, source integrity, browser requirements and Remotion licensing.

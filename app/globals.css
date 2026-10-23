@@ -388,3 +388,20 @@ input::placeholder, textarea::placeholder { color: var(--text-muted); opacity: .
 .rsi-pane-label { position: absolute; bottom: 106px; left: 10px; padding: 2px 4px; color: var(--chart-rsi); background: var(--bg-secondary); font: 10px var(--font-mono); pointer-events: none; }
 .indicator-note { padding: 7px 12px; color: var(--text-secondary); font: 11px var(--font-mono); border-top: 1px solid var(--border-subtle); }
 @media (max-width: 700px) { .chart-indicator-bar { padding: 8px 10px; } .chart-indicator-bar button { min-height: 44px; } }
+
+.video-studio { margin-bottom: 16px; min-width: 0; }
+.video-player-shell { width: 100%; max-width: 100%; aspect-ratio: 16 / 9; background: var(--bg-main); overflow: hidden; }
+.video-player-shell > div { max-width: 100%; }
+.video-scene-controls { display: flex; flex-wrap: wrap; gap: 6px; padding: 10px 12px; border-bottom: 1px solid var(--border-subtle); }
+.video-scene-controls button { padding: 7px 10px; min-height: 36px; font: 11px var(--font-mono); background: var(--bg-subtle); border: 1px solid var(--border-subtle); color: var(--text-secondary); cursor: pointer; }
+.video-scene-controls button:hover { color: var(--gold); border-color: var(--gold); }
+.video-scene-controls .numeric { color: var(--gold); margin-right: 4px; }
+.video-export-toolbar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; padding: 12px; }
+.video-export-toolbar > div { display: flex; flex-wrap: wrap; gap: 8px; }
+.video-progress { height: 3px; background: var(--bg-subtle); }
+.video-progress > span { height: 100%; display: block; background: var(--gold); }
+.encoded-review { border-top: 1px solid var(--border-subtle); }
+.encoded-review summary { padding: 12px; font-size: 12px; color: var(--text-secondary); cursor: pointer; }
+.encoded-review summary span { margin-left: 12px; }
+.encoded-review video { display: block; width: 100%; aspect-ratio: 16 / 9; background: var(--bg-main); }
+@media (max-width: 700px) { .video-scene-controls button { min-height: 44px; flex: 1 1 40%; text-align: left; } .video-scene-controls { padding: 8px; } }

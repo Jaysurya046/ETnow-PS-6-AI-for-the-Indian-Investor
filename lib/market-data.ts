@@ -8,6 +8,20 @@ export function getQuotes(symbols: string[]) {
   return loadQuotes([...new Set(symbols)].sort());
 }
 
+const SECTOR_INDICES = [
+  { name:"IT", symbol:"^CNXIT" }, { name:"Banking", symbol:"^NSEBANK" },
+  { name:"Auto", symbol:"^CNXAUTO" }, { name:"FMCG", symbol:"^CNXFMCG" },
+  { name:"Metals", symbol:"^CNXMETAL" }, { name:"Pharma", symbol:"^CNXPHARMA" },
+  { name:"Realty", symbol:"^CNXREALTY" }, { name:"Energy", symbol:"^CNXENERGY" },
+];
+export const getSectors = ttlCache(async () => {
+  const quotes = await getQuotes(SECTOR_INDICES.map(index=>index.symbol));
+  return SECTOR_INDICES.flatMap(index=> {
+    const quote=quotes.find(quote=>quote.symbol===index.symbol);
+    return quote && Number.isFinite(quote.regularMarketChangePercent) ? [{ ...index, change:quote.regularMarketChangePercent!, asOf:quote.regularMarketTime?.toISOString() ?? null }] : [];
+  });
+});
+
 export function normalizeSymbol(symbol: string): string | null {
   const normalized = symbol.trim().toUpperCase().replace(/\.NS$/, "");
   return /^[A-Z0-9&-]{1,30}$/.test(normalized) ? `${normalized}.NS` : null;
